@@ -1,1 +1,1 @@
-# muzisettings
+# ecoEdu
