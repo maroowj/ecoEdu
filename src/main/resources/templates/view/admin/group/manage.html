@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin_layout}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style layout:fragment="css"></style>
+
+<div layout:fragment="content">
+    <main role="main" class="main-content main-content-group-manage">
+
+        <!-- 컨텐츠 영역 -->
+        <div class="content-wrap">
+            <div class="search-wrap">
+                <div class="search-area">
+                    <input id="keyword" type="text" placeholder="단체명 검색" style="padding: 0px 10px;"/>
+                    <i id="btnSearch" class="icon-green-search"></i>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <div class="top-wrap">
+                    <div class="title-wrap">
+                        <p class="title right-bar32">단체 관리</p>
+
+                        <select class="size">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+
+                    <div class="btn-wrap">
+                        <button id="btn-add" class="btn-h44r medium bg-green font-white">단체 추가</button>
+                        <button id="btnUpdate" class="btn-h44r medium bg-red font-white">수정</button>
+                        <button id="btnDelete" class="btn-h44r medium bg-gray font-white">삭제</button>
+                    </div>
+                </div>
+
+                <div class="d-flex">
+                    <div class="category-menu-wrap non-favicon-menu-wrap">
+                        <a href="#" class="menu menu-1 actived" title="전체">
+                            <span class="menu-1 font-green bold menu-span">전체</span>
+                            <arrow class="icon-green-arrow-left"></arrow>
+                        </a>
+                        <a href="#" class="menu menu-10" title="강화·옹진군">
+                            <span class="menu-4 font-gray bold menu-span">강화·옹진군</span>
+                        </a>
+                        <a href="#" class="menu menu-2" title="계양구">
+                            <span class="menu-2 font-gray bold menu-span">계양구</span>
+                        </a>
+                        <a href="#" class="menu menu-3" title="남동구">
+                            <span class="menu-3 font-gray bold menu-span">남동구</span>
+                        </a>
+                        <a href="#" class="menu menu-4" title="동구">
+                            <span class="menu-4 font-gray bold menu-span">동구</span>
+                        </a>
+                        <a href="#" class="menu menu-5" title="미추홀구">
+                            <span class="menu-4 font-gray bold menu-span">미추홀구</span>
+                        </a>
+                        <a href="#" class="menu menu-6" title="부평구">
+                            <span class="menu-4 font-gray bold menu-span">부평구</span>
+                        </a>
+                        <a href="#" class="menu menu-7" title="서구">
+                            <span class="menu-4 font-gray bold menu-span">서구</span>
+                        </a>
+                        <a href="#" class="menu menu-8" title="연수구">
+                            <span class="menu-4 font-gray bold menu-span">연수구</span>
+                        </a>
+                        <a href="#" class="menu menu-9" title="중구">
+                            <span class="menu-4 font-gray bold menu-span">중구</span>
+                        </a>
+                    </div>
+
+                    <div class="table-wrap group-manage-list po-r">
+                        <div class="table-list">
+                            <table class="auto" style="table-layout: fixed; width: 100%;">
+                                <colgroup>
+                                    <col style="width: 6%">
+                                    <col style="width: 7%">
+                                    <col style="width: 15%">
+                                    <col style="width: 28%">
+                                    <col style="width: 15%">
+                                    <col style="width: 12%">
+                                    <col style="width: 13%">
+                                </colgroup>
+
+                                <thead>
+                                <tr class="title">
+                                    <td class="bold font-gray t-center"><input id="chkAll" type="checkbox"/><label for="chkAll"></label></td>
+                                    <td class="bold font-gray t-center">순번</td>
+                                    <td class="bold font-gray t-center">단체명</td>
+                                    <td class="bold font-gray t-center">주소</td>
+                                    <td class="bold font-gray t-center">연락처</td>
+                                    <td class="bold font-gray t-center">설립일</td>
+                                    <td class="bold font-gray t-center">홈페이지</td>
+                                </tr>
+                                </thead>
+
+                                <tbody id="companyList" class="groupList">
+                                <tr class="">
+                                    <td class="list-chk t-center"><input id="chk" type="checkbox"/><label for="chk"></label></td>
+                                    <td class="list-num t-center">10000000000000</td>
+                                    <td class="list-group t-center"><span class="status-green">글로벌에코투어연구소</span></td>
+                                    <td class="list-address t-center">미추홀구 매소홀로 418번길 14-32</td>
+                                    <td class="list-tel t-center">010-0000-0000</td>
+                                    <td class="list-date t-center">2000.02.04</td>
+                                    <td class="list-url t-center">
+                                        <a href="#" class="icon-gray-url"></a>
+                                        <!-- <a href="#" class="icon-green-url d-none"></a> -->
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- 페이지네이션 -->
+                            <div class="pagination">
+                                <a><i id="pre" class="icon-green-arrow-left"></i></a>
+                                <a class="active num">1</a>
+                                <a class="num">2</a>
+                                <a class="num">3</a>
+                                <a class="num">4</a>
+                                <a class="num">5</a>
+                                <a class="num">6</a>
+                                <a class="num">7</a>
+                                <a class="num">8</a>
+                                <a class="num">9</a>
+                                <a class="num">10</a>
+                                <a class=""><i id="next" class="icon-green-arrow-left"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- 모달 START -->
+
+        <!-- 단체 상세 -->
+        <div id="detailModal" class="modal d-none" style="/*display: flex*/">
+            <div class="modal-wrap w100pro" style="width: 920px;">
+                <div class="modal-body">
+                    <div class="modal-content t-center">
+                        <div class="part w100pro">
+                            <div class="part-left">
+                                <div><img class="img" src=""/></div>
+                            </div>
+                            <div class="part-right t-left">
+                                <div class="title-area">
+                                    <p id="detailName" class="title">저어새네트워크</p>
+                                </div>
+                                <div class="info-area">
+                                    <div id="detailAdd" class="info-address">미추홀구 매소홀로매소홀로매소홀로매소홀로매소홀로매소홀로매소홀로 418번길 14-32</div>
+                                    <div id="detailTel" class="info-tel">010-1234-5678</div>
+                                    <div id="detailHome" class="info-url"> - </div> <!--입력한 정보가 없는 경우 숨기기-->
+                                    <div id="detailCafe" class="info-cafe"> - </div> <!--입력한 정보가 없는 경우 숨기기-->
+                                    <div id="detailEmail" class="info-cafe"> - </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="part w100pro">
+                            <p class="t-left">단체 설명</p>
+                            <div id="detailScript"  class="info-content d-table w100pro t-left">
+                                단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기
+                                단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기
+                                단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기
+                                단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기
+                                단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기단체설명 내용 불러오기
+                            </div>
+                        </div>
+                        <div class="part w100pro">
+                            <div class="w100pro f-left"><span>설립일</span><span id="detailStart" class="info-fDate">2009.05.19</span></div>
+                            <div class="w100pro f-left"><span>운영형태</span><span id="detailType" class="info-mode">공공기관</span></div>
+                            <div class="w100pro f-left"><span>등록번호</span><span id="detailNo" class="info-num">121-11-01234</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="" class="close btn-h60r-green" style="width: 180px;">닫기</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+
+        <!-- 단체추가 -->
+        <div id="addModal" class="modal d-none">
+            <div class="modal-wrap w100pro" style="width: 920px;">
+                <div class="modal-header">단체추가</div>
+                <div class="modal-body">
+                    <div class="modal-content">
+                        <ul class="d-flex">
+                            <li>단체명<span class="font-red">*</span></li>
+                            <li><input id="groupName" class="input-gray" type="text" placeholder="단체명을 입력해주세요."/></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>대표 이미지<span class="font-red">*</span></li>
+                            <li>
+                                <div id="addThumb">
+                                    <div id="beforeThumb" class="auto t-center">
+                                        <div><i class="icon-gray-camera"></i><span class="bold font-gray">썸네일 이미지 등록</span></div>
+                                        <span class="font-gray">가로 1920px 세로 1080px 크기의<br>이미지를 등록해주세요.</span>
+                                        <input id="addFile" class="d-none" type="file" accept=".jpg, .jpeg, .gif, .png"/>
+                                    </div>
+                                    <div id="afterThumb" class="auto t-center d-none">
+                                        <img src='' id='thumbImage' class='thumbImage' style='width: 500px; height: 281.25px; border-radius: 16px; display: flex;'>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>단체 설명<span class="font-red">*</span></li>
+                            <li><textarea id="groupScript" class="textarea-gray" placeholder="단체설명을 입력해주세요."></textarea></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>설립일<span class="font-red">*</span></li>
+                            <li>
+                                <div id="startDate">
+                                    <input id="year" class="input-gray" type="num" placeholder="0000" maxlength="4" minlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/><span class="start-date-text">년</span> <!--년-->
+                                    <input id="month" class="input-gray" type="text" placeholder="00" maxlength="2" minlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/><span class="start-date-text">월</span> <!--월-->
+                                    <input id="date" class="input-gray" type="text" placeholder="00" maxlength="2" minlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/><span class="start-date-text">일</span> <!--일-->
+                                </div>
+                                <p class="font-red">*정확한 일자가 없는 경우, 일자 입력란은 비워두세요.( ex) 2000년 07월 )</p>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>등록번호</li>
+                            <li><input id="startNo" class="input-gray" type="text" placeholder="사업자번호를 입력해주세요."/></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>운영형태<span class="font-red">*</span></li>
+                            <li>
+                                <select id="type" class="select-gray">
+                                    <option>운영형태</option>
+                                    <option value=1>공공기관</option>
+                                    <option value=0>민간단체</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>홈페이지</li>
+                            <li><input id="home" class="input-gray" type="text" placeholder="ex) http://www.hompage.co.kr"/></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>카페</li>
+                            <li><input id="cafe" class="input-gray" type="text" placeholder="카페 URL주소를 입력해주세요."/></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>이메일</li>
+                            <li><input id="email" class="input-gray" type="text" placeholder="ex) myid@email.com"/></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>연락처<span class="font-red">*</span></li>
+                            <li><input id="tel" class="input-gray" type="text" placeholder="ex) 010-1234-5678"/></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>주소<span class="font-red">*</span></li>
+                            <li>
+                                <input id="address" class="address input-gray" type="text" placeholder="주소를 선택해주세요." disabled/>
+                                <button class="btnAddress btn-h50r bg-green font-white" onclick="daumPostcode()">검색</button>
+                                <input id="detailAddress" class="detailAddress input-gray ma-t-8px" type="text" placeholder="상세주소를 입력해주세요."/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="" class="close btn-h60r-light-green ma-r-20px" style="width: 180px;">닫기</button>
+                    <button id="" class="add btn-h60r-green" style="width: 180px;" onclick="groupInsert()">단체추가</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+
+        <!-- 단체수정 -->
+        <div id="editModal" class="modal d-none" style="/*display: flex*/">
+            <div class="modal-wrap w100pro" style="width: 920px;">
+                <div class="modal-header">단체수정</div>
+                <div class="modal-body">
+                    <div class="modal-content">
+                        <ul class="d-flex">
+                            <li>단체명<span class="font-red">*</span></li>
+                            <li><input id="updateName" class="input-gray" type="text" placeholder="단체명을 입력해주세요."/></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>대표 이미지<span class="font-red">*</span></li>
+                            <li>
+                                <div id="editThumb">
+                                    <div id="updateBeforeThumb" class="auto t-center">
+                                        <div><i class="icon-gray-camera"></i><span class="bold font-gray">썸네일 이미지 등록</span></div>
+                                        <span class="font-gray">가로 1920px 세로 1080px 크기의<br>이미지를 등록해주세요.</span>
+                                        <input id="editFile" class="d-none" type="file" accept=".jpg, .jpeg, .gif, .png"/>
+                                    </div>
+                                    <div id="updateAfterThumb" class="auto t-center d-none">
+                                        <img src='' id='updateThumbImage' class='thumbImage' style='width: 500px; height: 281.25px; border-radius: 16px; display: flex;'>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>단체 설명<span class="font-red">*</span></li>
+                            <li><textarea id="updateScript" class="textarea-gray" placeholder="단체설명을 입력해주세요."></textarea></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>설립일<span class="font-red">*</span></li>
+                            <li>
+                                <div id="updateFoundDate">
+                                    <input id="updateYear" class="input-gray" type="num" placeholder="0000" maxlength="4" minlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/><span class="start-date-text">년</span> <!--년-->
+                                    <input id="updateMonth" class="input-gray" type="text" placeholder="00" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/><span class="start-date-text">월</span> <!--월-->
+                                    <input id="updateDate" class="input-gray" type="text" placeholder="00" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/><span class="start-date-text">일</span> <!--일-->
+                                </div>
+                                <p class="font-red">*정확한 일자가 없는 경우, 일자 입력란은 비워두세요.( ex) 2000년 07월 )</p>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>등록번호</li>
+                            <li><input id="updateNo" class="input-gray" type="text" placeholder="사업자번호를 입력해주세요."/></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>운영형태<span class="font-red">*</span></li>
+                            <li>
+                                <select id="updateType" class="select-gray">
+                                    <option>운영형태</option>
+                                    <option value="1">공공기관</option>
+                                    <option value="0">민간단체</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>홈페이지</li>
+                            <li><input id="updateHome" class="input-gray" type="text" placeholder="ex) 1234@hompage.com"/></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>카페</li>
+                            <li><input id="updateCafe" class="input-gray" type="text" placeholder="카페 URL주소를 입력해주세요."/></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>이메일</li>
+                            <li><input id="updateEmail" class="input-gray" type="text" placeholder="ex) myid@email.com"/></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>연락처<span class="font-red">*</span></li>
+                            <li><input id="updateTel" class="input-gray" type="text" placeholder="ex) 010-1234-5678"/></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>주소<span class="font-red">*</span></li>
+                            <li>
+                                <input id="updateAddress" class="address input-gray" type="text" placeholder="주소를 선택해주세요." disabled/>
+                                <button id="" class="btnAddress btn-h50r bg-green font-white" onclick="daumPostcode()">검색</button>
+                                <input id="updateAdd" class="detailAddress input-gray ma-t-8px" type="text" placeholder="상세주소를 입력해주세요."/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="" class="close btn-h60r-light-green ma-r-20px" style="width: 180px;">닫기</button>
+                    <button id="" class="edit btn-h60r-green" style="width: 180px;" onclick="groupUpdate()">단체수정</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+
+        </div>
+
+
+        <!-- 단체삭제 -->
+        <div id="deleteModal" class="modal d-none">
+            <div class="modal-wrap w100pro" style="width: 580px;">
+                <div class="modal-header">단체삭제</div>
+                <div class="modal-body">
+                    <div class="modal-message t-center">
+                        ※ 단체를 삭제하면, 연결된 모든 프로그램들이 삭제됩니다.<br/>
+                        선택한 단체 삭제하시겠습니까?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="" class="close btn-h60r-light-green ma-r-20px" style="width: 180px;">닫기</button>
+                    <button id="" class="delete btn-h60r-green" style="width: 180px;" onclick="groupDelete()">삭제</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+    </main>
+
+
+    <!--script START-->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        let size=10;
+        let page=1;
+        let file;
+        let updateFile;
+        let area;
+
+
+        $(function() {
+            groupList();
+        })
+
+        $(".size").on("change", function(){
+
+            size=$(this).val();
+            groupList(area);
+        });
+
+        // 지역 선택 시 단체 리스트 조회
+        $(".category-menu-wrap").on("click", ".menu", function () {
+
+            // css
+            $('.menu').removeClass('actived');
+            if($('.menu-span').hasClass("font-green")) {
+                $('.menu-span').removeClass("font-green");
+                $('.menu-span').addClass("font-gray");
+            }
+            $('.icon-green-arrow-left').remove()
+            let arrowTag = "<arrow class=\'icon-green-arrow-left\'></arrow>";
+            $(this).find("span").removeClass("font-gray");
+            $(this).find("span").addClass("font-green");
+            $(this).addClass("actived");
+            $(this).append(arrowTag);
+
+            // function
+            area = $(this).attr("title");
+
+            if (area === "전체") {
+                area = null;
+            }
+
+            groupList(area);
+        })
+
+        // 단체 목록 조회
+        function groupList(area) {
+            let keyword = $("#keyword").val();
+
+            $.ajax({
+                type: "GET",
+                url: "/admin/api/company/list",
+                data: {
+                    "keyword": keyword,
+                    "cateName": area,
+                    "page": page-1,
+                    "size": size
+                },
+                success: function (data) {
+                    console.log(data);
+                    let listTag = "";
+                    if( data.content.length != 0 ) {
+                        data.content.forEach(function (data, index) {
+                            let url = "";
+                            if(data.homeUrl!="" && data.homeUrl!=null) {
+                                url = data.homeUrl;
+                            }else if(data.cafeUrl!="" && data.cafeUrl!=null) {
+                                url =data.cafeUrl;
+                            }
+                            if(url!="") {
+                                if(!url.includes("http")) {
+                                    url = "http://"+url;
+                                }
+                            }
+                            listTag +=
+                                "<tr class='list' companySeq='" + data.companySeq + "'>" +
+                                "<td class='list-chk t-center'><input id='chk" + data.rowNum + "' type='checkbox' class='chk checked'><label for='chk" +data.rowNum + "'></label></td>" +
+                                "<td class='list-num t-center d-list'>" + data.rowNum + "</td>" +
+                                "<td class='list-group t-center d-list'><span class='status-green'>" + data.name + "</span></td>" +
+                                "<td class='list-address t-center d-list'>" + data.addressDetail + "</td>" +
+                                "<td class='list-tel t-center d-list'>" + data.tel + "</td>" +
+                                "<td class='list-date t-center d-list'>" + data.startDate.substring(0, 10) + "</td>" +
+                                "<td class='list-url t-center'>";
+                            if(url!="") {
+                                listTag +=
+                                    "<a href='" + url + "' class='icon-gray-url' target='_blank'></a></td>" +
+                                    "</tr>";
+                            }else {
+                                listTag += " - </td></tr>"
+                            }
+                        });
+                        $(".groupList").html(listTag);
+                    }else {
+                        $(".groupList").html(listTag);
+                    }
+                    fPagination(data, page);
+                }
+            })
+        }
+
+        // 썸네일이미지등록 클릭 시
+        $("#addFile").on("change", function() {
+            file =$("#addFile")[0].files[0];
+            let oFile = $(this)[0].files;
+            let url;
+            if(oFile.length<1) { // 첨부파일을 선택했다가 취소 할 경우
+                $("#beforeThumb").removeClass("d-none");
+                $("#afterThumb").addClass("d-none");
+            }else {
+                url=URL.createObjectURL(file);
+                $("#beforeThumb").addClass("d-none");
+                $("#afterThumb").removeClass("d-none");
+                $("#thumbImage").attr("src", url);
+            }
+        });
+
+        // 썸네일이미지등록 클릭 시 (수정)
+        $("#editFile").on("change", function() {
+            updateFile =$("#addFile")[0].files[0];
+            let oFile = $(this)[0].files;
+            let url;
+            if(oFile.length<1) { // 첨부파일을 선택했다가 취소 할 경우
+                $("#updateBeforeThumb").removeClass("d-none");
+                $("#updateAfterThumb").addClass("d-none");
+            }else {
+                url=URL.createObjectURL(updateFile);
+                $("#updateBeforeThumb").addClass("d-none");
+                $("#updateAfterThumb").removeClass("d-none");
+                $("#updateThumbImage").attr("src", url);
+            }
+
+        });
+
+        //단체 신규 등록 (미완성 주소 API 추가 필요)
+        function groupInsert() {
+
+            let formData = new FormData();
+
+            let groupName = $("#groupName").val();
+            let groupScript = $("#groupScript").val();
+            let startDate = "";
+            let year = $("#year").val();
+            let month = $("#month").val();
+            let date = $("#date").val();
+            if(year=="") {
+                toastModal("설립연도는 필수 입니다.");
+                return;
+            }
+            if(month=="") {
+                startDate = year;
+            }
+            if(date=="") {
+                startDate = year + "-" + month;
+            }
+            if(year!="" && month!="" && date!="") {
+                startDate = year + "-" + month + "-" + date;
+            }
+
+            let startNo = $("#startNo").val();
+            let type = $("#type option:selected").val();
+            let home = $("#home").val();
+            let cafe = $("#cafe").val();
+            let mail = $("#email").val();
+            let tel = $("#tel").val();
+            let address = $("#address").val();
+            let addressDetail = $("#detailAddress").val();
+
+            // if (type == "1") {
+            //     type = true;
+            // } else if (type == "0") {
+            //     type = false;
+            // } else {
+            //     toastModal("운영형태를 입력해주세요");
+            //     return;
+            // }
+
+            if (groupName == "") {
+                toastModal("단체명을 입력해주세요");
+                return;
+            } else if(groupScript == "") {
+                toastModal("단체 설명을 입력해주세요");
+            return;
+            } else if(startDate == "") {
+                toastModal("설립일을 입력해주세요");
+                return;
+            } else if(tel == "") {
+                toastModal("연락처를 입력해주세요");
+                return;
+            }
+            else if(address == "") {
+                toastModal("주소를 입력해주세요");
+                return;
+            } else if(detailAddress == "") {
+                toastModal("상세주소를를 입력해주세요");
+               return;
+            }
+
+            formData.append("name", groupName);
+            formData.append("script", groupScript);
+            formData.append("startDate", startDate);
+            formData.append("createNo", startNo);
+            formData.append("type", type);
+            formData.append("homeUrl", home);
+            formData.append("cafeUrl", cafe);
+            formData.append("email", mail);
+            formData.append("tel", tel);
+            formData.append("area", address.substring(3));
+            formData.append("addressDetail", addressDetail);
+
+            if(file != undefined && file != null) {
+                formData.append("img", $("#addFile")[0].files[0]);
+            }else {
+                toastModal("단체 이미지를 등록해주세요");
+                return;
+            }
+            console.log("check date = " + startDate);
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/api/company/save",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function () {
+                        toastModal("신규 단체를 저장했습니다.");
+                        setTimeout(() => location.reload(), 1000);
+                    },
+                    error: function (errors) {
+                        console.log("error = " + JSON.stringify(errors));
+                        toastModal("신규 단체 저장을 실패하였습니다.");
+                    }
+
+                })
+
+
+        }
+
+
+        //프로그램 상세내역 modal 확인을 위한 임시 스크립트 처리
+        // $('.table-list tr.list td:not(:first-child)').click(function(){
+        //     $('#detailModal').css('display', 'flex');
+        // });
+        // $('.table-list tr.list td:last-child').click(function(){
+        //     $('#detailModal').css('display', 'none');
+        // });
+
+
+        function groupDetail(companySeq) {
+            $("#detailHome").show();
+            $("#detailCafe").show();
+            $("#detailEmail").show();
+            $.ajax({
+                type: "GET",
+                url: "/admin/api/company/detail",
+                data: {
+                    "companySeq": companySeq
+                },
+                success: function (data) {
+                    console.log(data);
+
+                    //이미지 불러오기
+                    if( data.imgUrl != null && data.imgUrl != "") {
+                        $("#detailModal .img").attr("src", data.imgUrl);
+                    }else{
+                        $("#detailModal .img").attr("src", "/images/no_image.svg");
+                    }
+
+                    $("#detailName").html(data.name);
+                    $("#detailAdd").html(data.addressDetail);
+                    $("#detailTel").html(data.tel);
+
+                    if(data.homeUrl!="" && data.homeUrl!=null) {
+                        let homeUrl=data.homeUrl;
+                        if(!homeUrl.includes("http")) {
+                            homeUrl = "http://" + homeUrl;
+                        }
+                        let homeTag = "<a href='"+homeUrl+"' target='_blank'>"+data.homeUrl+"</a>";
+                        $("#detailHome").html(homeTag);
+                    }else {
+                        $("#detailHome").hide();
+                    }
+
+                    if(data.cafeUrl!="" && data.cafeUrl!=null) {
+                        let cafeUrl=data.cafeUrl;
+                        if(!cafeUrl.includes("http")) {
+                            cafeUrl = "http://" + cafeUrl;
+                        }
+                        let cafeTag = "<a href='"+cafeUrl+"' target='_blank'>"+data.cafeUrl+"</a>";
+
+                        $("#detailCafe").html(cafeTag);
+                    }else {
+                        $("#detailCafe").hide();
+                    }
+
+                    if(data.email!="" && data.email!=null) {
+                        let email=data.email;
+                        if(!email.includes("http")) {
+                            email = "http://" + email;
+                        }
+                        let emailTag = "<a href='"+email+"' target='_blank'>"+data.email+"</a>";
+
+                        $("#detailEmail").html(emailTag);
+                    }else {
+                        $("#detailEmail").hide();
+                    }
+
+                    $("#detailScript").html(data.script);
+                    $("#detailStart").html(data.startDate.substring(0, 10));
+
+                    if(data.startNo != ''){ //수정-이미래(등록번호가 없을 경우 '-'로 표시)
+                        $("#detailNo").html(data.startNo);
+                    }else{
+                        $("#detailNo").html('-');
+                    }
+
+                    if (data.type) {
+                        $("#detailType").html("공공기관");
+                    } else {
+                        $("#detailType").html("민간단체");
+                    }
+                }
+            })
+
+            $('#detailModal').css('display', 'flex');
+        }
+
+        // 상세내역 버튼 클릭 시
+        $(".groupList").on("click", ".d-list", function() {
+            let companySeq = $(this).parent().attr("companySeq");
+            groupDetail(companySeq);
+        });
+
+
+        // 단체 삭제 클릭 제약 조건
+        $('.btn-wrap #btnDelete').on('click', function(){
+            if ($(".groupList .checked:checked").length == 0) {
+                toastModal("삭제할 단체를 선택해주세요.");
+            } else {
+                $('#deleteModal').css('display', 'flex');
+            }
+        });
+
+        // 단체 삭제
+        function groupDelete() {
+            let arrSeq = new Array();
+
+            $(".groupList .checked:checked").each(function () {
+                let companySeq = $(this).parent().parent().attr("companySeq");
+                arrSeq.push(companySeq);
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "/admin/api/company/delete",
+                data: {
+                    "companySeq": arrSeq
+                },
+                success: function () {
+                    toastModal("대상 카테고리를 삭제하였습니다.");
+                    setTimeout(() => location.reload(), 1000);
+                }
+            })
+
+        }
+
+        // 단체 수정 클릭 제약 조건
+        $('.btn-wrap #btnUpdate').on('click', function(){
+
+            let companySeq = $(".groupList .checked:checked").parent().parent().attr("companySeq");
+
+            if ($(".groupList .checked:checked").length == 0) {
+                toastModal("수정할 단체를 선택해주세요.");
+            } else if ($(".groupList .checked:checked").length > 1) {
+                toastModal("1개의 단체만 수정 가능합니다.");
+            } else {
+                $('#editModal').css('display', 'flex');
+                updateDetail(companySeq);
+
+            }
+        });
+
+        // 수정 모달 상세 조회
+        function updateDetail(companySeq) {
+            $.ajax({
+                type: "GET",
+                url: "/admin/api/company/detail",
+                data: {
+                    "companySeq": companySeq
+                },
+                success: function (data) {
+                    console.log(data);
+
+                    //이미지 불러오기
+                    if( data.imgUrl != null && data.imgUrl != "") {
+                        $("#updateBeforeThumb").addClass("d-none");
+                        $("#updateAfterThumb").removeClass("d-none");
+                        $("#updateThumbImage").attr("src", data.imgUrl);
+                    }else{
+                        $("#updateBeforeThumb").removeClass("d-none");
+                        $("#updateAfterThumb").addClass("d-none");
+                    }
+
+                    $("#updateName").val(data.name);
+                    $("#updateAdd").val(data.addressDetail);
+                    $("#updateAddress").val("인천 " + data.area);
+                    $("#updateTel").val(data.tel);
+                    $("#updateHome").val(data.homeUrl);
+                    $("#updateCafe").val(data.cafeUrl);
+                    $("#updateScript").html(data.script);
+                    $("#startDate").html(data.startNo);
+                    $("#updateYear").val(data.startDate.substring(0, 4));
+                    $("#updateMonth").val(data.startDate.substring(5, 7));
+                    $("#updateDate").val(data.startDate.substring(8, 10));
+                    $("#updateNo").val(data.startNo);
+                    if (data.type) {
+                        $("#updateType").val("1");
+                    } else {
+                        $("#updateType").val("0");
+                    }
+                }
+            })
+        }
+
+        // 단체 수정
+        function groupUpdate() {
+            // console.log("check something = ");
+            let formData = new FormData();
+            let companySeq = $(".groupList .checked:checked").parent().parent().attr("companySeq");
+            let name = $("#updateName").val();
+            let script = $("#updateScript").val();
+            let createDate = "";
+            let updateYear = $("#updateYear").val();
+            let updateMonth = $("#updateMonth").val();
+            let updateDate = $("#updateDate").val();
+            if(updateYear=="") {
+                toastModal("설립연도는 필수 입니다.");
+                return;
+            }
+            if(updateMonth=="") {
+                createDate = updateYear;
+            }
+            if(updateDate=="") {
+                createDate = updateYear + "-" + updateMonth;
+            }
+            if(updateYear!="" && updateMonth!="" && updateDate!="") {
+                createDate = updateYear + "-" + updateMonth + "-" + updateDate;
+            }
+            let startNo = $("#updateNo").val();
+            let type = $("#updateType").val();
+            let homeUrl = $("#updateHome").val();
+            let cafeUrl = $("#updateCafe").val();
+            let email= $("#updateEmail").val();
+            let tel = $("#updateTel").val();
+            let area = $("#updateAddress").val();
+            let addressDetail = $("#updateAdd").val();
+
+            formData.append("companySeq", companySeq);
+            formData.append("name", name);
+            formData.append("script", script);
+            formData.append("startDate", createDate);
+            formData.append("createNo", startNo);
+            formData.append("type", type);
+            formData.append("homeUrl", homeUrl);
+            formData.append("cafeUrl", cafeUrl);
+            formData.append("email", email);
+            formData.append("tel", tel);
+            formData.append("area", area.substring(3));
+            formData.append("addressDetail", addressDetail);
+            if ($("#updateThumbImage").attr("src")==null || $("#updateThumbImage").attr("src")=="") {
+                toastModal("대표이미지를 등록해주세요");
+                return
+            }else {
+                if (updateFile != undefined && updateFile != null) {
+                    formData.append("img", $("#editFile")[0].files[0]);
+                }
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/admin/api/company/update",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function () {
+                    toastModal("단체를 수정하였습니다.");
+                    setTimeout(() => location.reload(), 1000);
+                },
+                error: function (errors) {
+                    console.log("error = " + JSON.stringify(errors));
+                    toastModal("단체 수정을 실패하였습니다.");
+                }
+            });
+        }
+
+        $("#btn-add").on("click", function () {
+            $(".address").val("");
+            $(".detailAddress").val("");
+        })
+
+        // 키워드 검색 엔터 입력
+        $("#keyword").on("keydown", function(e){
+            if(e.keyCode==13) {
+                $("#btnSearch").click();
+            }
+        })
+
+        // 키워드 버튼 검색
+        $("#btnSearch").on("click", function(){
+            groupList(area);
+        });
+
+        function daumPostcode() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    if (data.sido == "인천") {
+                        $(".address").val(data.sido + " " +data.sigungu);
+                        $(".detailAddress").val(data.roadAddress);
+                        $(".detailAddress").focus();
+                    } else {
+                        toastModal("인천 지역만 선택 가능합니다.");
+                        $(".address").val("");
+                    }
+
+                }
+            }).open();
+            $("#updateAddress").val("");
+            $("#updateAdd").val("");
+        }
+
+        // 체크박스 기능
+        $("#chkAll").on("click", function(){
+            var chkNum=$(".chk").length;
+            var checkedNum=$(".chk:checked").length;
+
+            if(chkNum!=checkedNum){
+                $(".chk").each(function(){
+                    $(this).prop("checked", true);
+                });
+            }else{
+                $(".chk").each(function(){
+                    $(this).prop("checked", false);
+                });
+            }
+        });
+
+        $("#companyList").on("click", ".chk", function(){
+            var chkNum=$(".chk").length;
+            var checkedNum=$(".chk:checked").length;
+
+            if(chkNum==checkedNum){
+                $("#chkAll").prop("checked", true);
+            }else{
+                $("#chkAll").prop("checked", false);
+            }
+        });
+
+        // 배경클릭 시 사라지기
+        $('.modal-back').on('click', function(){
+            $("#addFile").val("");
+            $("#beforeThumb").removeClass("d-none");
+            $("#afterThumb").addClass("d-none");
+            file=null;
+            // $("#" + modals).fadeIn(300, function () {
+            //     $(".modal-content").animate({"margin-top": "50px"}, 100);
+            // });
+        });
+
+        //닫기버튼 선택 시 사라지기
+        $('.close').on('click', function(){
+            $("#addFile").val("");
+            $("#beforeThumb").removeClass("d-none");
+            $("#afterThumb").addClass("d-none");
+            file=null;
+        });
+
+        // 페이징 클릭 시 실행
+        $(".pagination").on("click", "a", function() {
+            page = parseInt($(this).attr("gopage"));
+            groupList(area);
+        });
+    </script>
+    <!--script END-->
+
+
+</div>
+</html>

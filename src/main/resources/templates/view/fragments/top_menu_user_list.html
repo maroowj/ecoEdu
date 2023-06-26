@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<th:block th:fragment="topMenuFragment">
+
+    <style th:fragment="css">
+        .modal input[type="checkbox"]{
+            display: contents;
+            /*display: block;*/
+        }
+        @media screen and (min-width: 961px){
+            .header-wrap img{
+                display: block;
+            }
+        }
+        @media screen and (max-width: 960px){
+            .header-wrap{
+                justify-content: center;
+            }
+            .header-wrap img{
+                display: none;
+            }
+            .header-wrap .category-area{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .header-wrap .category-area i.prev{
+                background: url('/images/black_arrow_down.svg') no-repeat;
+                transform: rotate(90deg);
+                width: 30px;
+                height: 30px;
+                display: inline-block;
+                vertical-align: middle;
+                cursor: pointer;
+            }
+            .header-wrap .category-area i.home{
+                background: url('/images/home.svg') no-repeat;
+                width: 30px;
+                height: 30px;
+                display: inline-block;
+                vertical-align: middle;
+                cursor: pointer;
+                margin-left: 10px;
+            }
+            .header-wrap .category-area .category-title-select{
+                margin-left: -40px;
+            }
+            .header-wrap .category-area2{
+                right: unset;
+                top: 60px;
+                z-index: 99999;
+                padding-top: 0;
+            }
+            .header-wrap .category-area2 ul li:nth-child(1){
+                display: none;
+            }
+        }
+    </style>
+
+    <main role="main" class="main-content top-menu-list-user">
+
+        <div class="header-wrap">
+            <img class="logo cupoint" src="/images/logo_horizontal_type.png" onclick="location.href='/'"/>
+            <div class="category-area">
+                <div>
+                    <i class="prev" onclick="window.history.back();"></i>
+                    <i class="home" onclick="location.href='/'"></i>
+                </div>
+                <div class="category-title-select">
+                    <span id="headerTopMenu" class="menu-title">지역(구/군)</span> <i class="favicon"></i>
+                </div>
+                <ul class="pc">
+                    <li class="menu-category">카테고리</li>
+                    <li class="menu-info" onclick="location.href='/info/center'">환경센터 소개</li>
+                    <li class="menu-edit bg-green font-white" onclick="location.href='/list/edit'">정보수정 요청</li>
+                </ul>
+                <i class="sliding-menu"></i>
+            </div>
+
+            <!--드롭다운 메뉴-->
+            <div class="category-area2 po-r">
+                <div class="category-menu-list">
+                    <ul>
+                        <li class="" onclick="location.href='/list'">전체보기</li>
+                        <li class="category-area">지역(구/군)</li>
+                        <li class="category-target">대상</li>
+                        <li class="category-theme">테마</li>
+                        <li class="category-type">유형</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="category-menu-back"></div>
+
+
+        <!--mobile 슬라이딩메뉴 START-->
+        <div class="sliding-menu">
+            <div class="sliding-menu-wrap" style="">
+                <div class="close-wrap">
+                    <i class="close"></i>
+                </div>
+
+                <ul>
+                    <li class="po-r">카테고리<arrow class="up po-a"></arrow></li>
+                    <li class="category-all" onclick="location.href='/list'">전체보기</li>
+                    <li class="category-area">지역(구/군)</li>
+                    <li class="category-target">대상</li>
+                    <li class="category-theme">테마</li>
+                    <li class="category-type">유형</li>
+                    <li class="category-info" onclick="location.href='/info/center'">환경센터 소개</li>
+                    <li class="category-edit" onclick="location.href='/list/edit'">정보수정 요청</li>
+                </ul>
+            </div>
+            <div class="sliding-menu-back"></div>
+        </div>
+        <!--mobile 슬라이딩메뉴 END-->
+
+
+        <!--탑버튼-->
+        <div class="top-button">
+            <i class="favicon"></i>
+        </div>
+
+
+        <!-- modal START(카테고리 검색) -->
+
+        <!-- 유형 선택 -->
+        <div class="top-menu-content">
+            <div id="selectTypeModal2" class="modal d-none">
+                <div class="modal-wrap w100pro" style="">
+                    <div class="modal-header">
+                        <p>유형 선택</p>
+                        <div class="m-title-wrap">
+                            <div class="title-area"><i class="pre"></i><p class="m-title">유형 선택</p></div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-content">
+                            <div class="select-type-area w100pro">
+                                <select id="typeSelect2">
+                                    <!--                                <option class="typeValue" value="noValue" selected disabled hidden>유형선택</option>-->
+                                    <!--                                <option class="typeValue" value="강의, 해설">강의, 해설</option>-->
+                                    <!--                                <option class="typeValue" value="견학, 체험">견학, 체험</option>-->
+                                    <!--                                <option class="typeValue" value="토의, 토론">토의, 토론</option>-->
+                                    <!--                                <option class="typeValue" value="조사, 관찰">조사, 관찰</option>-->
+                                    <!--                                <option class="typeValue" value="실험, 실습">실험, 실습</option>-->
+                                    <!--                                <option class="typeValue" value="프로젝트">프로젝트</option>-->
+                                    <!--                                <option class="typeValue" value="기타">기타(직접입력)</option>-->
+                                </select>
+
+                                <!--'기타(직접입력)' 선택 시 보여지는 입력필드-->
+                                <input class="input-direct" type="text" placeholder="유형을 입력해주세요."/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!--유형 미선택 시 기본 버튼(지역 선택 시 해당버튼 사라지기)-->
+                        <button id="" class="none btn-h60r-light-green font-green">유형을 선택해주세요.</button>
+                        <!--유형 선택시 활성화 되는 버튼(2개 이상 선택 시 +'외 1' 문구가 붙음)-->
+                        <button id="typeSearchBtn2" class="close btn-h60r-green font-white po-r search-btn" hidden>
+                            <span><span id="searchTypeName2" class="font-white bold">프로젝트</span>(으)로 검색</span>
+                            <i class="favicon po-a"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-back"></div>
+            </div>
+
+
+            <!-- 테마 선택 -->
+            <div id="selectThemeModal2" class="modal d-none">
+                <div class="modal-wrap w100pro" style="">
+                    <div class="modal-header">
+                        <p>테마 선택</p>
+                        <div class="m-title-wrap">
+                            <div class="title-area"><i class="pre"></i><p class="m-title">테마 선택</p></div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-content">
+                            <ul id="themeUl2" class="w100pro">
+                                <!--                            <li class="forest basic-back-color">-->
+                                <!--                                <input class="themeChk" type="checkbox" value="숲"/>-->
+                                <!--                                <div class="select-theme-area">-->
+                                <!--                                    <img class="forest1" src="/images/theme_forest.svg"/>-->
+                                <!--                                    <img class="forest2" src="/images/theme_forest_white.svg" style="display: none"/>-->
+                                <!--                                    <p>숲</p>-->
+                                <!--                                </div>-->
+                                <!--                            </li>-->
+                                <!--                            <li class="water basic-back-color">-->
+                                <!--                                <input class="themeChk" type="checkbox" value="물"/>-->
+                                <!--                                <div class="select-theme-area">-->
+                                <!--                                    <img class="water1" src="/images/theme_water.svg"/>-->
+                                <!--                                    <img class="water2" src="/images/theme_water_white.svg" style="display: none"/>-->
+                                <!--                                    <p>물</p>-->
+                                <!--                                </div>-->
+                                <!--                            </li>-->
+                                <!--                            <li class="biology basic-back-color">-->
+                                <!--                                <input class="themeChk" type="checkbox" value="생물"/>-->
+                                <!--                                <div class="select-theme-area">-->
+                                <!--                                    <img class="biology1" src="/images/theme_biology.svg"/>-->
+                                <!--                                    <img class="biology2" src="/images/theme_biology_white.svg" style="display: none"/>-->
+                                <!--                                    <p>생물</p>-->
+                                <!--                                </div>-->
+                                <!--                            </li>-->
+                                <!--                            <li class="live basic-back-color">-->
+                                <!--                                <input class="themeChk" type="checkbox" value="생활"/>-->
+                                <!--                                <div class="select-theme-area">-->
+                                <!--                                    <img class="live1" src="/images/theme_live.svg"/>-->
+                                <!--                                    <img class="live2" src="/images/theme_live_white.svg" style="display: none"/>-->
+                                <!--                                    <p>생활</p>-->
+                                <!--                                </div>-->
+                                <!--                            </li>-->
+                                <!--                            <li class="resource basic-back-color">-->
+                                <!--                                <input class="themeChk" type="checkbox" value="자원"/>-->
+                                <!--                                <div class="select-theme-area">-->
+                                <!--                                    <img class="resource1" src="/images/theme_resource.svg"/>-->
+                                <!--                                    <img class="resource2" src="/images/theme_resource_white.svg" style="display: none"/>-->
+                                <!--                                    <p>자원</p>-->
+                                <!--                                </div>-->
+                                <!--                            </li>-->
+                                <!--                            <li class="climate basic-back-color">-->
+                                <!--                                <input class="themeChk" type="checkbox" value="기후에너지"/>-->
+                                <!--                                <div class="select-theme-area">-->
+                                <!--                                    <img class="climate1" src="/images/theme_climate.svg"/>-->
+                                <!--                                    <img class="climate2" src="/images/theme_climate_white.svg" style="display: none"/>-->
+                                <!--                                    <p>기후 에너지</p>-->
+                                <!--                                </div>-->
+                                <!--                            </li>-->
+                                <!--                            <li class="climate basic-back-color">-->
+                                <!--                                <input class="themeChk" type="checkbox" value="숲"/>-->
+                                <!--                                <div class="select-theme-area">-->
+                                <!--                                    <img class="climate1" src="/images/theme_climate.svg"/>-->
+                                <!--                                    <img class="climate2" src="/images/theme_climate_white.svg" style="display: none"/>-->
+                                <!--                                    <p>기후에너지기후</p>-->
+                                <!--                                </div>-->
+                                <!--                            </li>-->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!--테마 미선택 시 기본 버튼(지역 선택 시 해당버튼 사라지기)-->
+                        <button id="" class="none btn-h60r-light-green font-green">테마를 선택해주세요.</button>
+                        <!--테마 선택시 활성화 되는 버튼(2개 이상 선택 시 +'외 1' 문구가 붙음)-->
+                        <button id="themeSearchBtn2" class="close btn-h60r-green font-white po-r search-btn" hidden>
+                            <span style="display: flex"><span id="searchThemeName2" class="font-white bold">생활</span><span class="etc">&nbsp;외 <span class="etcNum">2</span></span>(으)로 검색</span>
+                            <i class="favicon po-a"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-back"></div>
+            </div>
+
+
+            <!-- 대상 선택 -->
+            <div id="selectTargetModal2" class="modal d-none">
+                <div class="modal-wrap w100pro" style="">
+                    <div class="modal-header">
+                        <p>대상 선택</p>
+                        <div class="m-title-wrap">
+                            <div class="title-area"><i class="pre"></i><p class="m-title">대상 선택</p></div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-content">
+                            <ul id="targetUl2" class="w100pro">
+                                <!--                            <li><input class="targetChk" id="targetAll" type="checkbox" /><span>전체</span><i class=""></i></li>-->
+                                <!--                            <li><input class="targetChk" id="target1" type="checkbox" /><span>전연령</span><i class=""></i></li>-->
+                                <!--                            <li><input class="targetChk" id="target2" type="checkbox" /><span>성인</span><i class=""></i></li>-->
+                                <!--                            <li><input class="targetChk" id="target3" type="checkbox" /><span>청소년</span><i class=""></i></li>-->
+                                <!--                            <li><input class="targetChk" id="target4" type="checkbox" /><span>가족</span><i class=""></i></li>-->
+                                <!--                            <li><input class="targetChk" id="target5" type="checkbox" /><span>초등 5학년~중학생</span><i class=""></i></li>-->
+                                <!--                            <li><input class="targetChk" id="target6" type="checkbox" /><span>초등 3~6학년</span><i class=""></i></li>-->
+                                <!--                            <li><input class="targetChk" id="target7" type="checkbox" /><span>초등 고학년</span><i class=""></i></li>-->
+                                <!--                            <li><input class="targetChk" id="target8" type="checkbox" /><span>초등 저학년</span><i class=""></i></li>-->
+                                <!--                            <li><input class="targetChk" id="target9" type="checkbox" /><span>초등생</span><i class=""></i></li>-->
+                                <!--                            <li><input class="targetChk" id="target10" type="checkbox" /><span>유아</span><i class=""></i></li>-->
+                                <!--                            <li><input class="targetChk" id="target11" type="checkbox" /><span>고령자</span><i class=""></i></li>-->
+                                <!--                            <li><input class="targetChk" id="target12" type="checkbox" /><span>교직원</span><i class=""></i></li>-->
+                                <!--                            <li><input class="targetChk" id="target13" type="checkbox" /><span>생태강사</span><i class=""></i></li>-->
+                                <!--                            <li><input class="targetChk" id="target14" type="checkbox" /><span>장애아동</span><i class=""></i></li>-->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!--대상 미선택 시 기본 버튼(대상 선택 시 해당버튼 사라지기)-->
+                        <button id="" class="none btn-h60r-light-green font-green">대상을 선택해주세요.</button>
+                        <!--대상 선택시 활성화 되는 버튼(2개 이상 선택 시 +'외 1' 문구가 붙음)-->
+                        <button id="targetSearchBtn2" class="close btn-h60r-green font-white po-r search-btn" hidden>
+                            <span style="display: flex"><span id="searchTargetName2" class="font-white bold">전연령</span><span class="etc">&nbsp;외 <span class="etcNum">2</span></span>(으)로 검색</span>
+                            <i class="favicon po-a"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-back"></div>
+            </div>
+
+
+            <!-- 지역 선택 -->
+            <div id="selectAreaModal2" class="modal d-none" style="/*display: flex*/">
+                <div class="modal-wrap w100pro">
+                    <div class="modal-header">
+                        <p>지역 선택</p>
+                        <div class="m-title-wrap">
+                            <div class="title-area"><i class="pre"></i><p class="m-title">지역 선택</p></div>
+                            <button class="sel-map"><i class="favicon"></i>지도에서 선택</button>
+                            <button class="sel-list"><i class="favicon"></i>목록에서 선택</button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-content">
+                            <div class="part w100pro">
+                                <div class="part-left">
+                                    <ul class="area-list">
+                                        <li class="all"><input class="areaChk" id="areaAll" type="checkbox" />전체<i class="menu-back"></i></li>
+                                        <li class="ganghwa-ongjin-gun"><input class="areaChk" id="area1" type="checkbox" value="강화·옹진군" /><span>강화·옹진군</span><i class=""></i></li>
+                                        <li class="gyeyang-gu"><input class="areaChk" id="area2" type="checkbox" value="계양구" /><span>계양구</span><i class=""></i></li>
+                                        <li class="namdong-gu"><input class="areaChk" id="area3" type="checkbox" value="남동구" /><span>남동구</span><i class=""></i></li>
+                                        <li class="dong-gu"><input class="areaChk" id="area4" type="checkbox" value="동구" /><span>동구</span><i class=""></i></li>
+                                        <li class="michuholgu"><input class="areaChk" id="area5" type="checkbox" value="미추홀구" /><span>미추홀구</span><i class=""></i></li>
+                                        <li class="bupyeong-gu"><input class="areaChk" id="area6" type="checkbox" value="부평구" /><span>부평구</span><i class=""></i></li>
+                                        <li class="western"><input class="areaChk" id="area7" type="checkbox" value="서구" /><span>서구</span><i class=""></i></li>
+                                        <li class="yeonsu-gu"><input class="areaChk" id="area8" type="checkbox" value="연수구" /><span>연수구</span><i class=""></i></li>
+                                        <!--                                    <li class="ongjin-gun"><input class="areaChk" id="area9" type="checkbox" value="강화·옹진군" /><span>옹진군</span><i class=""></i></li>-->
+                                        <li class="jung-gu"><input class="areaChk" id="area10" type="checkbox" value="중구" /><span>중구</span><i class=""></i></li>
+                                    </ul>
+                                </div>
+                                <div class="part-right">
+                                    <div class="incheon-city-area">
+                                        <!--지역 선택 전 기본 이미지-->
+                                        <img class="ganghwa-gun sel-before" src="/images/incheon_city/ganghwa-gun.svg"/>
+                                        <img class="jung-gu sel-before" src="/images/incheon_city/jung-gu.svg"/>
+                                        <img class="ongjin-gun sel-before" src="/images/incheon_city/ongjin-gun.svg"/>
+                                        <img class="western sel-before" src="/images/incheon_city/western.svg"/>
+                                        <img class="gyeyang-gu sel-before" src="/images/incheon_city/gyeyang-gu.svg"/>
+                                        <img class="bupyeong-gu sel-before" src="/images/incheon_city/bupyeong-gu.svg"/>
+                                        <img class="dong-gu sel-before" src="/images/incheon_city/dong-gu.svg"/>
+                                        <img class="michuholgu sel-before" src="/images/incheon_city/michuholgu.svg"/>
+                                        <img class="namdong-gu sel-before" src="/images/incheon_city/namdong-gu.svg"/>
+                                        <img class="yeonsu-gu sel-before" src="/images/incheon_city/yeonsu-gu.svg"/>
+
+                                        <!--지역 선택 시 녹색으로 변화되는 지역 이미지-->
+                                        <div class="select-after">
+                                            <img class="ganghwa-gun-sel d-none" src="/images/incheon_city/ganghwa-gun_green.svg"/>
+                                            <img class="jung-gu-sel d-none" src="/images/incheon_city/jung-gu_green.svg"/>
+                                            <img class="ongjin-gun-sel d-none" src="/images/incheon_city/ongjin-gun_green.svg"/>
+                                            <img class="western-sel d-none" src="/images/incheon_city/western_green.svg"/>
+                                            <img class="gyeyang-gu-sel d-none" src="/images/incheon_city/gyeyang-gu_green.svg"/>
+                                            <img class="bupyeong-gu-sel d-none" src="/images/incheon_city/bupyeong-gu_green.svg"/>
+                                            <img class="dong-gu-sel d-none" src="/images/incheon_city/dong-gu_green.svg"/>
+                                            <img class="michuholgu-sel d-none" src="/images/incheon_city/michuholgu_green.svg"/>
+                                            <img class="namdong-gu-sel d-none" src="/images/incheon_city/namdong-gu_green.svg"/>
+                                            <img class="yeonsu-gu-sel d-none" src="/images/incheon_city/yeonsu-gu_green.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!--지역 미선택 시 기본 버튼(지역 선택 시 해당버튼 사라지기)-->
+                        <button id="" class="none btn-h60r-light-green font-green">지역을 선택해주세요.</button>
+                        <!--지역 선택시 활성화 되는 버튼(2개 이상 선택 시 +'외 1' 문구가 붙음)-->
+                        <button id="areaSearchBtn2" class="close btn-h60r-green font-white po-r search-btn" hidden>
+                            <span style="display: flex"><span id="searchAreaName2" class="font-white bold">전연령</span><span class="etc">&nbsp;외 <span class="etcNum">2</span></span>(으)로 검색</span>
+                            <i class="favicon po-a"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-back"></div>
+            </div>
+        </div>
+
+
+    </main>
+
+
+
+    <!--script START-->
+    <script>
+        //프로그램 상세내역 modal 확인을 위한 임시 스크립트 처리
+        $('.menu-category').click(function(){
+            $('.category-area2').css('display', 'block');
+            $('.category-menu-back').css('display', 'block');
+        });
+        $('.category-menu-back').click(function(){
+            $('.category-area2').css('display', 'none');
+            $('.category-menu-back').css('display', 'none');
+        });
+
+        //헤더 내 1차카테고리 메뉴 선택 시 메뉴목록 나타내기
+        $('.header-wrap div.category-title').on('click', function (){
+            $('.header-wrap .category-area2').show();
+            $('.category-menu-back').show();
+        });
+
+        getCategoryListForHeader();
+
+        function getCategoryListForHeader() {
+            $.ajax({
+                type:"get",
+                url: "/user/api/category/list",
+                async:false,
+                data:{},
+                success:function(data) {
+                    // console.log(data);
+
+                    // 모달 내 프로그램 유형 tag
+                    let typeTag = '<option class="typeValue" value="noValue" selected disabled hidden>유형선택</option>';
+                    for(i=0; i<data.type.length; i++) {
+                        let typeName = data.type[i].cateName;
+                        let dotCateName = typeName.replaceAll(',', ' ·');
+                        if(!typeName.includes("기타")) {
+                            typeTag += '<option class="typeValue" value="'+typeName+'">'+dotCateName+'</option>';
+                        }
+                    }
+                    typeTag += '<option class="typeValue" value="기타">기타</option>';
+                    $('#typeSelect2').html(typeTag);
+
+                    // 모달 내 프로그램 테마 tag
+                    let themeTag = '';
+                    let beforeImg = ''; // 클릭 전 이미지 경로
+                    let afterImg = ''; // 클릭 후 이미지 경로
+                    let themeList = data.theme;
+                    themeList.reverse();
+                    for(i=0; i<themeList.length; i++) {
+                        let themeName = themeList[i].cateName;
+                        let beforeImg = themeList[i].beforeImg;
+                        let afterImg = themeList[i].afterImg;
+                        // // 테마명에 따른 이미지 경로 지정해주기 (테마 추가 될 시 꼭 case 추가하기)
+                        // switch (themeName) {
+                        //     case '숲':
+                        //         beforeImg = '/images/theme_forest.svg';
+                        //         afterImg = '/images/theme_forest_white.svg';
+                        //         break;
+                        //     case '물':
+                        //         beforeImg = '/images/theme_water.svg';
+                        //         afterImg = '/images/theme_water_white.svg';
+                        //         break;
+                        //     case '생물':
+                        //         beforeImg = '/images/theme_biology.svg';
+                        //         afterImg = '/images/theme_biology_white.svg';
+                        //         break;
+                        //     case '생활':
+                        //         beforeImg = '/images/theme_live.svg';
+                        //         afterImg = '/images/theme_live_white.svg';
+                        //         break;
+                        //     case '자원':
+                        //         beforeImg = '/images/theme_resource.svg';
+                        //         afterImg = '/images/theme_resource_white.svg';
+                        //         break;
+                        //     case '기후 에너지':
+                        //         beforeImg = '/images/theme_climate.svg';
+                        //         afterImg = '/images/theme_climate_white.svg';
+                        //         break;
+                        // }
+
+                        themeTag += '<li class="forest basic-back-color">';
+                        themeTag += '<input class="themeChk" type="checkbox" value="'+themeName+'"/>';
+                        themeTag += '<div class="select-theme-area">';
+                        themeTag += '<img class="forest1" src="'+beforeImg+'"/>';
+                        themeTag += '<img class="forest2" src="'+afterImg+'" style="display: none"/>';
+                        themeTag += '<p>'+themeName+'</p>';
+                        themeTag += '</div>';
+                        themeTag += '</li>';
+                    }
+                    $("#themeUl2").html(themeTag);
+
+                    // 모달 내 프로그램 대상 tag
+                    let targetTag = '<li><input class="targetChk" id="targetAll" type="checkbox" value="전체" /><span>전체</span><i class=""></i></li>';;
+                    for(i=0; i<data.target.length; i++) {
+                        let targetName = data.target[i].cateName;
+                        if(targetName!='전체') {
+                            targetTag += '<li><input className="targetChk" id="target'+i+'" type="checkbox" value="'+targetName +'"/><span>'+targetName+'</span><i class=""></i></li>';
+                        }
+                    }
+                    $("#targetUl2").html(targetTag);
+
+                },
+                error : function(xhr, status, error) {
+                    toastModal("값을 불러오는데 실패했습니다.", 1000);
+                    console.log(error);
+                }
+            });
+        }
+
+        // 지역 검색
+        $("#areaSearchBtn2").on("click", function(){
+            page=1;
+            cateType = "지역";
+            $("#sel-category").val(cateType);
+            $("#headerTopMenu").text("지역(구/군)");
+            let query = "";
+            $(".main-content #selectAreaModal2 input:checked").each(function(){
+                if($(this).val()!="on") {
+                    query += $(this).val() + ",";
+                }
+            });
+            query = query.substring(0, query.length-1);
+            let arrQuery = new Array();
+            arrQuery = query.split(",");
+            changePcChip(cateType, arrQuery);
+            createChoiceChip(arrQuery);
+            cateName = arrQuery;
+            getSearchResult(cateType, cateName);
+        });
+
+        // 대상 검색
+        $("#targetSearchBtn2").on("click", function(){
+            page=1;
+            cateType = "교육대상";
+            $("#sel-category").val(cateType);
+            $("#headerTopMenu").text("대상");
+            let query = "";
+            $(".main-content #selectTargetModal2 input:checked").each(function(){
+                if($(this).val()!="전체") {
+                    query += $(this).val() + ",";
+                }
+            });
+            query = query.substring(0, query.length-1);
+            let arrQuery = new Array();
+            arrQuery = query.split(",");
+            changePcChip(cateType, arrQuery);
+            createChoiceChip(arrQuery);
+            cateName = arrQuery;
+            getSearchResult(cateType, cateName);
+        });
+
+        // 테마 검색
+        $("#themeSearchBtn2").on("click", function(){
+            page=1;
+            cateType = "교육테마";
+            $("#sel-category").val(cateType);
+            $("#headerTopMenu").text("테마");
+            let query = "";
+            $(".main-content #selectThemeModal2 input:checked").each(function(){
+                query += $(this).val() + ",";
+            });
+            query = query.substring(0, query.length-1);
+            let arrQuery = new Array();
+            arrQuery = query.split(",");
+            changePcChip(cateType, arrQuery);
+            createChoiceChip(arrQuery);
+            cateName = arrQuery;
+            getSearchResult(cateType, cateName);
+        });
+
+        // 유형 검색
+        $("#typeSearchBtn2").on("click", function(){
+            page=1;
+            cateType = "교육유형";
+            $("#headerTopMenu").text("유형");
+            $("#sel-category").val(cateType);
+            let arrQuery = new Array();
+            let query = $(".main-content #selectTypeModal2 select option:selected").val();
+            let txtQuery = $('#selectTypeModal2 .modal-content input').val();
+            if(txtQuery!="") {
+                query = txtQuery;
+            }
+            arrQuery.push(query);
+            changePcChip(cateType, arrQuery);
+            createChoiceChip(arrQuery);
+            cateName = arrQuery;
+            getSearchResult(cateType, cateName);
+        });
+
+        // 모바일 초이스칩 생성 function
+        function createChoiceChip(arrQuery) {
+            let chipTag = '';
+            arrQuery.forEach(function (arg) {
+                chipTag += '<div class="result-chip" type="category">';
+                chipTag += '<p class="result-keyword category-chip">'+arg+'</p>';
+                chipTag += '<i class="delete"></i>';
+                chipTag += '</div>';
+            });
+            $('#result-chip-slide-area').html(chipTag);
+            $('#result-chip-slide-area .delete').on('click', function (){
+                let arrChips = new Array();
+                $(this).parent().remove();
+                $(".category-chip").each(function(){
+                    let chip = $(this).text();
+                    arrChips.push(chip);
+                });
+                if(arrChips.length==0) {
+                    arrChips.push("");
+                }
+                page=1;
+                changePcChip(cateType, arrChips);
+                cateName = arrChips;
+                getSearchResult(cateType, cateName);
+            });
+        }
+
+        // 모바일 초이스칩에 따른 검색
+        function changePcChip(cateType, arrQuery) {
+            switch (cateType) {
+                case "지역":
+                    $("#areaChoiceChip .areaChk1").prop("checked", false);
+                    arrQuery.forEach(function(arg) {
+                        $("#areaChoiceChip input").each(function(){
+                            let chk = $(this).val();
+                            if(arg == chk) {
+                                $(this).prop("checked", true);
+                            }
+                        });
+                    });
+                    if($("#areaChoiceChip .areaChk1").length==$("#areaChoiceChip .areaChk1:checked").length || arrQuery[0]==""){
+                        $("#chip-areaAll").prop("checked", true);
+                        $("#areaChoiceChip .areaChk1").prop("checked", false);
+                    }else {
+                        $("#chip-areaAll").prop("checked", false);
+                    }
+                    $('.content-edu-list-user div.content-wrap .sel-category-area').show();
+                    $('.content-edu-list-user div.content-wrap .sel-category-area').css("display", "flex");
+                    $('.content-edu-list-user div.content-wrap .sel-target-area').hide();
+                    $('.content-edu-list-user div.content-wrap .sel-theme-area').hide();
+                    $('.content-edu-list-user div.content-wrap .sel-type-area').hide();
+                    break;
+                case "교육대상":
+                    $("#targetChoiceChip .targetChk1").prop("checked", false);
+                    arrQuery.forEach(function(arg) {
+                        $("#targetChoiceChip input").each(function(){
+                            let chk = $(this).val();
+                            if(arg == chk) {
+                                $(this).prop("checked", true);
+                            }
+                        });
+                    });
+                    if($("#targetChoiceChip .targetChk1").length==$("#targetChoiceChip .targetChk1:checked").length || arrQuery[0]==""){
+                        $("#chip-targetAll").prop("checked", true);
+                        $("#targetChoiceChip .targetChk1").prop("checked", false);
+                    }else {
+                        $("#chip-targetAll").prop("checked", false);
+                    }
+                    $('.content-edu-list-user div.content-wrap .sel-category-area').hide();
+                    $('.content-edu-list-user div.content-wrap .sel-target-area').show();
+                    $('.content-edu-list-user div.content-wrap .sel-target-area').css("display", "flex");
+                    $('.content-edu-list-user div.content-wrap .sel-theme-area').hide();
+                    $('.content-edu-list-user div.content-wrap .sel-type-area').hide();
+                    break;
+                case "교육테마":
+                    $("#themeChoiceChip .themeChk1").prop("checked", false);
+                    arrQuery.forEach(function(arg) {
+                        $("#themeChoiceChip input").each(function(){
+                            let chk = $(this).val();
+                            if(arg == chk) {
+                                $(this).prop("checked", true);
+                            }
+                        });
+                    });
+                    if($("#themeChoiceChip .themeChk1").length==$("#themeChoiceChip .themeChk1:checked").length || arrQuery[0]==""){
+                        $("#chip-themeAll").prop("checked", true);
+                        $("#themeChoiceChip .themeChk1").prop("checked", false);
+                    }else {
+                        $("#chip-themeAll").prop("checked", false);
+                    }
+                    $('.content-edu-list-user div.content-wrap .sel-category-area').hide();
+                    $('.content-edu-list-user div.content-wrap .sel-target-area').hide();
+                    $('.content-edu-list-user div.content-wrap .sel-theme-area').show();
+                    $('.content-edu-list-user div.content-wrap .sel-theme-area').css("display", "flex");
+                    $('.content-edu-list-user div.content-wrap .sel-type-area').hide();
+                    break;
+                case "교육유형":
+                    $("#typeChoiceChip .typeChk1").prop("checked", false);
+                    arrQuery.forEach(function(arg) {
+                        $("#typeChoiceChip .typeChk1").each(function(){
+                            let chk = $(this).val();
+                            if(arg == chk) {
+                                $(this).prop("checked", true);
+                            }
+                        });
+                    });
+                    if($("#typeChoiceChip .typeChk1:checked").length==0) {
+                        $("#chip-typeEtc").prop("checked", true);
+                        $("#etcText").val(arrQuery[0]);
+                        showTypeText();
+                    }
+                    if($("#typeChoiceChip .typeChk1").length==$("#typeChoiceChip .typeChk1:checked").length || arrQuery[0]==""){
+                        $("#chip-typeAll").prop("checked", true);
+                        $("#typeChoiceChip .typeChk1").prop("checked", false);
+                    }else {
+                        $("#chip-typeAll").prop("checked", false);
+                    }
+                    $('.content-edu-list-user div.content-wrap .sel-category-area').hide();
+                    $('.content-edu-list-user div.content-wrap .sel-target-area').hide();
+                    $('.content-edu-list-user div.content-wrap .sel-theme-area').hide();
+                    $('.content-edu-list-user div.content-wrap .sel-type-area').show();
+                    $('.content-edu-list-user div.content-wrap .sel-type-area').css("display", "flex");
+                    break;
+            }
+        }
+
+
+    </script>
+    <!--script END-->
+</th:block>
+</html>

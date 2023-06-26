@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin_layout}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style layout:fragment="css"></style>
+
+<div layout:fragment="content">
+    <main role="main" class="main-content main-content-area-manage">
+
+        <!-- 컨텐츠 영역 -->
+        <div class="content-wrap">
+            <div class="content-box">
+                <div class="top-wrap">
+                    <div class="title-wrap">
+                        <p class="title right-bar32">카테고리 관리</p>
+
+                        <select class="size">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+
+                    <div class="btn-wrap" style="display: none">
+                        <button class="btn-h44r medium bg-green font-white ma-r-10px">지역 추가</button>
+                        <button class="btn-h44r medium bg-red font-white ma-r-10px">수정</button>
+                        <button class="btn-h44r medium bg-gray font-white">삭제</button>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <div class="category-menu-wrap">
+                        <a href="/admin/manage/category/area" class="menu menu-1 actived" title="지역">
+                            <div><i class="icon-green-place"></i> <span class="favicon-title menu-1 font-green bold">지역</span></div>
+                            <arrow class="icon-green-arrow-left"></arrow>
+                        </a>
+                        <a href="/admin/manage/category/target" class="menu menu-2" title="대상">
+                            <div><i class="icon-gray-target"></i> <span class="favicon-title menu-2 font-gray bold">대상</span></div>
+                        </a>
+                        <a href="/admin/manage/category/theme" class="menu menu-3" title="테마">
+                            <div><i class="icon-gray-theme"></i> <span class="favicon-title menu-3 font-gray bold">테마</span></div>
+                        </a>
+                        <a href="/admin/manage/category/type" class="menu menu-4" title="유형">
+                            <div><i class="icon-gray-type"></i> <span class="favicon-title menu-4 font-gray bold">유형</span></div>
+                        </a>
+                    </div>
+
+                    <div class="prepare-status">
+                        <div class="page-prepare-wrap">
+                            <img src="/images/page_prepare.svg"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!--script START-->
+    <script>
+        //프로그램 상세내역 modal 확인을 위한 임시 스크립트 처리
+        $('.table-list tr.list td:not(:first-child)').click(function(){
+            $('#detailModal').css('display', 'flex');
+        });
+    </script>
+    <!--script END-->
+</div>
+</html>

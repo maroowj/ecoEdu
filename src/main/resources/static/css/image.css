@@ -1,0 +1,196 @@
+/* 그라디언트 */
+.white-gradient{
+    background: url(/images/white_gradient.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+
+/* 아이콘 */
+/* 아이콘(그레이) */
+.icon-gray-program-list{
+    background: url(/images/gray_menu_list.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-gray-category{
+    background: url(/images/gray_category.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-gray-group{
+    background: url(/images/gray_group.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-gray-program{
+    background: url(/images/gray_program.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-gray-edit{
+    background: url(/images/gray_edit.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-gray-place{
+    background: url(/images/gray_place.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-gray-target{
+    background: url(/images/gray_target.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-gray-theme{
+    background: url(/images/gray_theme.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-gray-type{
+    background: url(/images/gray_type.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-gray-url{
+    background: url(/images/link.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-gray-camera{
+    background: url(/images/gray_camera.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+
+/* 아이콘(그린) */
+.icon-green-program-list{
+    background: url(/images/green_program_list.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-green-category{
+    background: url(/images/green_category.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-green-group{
+    background: url(/images/green_group.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-green-program{
+    background: url(/images/green_program.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-green-edit{
+    background: url(/images/green_edit.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-green-search{
+    background: url(/images/search_green.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-green-place{
+    background: url(/images/green_place.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-green-target{
+    background: url(/images/green_target.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-green-theme{
+    background: url(/images/green_theme.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-green-type{
+    background: url(/images/green_type.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-green-arrow-left{
+    background: url(/images/green_arrow.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-green-arrow-down{
+    background: url(/images/green_arrow_down.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-green-url{
+    background: url(/images/green_url.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+
+/* 레드색상 */
+.icon-red-place{
+    background: url(/images/info_place.svg) no-repeat;
+	width: 25px;
+	height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<th:block th:fragment="topMenuFragment">
+
+    <style th:fragment="css"></style>
+
+    <div class="header-wrap-transparent">
+        <img class="logo cupoint" src="/images/logo_horizontal_type.png" onclick="location.href='/'"/>
+        <div class="category-area">
+            <ul class="pc">
+                <li class="menu-category">카테고리</li>
+                <li class="menu-info" onclick="location.href='/info/center'">환경센터 소개</li>
+                <li class="menu-edit bg-green font-white" onclick="location.href='/list/edit'">정보수정 요청</li>
+            </ul>
+            <i class="sliding-menu"></i>
+        </div>
+
+        <div class="category-area2 po-r">
+            <div class="category-menu-list">
+                <ul>
+                    <li class="" onclick="location.href='/list'">전체보기</li>
+                    <li class="category-area">지역(구/군)</li>
+                    <li class="category-target">대상</li>
+                    <li class="category-theme">테마</li>
+                    <li class="category-type">유형</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="category-menu-back"></div>
+
+
+    <!--mobile 슬라이딩메뉴 START-->
+    <div class="sliding-menu">
+        <div class="sliding-menu-wrap" style="">
+            <div class="close-wrap">
+                <i class="close"></i>
+            </div>
+
+            <ul>
+                <li class="po-r">카테고리<arrow class="up po-a"></arrow></li>
+                <li class="category-all" onclick="location.href='/list'">전체보기</li>
+                <li class="category-area" onclick="">지역(구/군)</li>
+                <li class="category-target" onclick="">대상</li>
+                <li class="category-theme" onclick="">테마</li>
+                <li class="category-type" onclick="">유형</li>
+                <li class="category-info" onclick="location.href='/info/center'">환경센터 소개</li>
+                <li class="category-edit" onclick="location.href='/list/edit'">정보수정 요청</li>
+            </ul>
+        </div>
+        <div class="sliding-menu-back"></div>
+    </div>
+    <!--mobile 슬라이딩메뉴 START-->
+
+
+
+    <!--script START-->
+    <script>
+        //프로그램 상세내역 modal 확인을 위한 임시 스크립트 처리
+        $('.menu-category').click(function(){
+            $('.category-area2').css('display', 'block');
+            $('.category-menu-back').css('display', 'block');
+        });
+        $('.category-menu-back').click(function(){
+            $('.category-area2').css('display', 'none');
+            $('.category-menu-back').css('display', 'none');
+        });
+    </script>
+    <!--script END-->
+</th:block>
+</html>

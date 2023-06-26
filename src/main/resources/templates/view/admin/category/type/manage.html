@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin_layout}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style layout:fragment="css"></style>
+
+<div layout:fragment="content">
+    <main role="main" class="main-content main-content-type-manage">
+
+        <!-- 컨텐츠 영역 -->
+        <div class="content-wrap">
+            <div class="content-box">
+                <div class="top-wrap">
+                    <div class="title-wrap">
+                        <p class="title right-bar32">카테고리 관리</p>
+
+                        <select class="size">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+
+                    <div class="btn-wrap">
+                        <button id="btn-add" class="btn-h44r medium bg-green font-white">유형 추가</button>
+                        <button id="btnUpdate" class="btn-h44r medium bg-red font-white">수정</button>
+                        <button id="btnDelete" class="btn-h44r medium bg-gray font-white">삭제</button>
+                    </div>
+                </div>
+
+                <div class="d-flex">
+                    <div class="category-menu-wrap">
+                        <a href="/admin/manage/category/area" class="menu menu-1" title="지역">
+                            <div><i class="icon-gray-place"></i> <span class="favicon-title menu-1 font-gray bold">지역</span></div>
+                        </a>
+                        <a href="/admin/manage/category/target" class="menu menu-2 actived" title="대상">
+                            <div><i class="icon-gray-target"></i> <span class="favicon-title menu-2 font-gray bold">대상</span></div>
+                        </a>
+                        <a href="/admin/manage/category/theme" class="menu menu-3" title="테마">
+                            <div><i class="icon-gray-theme"></i> <span class="favicon-title menu-3 font-gray bold">테마</span></div>
+                        </a>
+                        <a href="/admin/manage/category/type" class="menu menu-4" title="유형">
+                            <div><i class="icon-green-type"></i> <span class="favicon-title menu-4 font-green bold">유형</span></div>
+                            <arrow class="icon-green-arrow-left"></arrow>
+                        </a>
+                    </div>
+
+                    <div class="table-wrap category-manage-list po-r">
+                        <div class="table-list">
+                            <table class="auto" style="table-layout: fixed; width: 100%;">
+                                <colgroup>
+                                    <col style="width: 8%">
+                                    <col style="width: 10%">
+                                    <col style="width: 20%">
+                                    <col style="width: 62%">
+                                </colgroup>
+
+                                <thead>
+                                <tr class="title">
+                                    <td class="bold font-gray t-center"><input id="chkAll" type="checkbox"/><label for="chkAll"></label></td>
+                                    <td class="bold font-gray t-center">순번</td>
+                                    <td class="bold font-gray t-center">유형</td>
+                                    <td class="bold font-gray t-center">설명</td>
+                                </tr>
+                                </thead>
+
+<!--                                <tbody class="">-->
+                                <tbody id="typeList"></tbody>
+                            </table>
+
+                            <!-- 페이지네이션 -->
+                            <div class="pagination"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- 모달 START -->
+
+        <!-- 유형상세 -->
+        <div id="detailModal" class="modal d-none">
+            <div class="modal-wrap w100pro" style="width: 880px;">
+                <div class="modal-header">유형상세</div>
+                <div class="modal-body">
+                    <div class="modal-content">
+                        <ul>
+                            <li id="detailName" class="detail-type"></li>
+                            <li id="detailScript" class="detail-content"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="" class="close btn-h60r-green" style="width: 180px;">닫기</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+
+        <!-- 유형추가 -->
+        <div id="addModal" class="modal d-none">
+            <div class="modal-wrap w100pro" style="width: 880px;">
+                <div class="modal-header">유형추가</div>
+                <div class="modal-body">
+                    <div class="modal-content">
+                        <ul class="d-flex">
+                            <li>유형</li>
+                            <li><input id="cateName" type="text" placeholder="추가할 유형을 입력해주세요."/><input id="etcType" type="checkbox"/><label for="etcType">기타(선택)</label></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>유형설명</li>
+                            <li><textarea id="script" placeholder="유형에 대한 설명을 입력해주세요."></textarea></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="" class="close btn-h60r-light-green ma-r-20px" style="width: 180px;">닫기</button>
+                    <button id="" class="add btn-h60r-green" style="width: 180px;" onclick="typeInsert()">유형추가</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+
+        <!-- 유형수정 -->
+        <div id="editModal" class="modal d-none">
+            <div class="modal-wrap w100pro" style="width: 880px;">
+                <div class="modal-header">유형수정</div>
+                <div class="modal-body">
+                    <div class="modal-content">
+                        <ul class="d-flex">
+                            <li>유형</li>
+                            <li><input id="updateName" type="text" placeholder="수정할 유형을 입력해주세요."/><input id="updateEtcType" type="checkbox"/><label for="etcType">기타(선택)</label></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>유형설명</li>
+                            <li><textarea id="updateScript" placeholder="유형에 대한 설명을 입력해주세요."></textarea></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="close btn-h60r-light-green ma-r-20px" style="width: 180px;">닫기</button>
+                    <button class="edit btn-h60r-green" style="width: 180px;" onclick="typeUpdate()">유형수정</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+
+        <!-- 유형삭제 -->
+        <div id="deleteModal" class="modal d-none">
+            <div class="modal-wrap w100pro" style="width: 580px;">
+                <div class="modal-header">유형삭제</div>
+                <div class="modal-body">
+                    <div class="modal-message t-center">
+                        ※ 유형을 삭제하면, 연결된 모든 프로그램들이 삭제됩니다.<br/>
+                        선택한 유형을 삭제하시겠습니까?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="close btn-h60r-light-green ma-r-20px" style="width: 180px;">닫기</button>
+                    <button class="delete btn-h60r-green" style="width: 180px;" onclick="targetDelete()">삭제</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+    </main>
+
+
+    <!--script START-->
+    <script>
+        let size=10;
+        let page=1;
+        let cateType = "교육유형";
+
+        $(function(){
+            typeList();
+        });
+
+        // 목록 출력 수 변경 시
+        $(".size").on("change", function(){
+            size=$(this).val();
+            typeList();
+        });
+
+        //유형 카테고리 리스트 조회
+        function typeList() {
+
+            $.ajax({
+                type: "GET",
+                url: "/admin/api/category/list",
+                data: {
+                    "cateType" : cateType,
+                    "page": page-1,
+                    "size": size
+                },
+                success: function (data) {
+                    console.log(data);
+                    let listTag = "";
+                    if( data.content.length != 0 ) {
+                        data.content.forEach(function (data, index) {
+                            let name = data.cateName;
+                            name = name.replaceAll("기타", "[기타]");
+                            listTag +=
+                                "<tr class='list' cateSeq='"+data.cateSeq+"'>" +
+                                "<td class='chk t-center'><input id='chk" + (index+1) + "' type='checkbox' class='checked'><label for='chk" + (index+1) + "'></label></td>" +
+                                "<td class='list-num t-center'>" + data.rowNum + "</td>" +
+                                "<td class='list-target t-center'>" + name + "</td>" +
+                                "<td class='list-info t-center'>" + data.script + "</td></tr>";
+                        });
+                        $("#typeList").html(listTag);
+                    }else{
+                        $("#typeList").html(listTag);
+                    }
+                    fPagination(data, page);
+                }
+            })
+
+        }
+
+        //유형 카테고리 신규 등록
+        function typeInsert() {
+            let saveFormData = new FormData();
+
+            let cateName = $("#cateName").val();
+            let script = $("#script").val();
+            if($("#etcType").prop("checked")) {
+                cateName = "기타 " + cateName;
+            }
+            saveFormData.append("cateName", cateName);
+            saveFormData.append("cateType", cateType);
+            saveFormData.append("script", script);
+
+            if(cateName !== ""){
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/api/category/save",
+                    data: saveFormData,
+                    processData: false,
+                    contentType: false,
+                    success: function () {
+                        toastModal("대상 카테고리를 저장했습니다.");
+                        setTimeout(() => location.reload(), 1000);
+                    },
+                    error: function () {
+                        toastModal("대상 이름이 중복되었습니다.");
+                    }
+
+                })
+            } else {
+                toastModal("추가할 대상을 입력해주세요.");
+            }
+
+        }
+
+        //유형 카테고리 상세 조회
+        function typeDetail(cateSeq) {
+
+            $.ajax({
+                type: "GET",
+                url: "/admin/api/category/detail",
+                data: {
+                    "cateSeq": cateSeq
+                },
+                success: function (data) {
+                    console.log(data);
+                    $("#updateName").val(data.cateName.replaceAll("기타 ", ""));
+                    $("#updateScript").val(data.script);
+                    let name = data.cateName;
+                    if(name.includes("기타")) {
+                        $("#updateEtcType").prop("checked", true);
+                    }else {
+                        $("#updateEtcType").prop("checked", false);
+                    }
+                }
+            })
+        }
+
+        // 대상 카테고리 수정
+        function typeUpdate() {
+            let updateFormData = new FormData();
+
+            let cateSeq = $("#typeList .checked:checked").parent().parent().attr("cateSeq");
+            let cateName = $("#updateName").val();
+            let script = $("#updateScript").val();
+            if($("#updateEtcType").prop("checked")) {
+                if(!cateName.includes("기타 ")) {
+                    cateName = "기타 " + cateName;
+                }
+            }else {
+                if(cateName.includes("기타 ")) {
+                    cateName = cateName.replaceAll("기타 ", "");
+                }
+            }
+            if(cateName=="") {
+                toastModal("대상을 입력해주세요.");
+                return;
+            }
+
+            updateFormData.append("cateSeq", cateSeq);
+            updateFormData.append("cateName", cateName);
+            updateFormData.append("cateType", cateType);
+            updateFormData.append("script", script);
+
+            $.ajax({
+                type: "POST",
+                url: "/admin/api/category/update",
+                data: updateFormData,
+                processData: false,
+                contentType: false,
+                success: function () {
+                    toastModal("대상 카테고리를 수정하였습니다.");
+                    setTimeout(() => location.reload(), 1000);
+                }
+            })
+        }
+
+        // 대상 카테고리 삭제
+        function targetDelete() {
+            let arrSeq = new Array();
+
+            $("#typeList .checked:checked").each(function () {
+                let cateSeq = $(this).parent().parent().attr("cateSeq");
+                arrSeq.push(cateSeq);
+            });
+
+            $.ajax({
+                type: "GET",
+                url: "/admin/api/category/delete",
+                data: {
+                    "cateSeq": arrSeq
+                },
+                success: function () {
+                    toastModal("대상 카테고리를 삭제하였습니다.");
+                    setTimeout(() => location.reload(), 1000);
+                }
+            })
+
+        }
+
+        // 유형 카테고리 삭제 클릭 제약 조건
+        $('.btn-wrap #btnDelete').on('click', function(){
+            if ($("#typeList .checked:checked").length == 0) {
+                toastModal("삭제할 대상 카테고리를 선택해주세요.");
+            } else {
+                $('#deleteModal').css('display', 'flex');
+            }
+        });
+
+        // 대상 카테고리 수정 클릭 제약 조건
+        $('.btn-wrap #btnUpdate').on('click', function(){
+
+            let cateSeq = $("#typeList .checked:checked").parent().parent().attr("cateSeq");
+
+            if ($("#typeList .checked:checked").length == 0) {
+                toastModal("수정할 대상 카테고리를 선택해주세요.");
+                return;
+            } else if ($("#typeList .checked:checked").length > 1) {
+                toastModal("1개의 카테고리만 수정 가능합니다.");
+                return;
+            } else {
+                $('#editModal').css('display', 'flex');
+                typeDetail(cateSeq);
+            }
+        });
+
+        // 페이징 클릭 시 실행
+        $(".pagination").on("click", "a", function() {
+            page = parseInt($(this).attr("gopage"));
+            typeList();
+        });
+
+        // 상세내역 조회
+        $("#typeList").on("click", ".list td:not(:first-child)", function() {
+            let cateSeq = $(this).parent().attr("cateSeq");
+
+            $.ajax({
+                type: "GET",
+                url: "/admin/api/category/detail",
+                data: {
+                    "cateSeq": cateSeq
+                },
+                success: function (data) {
+                    let name = data.cateName;
+                    name = name.replaceAll("기타", "[기타]");
+                    $("#detailName").html(name);
+                    $("#detailScript").html(data.script);
+                }
+            })
+
+            $('#detailModal').css('display', 'flex');
+        });
+
+        // 체크박스 선택(22.08.10 추가-이미래)
+        $("#chkAll").on("click", function(){
+            if($('#chkAll').is(':checked') == false){
+                $("tr.list input:checkbox").each(function(){
+                    $(this).prop("checked", false);
+                });
+            }else if($('#chkAll').is(':checked') == true){
+                $("tr.list input:checkbox").each(function(){
+                    $(this).prop("checked", true);
+                });
+            }
+        });
+        $("#typeList").on("click", "input:checkbox", function(){
+            var chkNum=$("tr.list input:checkbox").length;
+            var checkedNum=$("tr.list input:checkbox:checked").length;
+
+            if(chkNum == checkedNum){
+                $("#chkAll").prop("checked", true);
+            }else{
+                $("#chkAll").prop("checked", false);
+            }
+        });
+    </script>
+    <!--script END-->
+</div>
+</html>

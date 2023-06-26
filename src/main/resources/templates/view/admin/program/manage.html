@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin_layout}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style layout:fragment="css"></style>
+
+<div layout:fragment="content">
+    <main role="main" class="main-content main-content-program-manage">
+
+        <!-- 컨텐츠 영역 -->
+        <div class="content-wrap">
+            <div class="search-wrap">
+                <div class="select-area right-bar-green18" style="margin-right: 10px">
+                    <select id="searchTheme" class="">
+                        <option value="">테마</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="select-area right-bar-green18" style="margin-right: 10px">
+                    <select id="searchType" class="">
+                        <option value="">유형</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="select-area right-bar-green18">
+                    <select id="searchTarget" class="">
+                        <option value="">대상</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="search-area">
+                    <input type="text" id="keyword" placeholder="프로그램명 검색"/>
+                    <i id="programSearchBtn" class="icon-green-search"></i>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <div class="top-wrap">
+                    <div class="title-wrap">
+                        <p class="title right-bar32">프로그램 관리</p>
+
+                        <select id="size" class="size">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+
+                    <div class="btn-wrap">
+                        <button id="btn-add" class="btn-h44r medium bg-green font-white">프로그램 추가</button>
+                        <button id="btnEdit" class="btn-h44r medium bg-red font-white">수정</button>
+                        <button id="btnDel" class="btn-h44r medium bg-gray font-white">삭제</button>
+                    </div>
+                </div>
+
+                <div class="d-flex po-r">
+                    <div class="category-menu-wrap non-favicon-menu-wrap">
+                        <div class="search-input-wrap">
+                            <div class="search-input-area">
+                                <input type="text" id="companyName" placeholder="단체명 검색"/>
+                                <i class="icon-green-search" id="companySearchBtn"></i>
+                            </div>
+                        </div>
+                        <div class="category-menu-list">
+<!--                            <a href="#" class="menu menu-1 actived">-->
+<!--                                <span class="menu-1 font-green bold">전체</span>-->
+<!--                                <arrow class="icon-green-arrow-left"></arrow>-->
+<!--                            </a>-->
+<!--                            <a href="#" class="menu menu-2">-->
+<!--                                <span class="menu-2 font-gray bold">가톨릭환경연대</span>-->
+<!--                            </a>-->
+<!--                            <a href="#" class="menu menu-3">-->
+<!--                                <span class="menu-3 font-gray bold">생태교육연대 초록샘</span>-->
+<!--                            </a>-->
+<!--                            <a href="#" class="menu menu-4">-->
+<!--                                <span class="menu-4 font-gray bold">단체명</span>-->
+<!--                            </a>-->
+<!--                            <a href="#" class="menu menu-5">-->
+<!--                                <span class="menu-4 font-gray bold">단체명</span>-->
+<!--                            </a>-->
+<!--                            <a href="#" class="menu menu-6">-->
+<!--                                <span class="menu-4 font-gray bold">단체명</span>-->
+<!--                            </a>-->
+<!--                            <a href="#" class="menu menu-7">-->
+<!--                                <span class="menu-4 font-gray bold">단체명</span>-->
+<!--                            </a>-->
+<!--                            <a href="#" class="menu menu-7">-->
+<!--                                <span class="menu-4 font-gray bold">단체명</span>-->
+<!--                            </a>-->
+<!--                            <a href="#" class="menu menu-7">-->
+<!--                                <span class="menu-4 font-gray bold">단체명</span>-->
+<!--                            </a>-->
+                        </div>
+                    </div>
+
+                    <div class="table-wrap program-manage-list po-r">
+                        <div class="table-list">
+                            <table class="auto" style="table-layout: fixed; width: 100%;">
+                                <colgroup>
+                                    <col style="width: 6%">
+                                    <col style="width: 7%">
+                                    <col style="width: 28%">
+                                    <col style="width: 19%">
+                                    <col style="width: 14%">
+                                    <col style="width: 12%">
+                                    <col style="width: 14%">
+                                </colgroup>
+
+                                <thead>
+                                <tr class="title">
+                                    <td class="bold font-gray t-center"><input id="chkAll" type="checkbox"/><label for="chkAll"></label></td>
+                                    <td class="bold font-gray t-center">순번</td>
+                                    <td class="bold font-gray t-center">프로그램명</td>
+                                    <td class="bold font-gray t-center">단체명</td>
+                                    <td class="bold font-gray t-center">지역</td>
+                                    <td class="bold font-gray t-center">테마</td>
+                                    <td class="bold font-gray t-center">유형</td>
+                                </tr>
+                                </thead>
+
+                                <tbody class="program-list-tbody">
+                                <tr class="list">
+                                    <td class="chk t-center"><input id="chk" class="chk" type="checkbox"/><label for="chk"></label></td>
+                                    <td class="list-num t-center">10000000000000</td>
+                                    <td class="list-program t-center">날아가는 저어새 네트워크</td>
+                                    <td class="list-group t-center"><span class="status-green">글로벌에코투어연구소</span></td>
+                                    <td class="list-address t-center">미추홀구</td>
+                                    <td class="list-theme t-center">기후에너지</td>
+                                    <td class="list-type t-center">견학, 체험</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- 페이지네이션 -->
+                            <!-- 페이지네이션 -->
+                            <div class="pagination">
+<!--                                <a><i id="pre" class="icon-green-arrow-left"></i></a>-->
+<!--                                <a class="active num">1</a>-->
+<!--                                <a class="num">2</a>-->
+<!--                                <a class="num">3</a>-->
+<!--                                <a class="num">4</a>-->
+<!--                                <a class="num">5</a>-->
+<!--                                <a class="num">6</a>-->
+<!--                                <a class="num">7</a>-->
+<!--                                <a class="num">8</a>-->
+<!--                                <a class="num">9</a>-->
+<!--                                <a class="num">10</a>-->
+<!--                                <a class=""><i id="next" class="icon-green-arrow-left"></i></a>-->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- 모달 START -->
+
+        <!-- 프로그램 상세 -->
+        <div id="detailModal" class="modal d-none" style="/*display: flex*/">
+            <div class="modal-wrap w100pro" style="width: 920px;">
+                <div class="modal-body">
+                    <div class="modal-content t-center">
+                        <div class="part w100pro">
+                            <div class="part-left">
+                                <div class="img-area">
+                                    <!--이미지 슬라이드 영역-->
+                                    <ul id="detailImgUl" class="img-slide">
+                                        <li class="img1"><img id="detailImg1" src="" onerror="this.src='/images/no_image.svg'"/></li>
+                                        <li class="img2 "><img id="detailImg2" src="" onerror="this.src='/images/no_image.svg'"/></li>
+                                    </ul>
+
+                                    <!--화살표 눌러 이미지 슬라이딩-->
+                                    <i class="prev-img"></i>
+                                    <i class="next-img"></i>
+                                </div>
+
+                                <!--이미지 슬라이드 페이지네이션-->
+                                <ul class="pagination-img">
+                                    <li class="first focus"></li>
+                                    <li class="second"></li>
+                                </ul>
+                            </div>
+                            <div class="part-right t-left">
+                                <div class="title-area">
+                                    <p id="detailTitle" class="title">찾아가는저어새네트워크저어새네트워크네트워크<span id="detailCompany" class="status-green bold">저어새네트워크</span></p>
+                                </div>
+                                <div class="info-area">
+                                    <div id="detailAddress" class="info-address">미추홀구 매소홀로매소홀로매소홀로매소홀로매소홀로매소홀로매소홀로 418번길 14-32</div>
+                                    <div id="detailTel" class="info-tel">010-1234-5678</div>
+                                    <div class="info-target-area"><span id="detailTarget" class="info-target">성인, 청소년</span><span id="detailMemberCount" class="info-num">15~30명</span></div>
+                                    <div id="detailSchedule" class="info-date">3월~8월</div>
+                                    <div id="detailTheme" class="info-theme">기후에너지</div>
+                                    <div id="detailType" class="info-type">견학, 체험, 실습</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="part w100pro">
+                            <p class="t-left">프로그램 설명</p>
+                            <div id="detailScript" class="info-content d-table w100pro t-left">
+                                프로그램설명 내용 불러오기프로그램설명 내용 불러오기프로그램설명 내용 불러오기프로그램설명 내용 불러오기
+                                프로그램설명 내용 불러오기프로그램설명 내용 불러오기프로그램설명 내용 불러오기프로그램설명 내용 불러오기프로그램설명 내용 불러오기
+                                프로그램설명 내용 불러오기프로그램설명 내용 불러오기프로그램설명 내용 불러오기프로그램설명 내용 불러오기프로그램설명 내용 불러오기
+                            </div>
+                        </div>
+                        <div class="part w100pro">
+                            <div class="w100pro f-left"><span>교육시간</span><span id="detailEduTime" class="edu-date">5회 11차시</span></div>
+                            <div class="w100pro f-left"><span class="f-left">1회 교육시간</span><span id="detailOneTime" class="once-time f-left">1차시 40분</span></div>
+                            <div class="w100pro"><span class="f-left">참가비용</span><span id="detailCost" class="cost f-left">60만원(1학급), 환경부 지원사업으로 진행될 경우 참가비 없음</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="" class="close btn-h60r-green" style="width: 180px;">닫기</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+
+        <!-- 프로그램 추가 -->
+        <div id="addModal" class="modal d-none" style="/*display: flex*/">
+            <div class="modal-wrap w100pro" style="width: 920px;">
+                <div class="modal-header">프로그램 추가</div>
+                <div class="modal-body">
+                    <div class="modal-content">
+                        <ul class="d-flex">
+                            <li>단체명<span class="essential font-red">*</span></li>
+                            <li>
+                                <select id="addCompanyList" class="select-gray companyList">
+                                    <option>단체명 선택</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>프로그램명<span class="essential font-red">*</span></li>
+                            <li><input id="addTitle" class="input-gray" type="text" placeholder="프로그램명을 입력해주세요." value=""/></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>대표 이미지<span class="essential font-red">*</span></li>
+                            <li>
+                                <div class="addThumb1">
+                                    <div id="addBeforeThumb1" class="auto t-center">
+                                        <div><i class="icon-gray-camera"></i><span class="bold font-gray">1번 썸네일 이미지 등록</span></div>
+                                        <span class="font-gray">가로 1920px 세로 1080px 크기의<br>이미지를 등록해주세요.</span>
+                                        <input id="addFile1" class="addFile1 d-none" type="file" accept=".jpg, .jpeg, .gif, .png"/>
+                                    </div>
+                                    <div id="addAfterThumb1" class="auto t-center d-none">
+                                        <img src='' id='thumbImage1' class='thumbImage' style='width: calc((652px - 10px) / 2); height: 180.56px; border-radius: 16px; display: flex;'>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="addThumb2">
+                                    <div id="addBeforeThumb2" class="auto t-center">
+                                        <div><i class="icon-gray-camera"></i><span class="bold font-gray">2번 썸네일 이미지 등록</span></div>
+                                        <span class="font-gray">가로 1920px 세로 1080px 크기의<br>이미지를 등록해주세요.</span>
+                                        <input id="addFile2" class="addFile2 d-none" type="file" accept=".jpg, .jpeg, .gif, .png"/>
+                                    </div>
+                                    <div id="addAfterThumb2" class="auto t-center d-none">
+                                        <img src='' id='thumbImage2' class='thumbImage' style='width: calc((652px - 10px) / 2); height: 180.56px; border-radius: 16px; display: flex;'>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>프로그램 설명<span class="essential font-red">*</span></li>
+                            <li><textarea id="addScript" class="textarea-gray" placeholder="프로그램 설명을 입력해주세요."></textarea></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>테마<span class="essential font-red">*</span></li>
+                            <li>
+                                <div class="themeList">
+                                    <div id="addTheme" class="chk-area">
+                                        <div class="chk-label"><input id="chkTheme1" type="checkbox"/><label for="chkTheme1">숲</label></div>
+                                        <div class="chk-label"><input id="chkTheme2" type="checkbox"/><label for="chkTheme2">물</label></div>
+                                        <div class="chk-label"><input id="chkTheme3" type="checkbox"/><label for="chkTheme3">생물</label></div>
+                                    </div>
+                                    <div id="" class="chk-area">
+                                        <div class="chk-label"><input id="chkTheme4" type="checkbox"/><label for="chkTheme4">생활</label></div>
+                                        <div class="chk-label"><input id="chkTheme5" type="checkbox"/><label for="chkTheme5">자원</label></div>
+                                        <div class="chk-label"><input id="chkTheme6" type="checkbox"/><label for="chkTheme6">기후에너지</label></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>유형<span class="essential font-red">*</span></li>
+                            <li>
+                                <div class="typeList">
+                                    <div id="addType" class="chk-area">
+                                        <div class="chk-label"><input id="chkType1" type="checkbox"/><label for="chkType1">강의, 해설</label></div>
+                                        <div class="chk-label"><input id="chkType2" type="checkbox"/><label for="chkType2">견학, 체험</label></div>
+                                        <div class="chk-label"><input id="chkType3" type="checkbox"/><label for="chkType3">토의, 토론</label></div>
+                                    </div>
+                                    <div id="" class="chk-area">
+                                        <div class="chk-label"><input id="chkType4" type="checkbox"/><label for="chkType4">조사, 관찰</label></div>
+                                        <div class="chk-label"><input id="chkType5" type="checkbox"/><label for="chkType5">실험, 실습</label></div>
+                                        <div class="chk-label"><input id="chkType6" type="checkbox"/><label for="chkType6">프로젝트</label></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>교육대상<span class="essential font-red">*</span></li>
+                            <li>
+                                <div id="eduTarget-add" class="targetList">
+                                    <div class="chk-area">
+                                        <div class="chk-label"><input id="chkTarget1" type="checkbox"/><label for="chkTarget1">전체</label></div>
+                                        <div class="chk-label"><input id="chkTarget2" type="checkbox"/><label for="chkTarget2">전연령</label></div>
+                                        <div class="chk-label"><input id="chkTarget3" type="checkbox"/><label for="chkTarget3">성인</label></div>
+                                    </div>
+                                    <div class="chk-area">
+                                        <div class="chk-label"><input id="chkTarget4" type="checkbox"/><label for="chkTarget4">청소년</label></div>
+                                        <div class="chk-label"><input id="chkTarget5" type="checkbox"/><label for="chkTarget5">가족</label></div>
+                                        <div class="chk-label"><input id="chkTarget6" type="checkbox"/><label for="chkTarget6">유아</label></div>
+                                    </div>
+                                    <div class="chk-area">
+                                        <div class="chk-label"><input id="chkTarget7" type="checkbox"/><label for="chkTarget7">초등생</label></div>
+                                        <div class="chk-label"><input id="chkTarget8" type="checkbox"/><label for="chkTarget8">초등 고학년</label></div>
+                                        <div class="chk-label"><input id="chkTarget9" type="checkbox"/><label for="chkTarget9">초등 저학년</label></div>
+                                    </div>
+                                    <div class="chk-area">
+                                        <div class="chk-label"><input id="chkTarget10" type="checkbox"/><label for="chkTarget10">초등 5학년~중학생</label></div>
+                                        <div class="chk-label"><input id="chkTarget11" type="checkbox"/><label for="chkTarget11">초등 3~6학년</label></div>
+                                        <div class="chk-label"><input id="chkTarget12" type="checkbox"/><label for="chkTarget12">교직원</label></div>
+                                    </div>
+                                    <div class="chk-area">
+                                        <div class="chk-label"><input id="chkTarget13" type="checkbox"/><label for="chkTarget13">생태강사</label></div>
+                                        <div class="chk-label"><input id="chkTarget14" type="checkbox"/><label for="chkTarget14">장애아동</label></div>
+                                        <div class="chk-label"><input id="chkTarget15" type="checkbox"/><label for="chkTarget15">고령자</label></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>교육장소<span class="essential font-red">*</span></li>
+                            <li>
+                                <input id="addArea" class="input-gray" type="text" placeholder="상세 교육장소 입력" value=""/>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>교육시간<span class="essential font-red">*</span></li>
+                            <li>
+                                <input id="addEduTime" class="input-gray" type="text" placeholder="ex) 협의 또는 3월 ~ 5월 등" value="" style="width: 420px;"/>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>1회 교육시간<span class="essential font-red">*</span></li>
+                            <li>
+                                <input id="addOneTime" class="input-gray" type="text" placeholder="ex) 1시간 또는 80분 ~ 100분 등" value="" style="width: 420px;"/>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>1회 교육인원<span class="essential font-red">*</span></li>
+                            <li>
+                                <input id="addMemberCount" class="input-gray" type="text" placeholder="ex) 10명 내외 또는 10명 ~ 15명 등" value="" style="width: 420px;"/>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>교육일정<span class="essential font-red">*</span></li>
+                            <li>
+                                <div class="add-date">
+                                    <input class="input-gray addSchedule" type="text" placeholder="ex) 3월 (쉼표 사용 X)" value=""/>
+                                    <button class="plus"></button>
+                                </div>
+                                <div class="del-date" style="display: none;">
+                                    <input class="input-gray addSchedule" type="text" placeholder="ex) 3월 (쉼표 사용 X)" value=""/>
+                                    <button class="minus"></button>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>교육방법<span class="essential font-red">*</span></li>
+                            <li>
+                                <input id="addMethod" class="input-gray" type="text" placeholder="ex) 프로젝트, 실습" value=""/>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>참가비용<span class="essential font-red">*</span></li>
+                            <li>
+                                <select class="select-pay select-gray" id="addCostType">
+                                    <option value=0 selected>무료</option>
+                                    <option value=1 >유료</option>
+                                </select>
+                                <div class="direct-input-pay">
+                                    <textarea class="textarea-gray" id="addCost" placeholder="참가비용 및 설명을 입력해주세요. 예) 2,000원 또는 1인당 1,000원">무료</textarea>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>문의처<span class="essential font-red">*</span></li>
+                            <li>
+                                <select class="select-gray" id="addTelType">
+                                    <option value=0>단체 연락처</option>
+                                    <option value=1>직접입력</option>
+                                </select>
+                                <input id="addTel" class="d-table input-gray" type="text" placeholder="ex) 010-1234-5678"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="close btn-h60r-light-green ma-r-20px" style="width: 180px;">닫기</button>
+                    <button class="add btn-h60r-green" style="width: 180px;" onclick="saveProgram()">프로그램 추가</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+
+
+        <!-- 프로그램 수정 -->
+        <div id="editModal" class="modal d-none" style="/*display: flex*/">
+            <div class="modal-wrap w100pro" style="width: 920px;">
+                <div class="modal-header">프로그램 수정</div>
+                <div class="modal-body">
+                    <div class="modal-content">
+                        <ul class="d-flex">
+                            <li>단체명<span class="essential font-red">*</span></li>
+                            <li>
+                                <select id="editCompanyList" class="select-gray companyList">
+                                    <option>단체명 선택</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>프로그램명<span class="essential font-red">*</span></li>
+                            <li><input class="input-gray" id="editTitle" type="text" placeholder="프로그램명을 입력해주세요."/></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>대표 이미지<span class="essential font-red">*</span></li>
+                            <li>
+                                <div class="editThumb1">
+                                    <div id="editBeforeThumb1" class="auto t-center">
+                                        <div><i class="icon-gray-camera"></i><span class="bold font-gray">1번 썸네일 이미지 등록</span></div>
+                                        <span class="font-gray">가로 1920px 세로 1080px 크기의<br>이미지를 등록해주세요.</span>
+                                        <input id="editFile1" class="editFile1 d-none" type="file" accept=".jpg, .jpeg, .gif, .png"/>
+                                    </div>
+                                    <div id="editAfterThumb1" class="auto t-center d-none">
+                                        <img src='' id='editThumbImage1' class='thumbImage' style='width: calc((652px - 10px) / 2); height: 180.56px; border-radius: 16px; display: flex;'>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="editThumb2">
+                                    <div id="editBeforeThumb2" class="auto t-center">
+                                        <div><i class="icon-gray-camera"></i><span class="bold font-gray">2번 썸네일 이미지 등록</span></div>
+                                        <span class="font-gray">가로 1920px 세로 1080px 크기의<br>이미지를 등록해주세요.</span>
+                                        <input id="editFile2" class="editFile2 d-none" type="file" accept=".jpg, .jpeg, .gif, .png"/>
+                                    </div>
+                                    <div id="editAfterThumb2" class="auto t-center d-none">
+                                        <img src='' id='editThumbImage2' class='thumbImage' style='width: calc((652px - 10px) / 2); height: 180.56px; border-radius: 16px; display: flex;'>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>프로그램 설명<span class="essential font-red">*</span></li>
+                            <li><textarea id="editScript" class="textarea-gray" placeholder="프로그램 설명을 입력해주세요."></textarea></li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>테마<span class="essential font-red">*</span></li>
+                            <li>
+                                <div id="eduTheme-edit" class="themeList">
+                                    <div id="addTheme2" class="chk-area">
+                                        <div class="chk-label"><input id="chkTheme2_1" type="checkbox"/><label for="chkTheme2_1">숲</label></div>
+                                        <div class="chk-label"><input id="chkTheme2_2" type="checkbox"/><label for="chkTheme2_2">물</label></div>
+                                        <div class="chk-label"><input id="chkTheme2_3" type="checkbox"/><label for="chkTheme2_3">생물</label></div>
+                                    </div>
+                                    <div id="" class="chk-area">
+                                        <div class="chk-label"><input id="chkTheme2_4" type="checkbox"/><label for="chkTheme2_4">생활</label></div>
+                                        <div class="chk-label"><input id="chkTheme2_5" type="checkbox"/><label for="chkTheme2_5">자원</label></div>
+                                        <div class="chk-label"><input id="chkTheme2_6" type="checkbox"/><label for="chkTheme2_6">기후에너지</label></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>유형<span class="essential font-red">*</span></li>
+                            <li>
+                                <div id="eduType-edit" class="typeList">
+                                    <div id="addType2" class="chk-area">
+                                        <div class="chk-label"><input id="chkType2_1" type="checkbox"/><label for="chkType2_1">강의, 해설</label></div>
+                                        <div class="chk-label"><input id="chkType2_2" type="checkbox"/><label for="chkType2_2">견학, 체험</label></div>
+                                        <div class="chk-label"><input id="chkType2_3" type="checkbox"/><label for="chkType2_3">토의, 토론</label></div>
+                                    </div>
+                                    <div id="" class="chk-area">
+                                        <div class="chk-label"><input id="chkType2_4" type="checkbox"/><label for="chkType2_4">조사, 관찰</label></div>
+                                        <div class="chk-label"><input id="chkType2_5" type="checkbox"/><label for="chkType2_5">실험, 실습</label></div>
+                                        <div class="chk-label"><input id="chkType2_6" type="checkbox"/><label for="chkType2_6">프로젝트</label></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>교육대상<span class="essential font-red">*</span></li>
+                            <li>
+                                <div id="eduTarget-edit" class="targetList">
+                                    <div class="chk-area">
+                                        <div class="chk-label"><input id="chkTarget2_1" type="checkbox"/><label for="chkTarget2_1">전체</label></div>
+                                        <div class="chk-label"><input id="chkTarget2_2" type="checkbox"/><label for="chkTarget2_2">전연령</label></div>
+                                        <div class="chk-label"><input id="chkTarget2_3" type="checkbox"/><label for="chkTarget2_3">성인</label></div>
+                                    </div>
+                                    <div class="chk-area">
+                                        <div class="chk-label"><input id="chkTarget2_4" type="checkbox"/><label for="chkTarget2_4">청소년</label></div>
+                                        <div class="chk-label"><input id="chkTarget2_5" type="checkbox"/><label for="chkTarget2_5">가족</label></div>
+                                        <div class="chk-label"><input id="chkTarget2_6" type="checkbox"/><label for="chkTarget2_6">유아</label></div>
+                                    </div>
+                                    <div class="chk-area">
+                                        <div class="chk-label"><input id="chkTarget2_7" type="checkbox"/><label for="chkTarget2_7">초등생</label></div>
+                                        <div class="chk-label"><input id="chkTarget2_8" type="checkbox"/><label for="chkTarget2_8">초등 고학년</label></div>
+                                        <div class="chk-label"><input id="chkTarget2_9" type="checkbox"/><label for="chkTarget2_9">초등 저학년</label></div>
+                                    </div>
+                                    <div class="chk-area">
+                                        <div class="chk-label"><input id="chkTarget2_10" type="checkbox"/><label for="chkTarget2_10">초등 5학년~중학생</label></div>
+                                        <div class="chk-label"><input id="chkTarget2_11" type="checkbox"/><label for="chkTarget2_11">초등 3~6학년</label></div>
+                                        <div class="chk-label"><input id="chkTarget2_12" type="checkbox"/><label for="chkTarget2_12">교직원</label></div>
+                                    </div>
+                                    <div class="chk-area">
+                                        <div class="chk-label"><input id="chkTarget2_13" type="checkbox"/><label for="chkTarget2_13">생태강사</label></div>
+                                        <div class="chk-label"><input id="chkTarget2_14" type="checkbox"/><label for="chkTarget2_14">장애아동</label></div>
+                                        <div class="chk-label"><input id="chkTarget2_15" type="checkbox"/><label for="chkTarget2_15">고령자</label></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>교육장소<span class="essential font-red">*</span></li>
+                            <li>
+                                <input id="editArea" class="input-gray" type="text" placeholder="상세 교육장소 입력" value=""/>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>교육시간<span class="essential font-red">*</span></li>
+                            <li>
+                                <input id="editEduTime" class="input-gray" type="text" placeholder="ex) 협의 또는 3월 ~ 5월 등" value="" style="width: 420px;"/>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>1회 교육시간<span class="essential font-red">*</span></li>
+                            <li>
+                                <input id="editOneTime" class="input-gray" type="text" placeholder="ex) 1시간 또는 80분 ~ 100분 등" value="" style="width: 420px;"/>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>1회 교육인원<span class="essential font-red">*</span></li>
+                            <li>
+                                <input id="editMemberCount" class="input-gray" type="text" placeholder="ex) 10명 내외 또는 10명 ~ 15명 등" value="" style="width: 420px;"/>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>교육일정<span class="essential font-red">*</span></li>
+                            <li id="editScheduleLi">
+                                <div class="add-date">
+                                    <input class="input-gray editSchedule" type="text" placeholder="ex) 3월 (쉼표 사용 X)" value=""/>
+                                    <button class="plus"></button>
+                                </div>
+                                <div class="del-date" style="display: none;">
+                                    <input class="input-gray editSchedule" type="text" placeholder="ex) 3월 (쉼표 사용 X)" value=""/>
+                                    <button class="minus"></button>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>교육방법<span class="essential font-red">*</span></li>
+                            <li>
+                                <input id="editMethod" class="input-gray" type="text" placeholder="ex) 프로젝트, 실습"/>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>참가비용<span class="essential font-red">*</span></li>
+                            <li>
+                                <select class="select-pay select-gray" id="editCostType">
+                                    <option value=0 selected>무료</option>
+                                    <option value=1 >유료</option>
+                                </select>
+                                <div class="direct-input-pay">
+                                    <textarea class="textarea-gray" id="editCost" placeholder="참가비용 및 설명을 입력해주세요. 예) 2,000원 또는 1인당 1,000원"></textarea>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>문의처<span class="essential font-red">*</span></li>
+                            <li>
+                                <select class="select-gray" id="editTelType">
+                                    <option value=0>단체 연락처</option>
+                                    <option value=1>직접입력</option>
+                                </select>
+                                <input id="editTel" class="d-table input-gray" type="text" placeholder="ex) 010-1234-5678"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="close btn-h60r-light-green ma-r-20px" style="width: 180px;">닫기</button>
+                    <button class="edit btn-h60r-green" style="width: 180px;" onclick="updateProgram()">프로그램 수정</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+
+
+        <!-- 프로그램 삭제 -->
+        <div id="deleteModal" class="modal d-none" style="">
+            <div class="modal-wrap w100pro" style="width: 580px;">
+                <div class="modal-header">프로그램 삭제</div>
+                <div class="modal-body">
+                    <div class="modal-content t-center">
+                        선택한 <span id="programCnt"></span>개의 프로그램을 삭제하시겠습니까?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="" class="close btn-h60r-light-green ma-r-20px" style="width: 180px;">닫기</button>
+                    <button id="btnDelete" class="delete btn-h60r-green" style="width: 180px;">삭제</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+    </main>
+
+
+    <!--script START-->
+    <script>
+
+        let leftCompanySeq=null;
+        let saveFile1;
+        let saveFile2;
+        let editFile1;
+        let editFile2;
+        let size = 10;
+        let page = 1;
+        let editProgramSeq;
+        let deleteProgramSeq = new Array();
+        //프로그램 상세내역 modal 확인을 위한 임시 스크립트 처리
+        // $('.table-list tr.list td:not(:first-child)').click(function(){
+        //     $('#detailModal').css('display', 'flex');
+        // });
+
+        getPrograms(leftCompanySeq);
+        getCompanies();
+        getCategories();
+        getModalCompanies();
+
+        // 키워드 입력 후 엔터
+        $("#keyword").on("keydown", function(e){
+            if(e.keyCode==13) {
+                $("#programSearchBtn").click();
+            }
+        });
+
+        // 프로그램 검색
+        $("#programSearchBtn").on("click", function(){
+            getPrograms(leftCompanySeq);
+        });
+
+        // 프로그램 삭제
+        $("#btnDelete").on("click", function(){
+            // console.log(deleteProgramSeq);
+            deleteProgram(deleteProgramSeq);
+        });
+
+        // 프로그램 삭제 모달 켜기
+        $("#btnDel").on("click", function(){
+            deleteProgramSeq = new Array();
+            if ($(".program-list-tbody .chk:checked").length == 0) {
+                toastModal("프로그램을 선택해주세요.");
+                return;
+            } else {
+
+                $(".program-list-tbody .chk:checked").each(function(index){
+                   deleteProgramSeq.push($(this).parent().parent().attr("programSeq"));
+                });
+                $("#programCnt").html($(".program-list-tbody .chk:checked").length);
+                $('#deleteModal').css('display', 'flex');
+            }
+        });
+
+        // 프로그램 삭제
+        function deleteProgram(deleteProgramSeq){
+            $.ajax({
+                type:"post",
+                url:"/admin/api/program/delete",
+                data: {
+                    "programSeq" : deleteProgramSeq,
+                },
+                success: function () {
+                    toastModal("프로그램을 삭제했습니다.");
+                    setTimeout(() => location.reload(), 1000);
+                },
+                error: function (errors) {
+                    console.log("error = " + JSON.stringify(errors));
+                    toastModal("프로그램 삭제를 실패하였습니다.");
+                }
+            });
+
+        }
+
+        // 프로그램 상세 보기
+        $(".table-list").on("click", ".p-list ", function(){
+            let programSeq = $(this).parent().attr("programSeq");
+            $("#detailModal").css("display", "flex");
+            programDetails(programSeq);
+        });
+
+
+        // 프로그램 수정 클릭 제약 조건
+        $('#btnEdit').on('click', function(){
+
+            editProgramSeq = $(".program-list-tbody .chk:checked").parent().parent().attr("programSeq");
+
+            if ($(".program-list-tbody .chk:checked").length == 0) {
+                toastModal("프로그램을 선택해주세요.");
+                return;
+            } else if ($(".program-list-tbody .chk:checked").length > 1) {
+                toastModal("1개의 프로그램만 수정 가능합니다.");
+                return;
+            } else {
+                $('#editModal').css('display', 'flex');
+                editProgramDetails(editProgramSeq);
+            }
+        });
+
+        // (수정) 썸네일이미지1 등록 클릭 시
+        $("#editFile1").on("change", function() {
+            editFile1 =$("#editFile1")[0].files[0];
+            let oFile = $(this)[0].files;
+            let url;
+            if(oFile.length<1) { // 첨부파일을 선택했다가 취소 할 경우
+                $("#editBeforeThumb1").removeClass("d-none");
+                $("#editAfterThumb1").addClass("d-none");
+            }else {
+                url=URL.createObjectURL(editFile1);
+                $("#editBeforeThumb1").addClass("d-none");
+                $("#editAfterThumb1").removeClass("d-none");
+                $("#editThumbImage1").attr("src", url);
+            }
+        });
+
+        // (수정) 썸네일이미지2 등록 클릭 시
+        $("#editFile2").on("change", function() {
+            let firstFileSrc = $("#editThumbImage1").attr("src");
+            if(firstFileSrc==null || firstFileSrc==undefined || firstFileSrc=="") {
+                toastModal("1번 썸네일 이미지 먼저 등록해주세요");
+                $("#editFile2").val("");
+                return;
+            }
+            editFile2 =$("#editFile2")[0].files[0];
+            let oFile = $(this)[0].files;
+            let url;
+            if(oFile.length<1) { // 첨부파일을 선택했다가 취소 할 경우
+                $("#editBeforeThumb2").removeClass("d-none");
+                $("#editAfterThumb2").addClass("d-none");
+            }else {
+                url=URL.createObjectURL(editFile2);
+                $("#editBeforeThumb2").addClass("d-none");
+                $("#editAfterThumb2").removeClass("d-none");
+                $("#editThumbImage2").attr("src", url);
+            }
+        });
+
+        // 수정 모달용 프로그램 상세 정보 불러오기
+        function editProgramDetails(editProgramSeq){
+            $.ajax({
+                type: "get",
+                url: "/admin/api/program/detail",
+                async:false,
+                data: {
+                    "programSeq": editProgramSeq
+                },
+                success: function (data) {
+                    // console.log(data);
+
+                    $("#eduTheme-edit .chkAddTheme").each(function(index){
+                        $(this).attr("id", "editTheme"+index);
+                        $(this).addClass("chkEditTheme");
+                        $(this).removeClass("chkAddTheme");
+                    });
+                    $("#eduTheme-edit .chkLabel").each(function(index){
+                        $(this).attr("for", "editTheme"+index);
+                    });
+
+                    $("#eduType-edit .chkAddType").each(function(index){
+                        $(this).attr("id", "editType"+index);
+                        $(this).addClass("chkEditType");
+                        $(this).removeClass("chkAddType");
+                    });
+                    $("#eduType-edit .chkLabel").each(function(index){
+                        $(this).attr("for", "editType"+index);
+                    });
+
+                    $("#eduTarget-edit .chkAddTarget").each(function(index){
+                        $(this).attr("id", "editTarget"+index);
+                        $(this).addClass("chkEditTarget");
+                        $(this).removeClass("chkAddTarget");
+                    });
+                    $("#eduTarget-edit .chkLabel").each(function(index){
+                        $(this).attr("for", "editTarget"+index);
+                    });
+
+                    let detail = data.programDetail;
+                    let detailTarget = data.programDetail.target;
+                    let detailTheme = data.programDetail.theme;
+                    let detailType= data.programDetail.type;
+
+                    $("#editCompanyList").val(detail.companySeq);
+                    $("#editTitle").val(detail.title);
+                    $("#editScript").val(detail.script);
+                    $("#editArea").val(detail.area);
+                    $("#editEduTime").val(detail.eduTime);
+                    $("#editOneTime").val(detail.oneTime);
+                    $("#editMemberCount").val(detail.memberCount);
+
+                    let arrSchedule = detail.schedule.split(", ");
+                    let scheduleTag = "";
+                    if(arrSchedule.length==1) {
+                        scheduleTag += '<div class="add-date">';
+                        scheduleTag += '<input class="input-gray editSchedule" type="text" placeholder="ex) 3월 (쉼표 사용 X)" value="'+arrSchedule[0]+'"/>';
+                        scheduleTag += '<button class="plus"></button>';
+                        scheduleTag += '</div>';
+                    }else if(arrSchedule.length>1) {
+                        scheduleTag += '<div class="add-date">';
+                        scheduleTag += '<input class="input-gray editSchedule" type="text" placeholder="ex) 3월 (쉼표 사용 X)" value="'+arrSchedule[0]+'"/>';
+                        scheduleTag += '<button class="plus"></button>';
+                        scheduleTag += '</div>';
+                        for(i=1; i<arrSchedule.length; i++) {
+                            scheduleTag += '<div class="del-date">';
+                            scheduleTag += '<input class="input-gray editSchedule" type="text" placeholder="ex) 3월 (쉼표 사용 X)" value="'+arrSchedule[i]+'"/>';
+                            scheduleTag += '<button class="minus"></button>';
+                            scheduleTag += '</div>';
+                        }
+                    }
+                    $("#editScheduleLi").html(scheduleTag);
+
+                    $("#editMethod").val(detail.method);
+                    let editCostType;
+                    if(detail.costType==true) {
+                        editCostType=1;
+                    }else{
+                        editCostType=0;
+                    }
+                    $("#editCostType").val(editCostType);
+                    $("#editCost").val(detail.cost);
+                    let editTelType;
+                    if(detail.telType==true) {
+                        editTelType=1;
+                    }else{
+                        editTelType=0;
+                    }
+                    $("#editTelType").val(editTelType);
+                    $("#editTel").val(detail.tel);
+
+                    let arrTarget = detailTarget.split("|");
+                    arrTarget.forEach(function(seq){
+                        $(".chkEditTarget").each(function(){
+                           let cateSeq = $(this).attr("value");
+                           if(seq==cateSeq) {
+                               $(this).prop("checked", true);
+                           }
+                        });
+                    });
+                    let arrType = detailType.split("|");
+                    arrType.forEach(function(seq){
+                        $(".chkEditType").each(function(){
+                            let cateSeq = $(this).attr("value");
+                            if(seq==cateSeq) {
+                                $(this).prop("checked", true);
+                            }
+                        });
+                    });
+                    let arrTheme = detailTheme.split("|");
+                    arrTheme.forEach(function(seq){
+                        $(".chkEditTheme").each(function(){
+                            let cateSeq = $(this).attr("value");
+                            if(seq==cateSeq) {
+                                $(this).prop("checked", true);
+                            }
+                        });
+                    });
+
+                    if(detail.imgUrl1!=null&&detail.imgUrl1!="") {
+                        $("#editBeforeThumb1").addClass("d-none");
+                        $("#editAfterThumb1").removeClass("d-none");
+                        $("#editThumbImage1").attr("src", detail.imgUrl1);
+                    }
+                    if(detail.imgUrl2!=null&&detail.imgUrl2!="") {
+                        $("#editBeforeThumb2").addClass("d-none");
+                        $("#editAfterThumb2").removeClass("d-none");
+                        $("#editThumbImage2").attr("src", detail.imgUrl2);
+                    }
+
+                }
+            });
+        };
+
+        // 프로그램 상세 정보 불러오기
+        function programDetails(programSeq){
+            $.ajax({
+                type:"get",
+                url:"/admin/api/program/detail",
+                data: {
+                    "programSeq": programSeq
+                },
+                success:function(data) {
+                    // console.log(data);
+                    let detail = data.programDetail;
+                    let detailTarget = data.target;
+                    let detailTheme = data.theme;
+                    let detailType= data.type;
+
+                    if(detail.imgUrl1!=null && detail.imgUrl1!="") {
+                        $("#detailImg1").attr("src", detail.imgUrl1);
+                    }else {
+                        $("#detailImg1").attr("src", "/images/no_image.svg");
+                    }
+                    if(detail.imgUrl2!=null && detail.imgUrl2!="") {
+                        $(".img2").removeClass("d-none");
+                        $("#detailImg2").attr("src", detail.imgUrl2);
+                    }else {
+                        $(".img2").addClass("d-none");
+                    }
+
+                    // p 태그
+                    $("#detailTitle").text(detail.title);
+                    $("#detailCompany").text(detail.companyName);
+                    // div span 태그
+                    $("#detailAddress").html(detail.address);
+                    $("#detailTel").html(detail.tel);
+                    $("#detailMemberCount").html(detail.memberCount);
+                    $("#detailSchedule").html(detail.schedule);
+                    $("#detailScript").html(detail.script);
+                    $("#detailEduTime").html(detail.eduTime);
+                    $("#detailOneTime").html(detail.oneTime);
+                    $("#detailCost").html(detail.cost);
+
+                    let strTarget="";
+                    detailTarget.forEach(function(arg){
+                        strTarget += arg + ", ";
+                    });
+                    strTarget = strTarget.substring(0, strTarget.length-2);
+                    let strTheme="";
+                    detailTheme.forEach(function(arg){
+                        strTheme += arg + ", ";
+                    });
+                    strTheme = strTheme.substring(0, strTheme.length-2);
+                    let strType="";
+                    detailType.forEach(function(arg){
+                        strType += arg + ", ";
+                    });
+                    strType = strType.substring(0, strType.length-2);
+
+
+                    $("#detailTarget").html(strTarget);
+                    $("#detailTheme").html(strTheme);
+                    $("#detailType").html(strType);
+
+                }
+            });
+        }
+
+        // 페이지 클릭 시 실행
+        $(".pagination").on("click", "a", function() {
+            page = parseInt($(this).attr("gopage"));
+            getPrograms(leftCompanySeq);
+        });
+
+        // 좌측 단체 클릭 시
+        $(".category-menu-list").on("click", ".menu", function(){
+            $('.menu').removeClass('actived');
+            if($('.menu-span').hasClass("font-green")) {
+                $('.menu-span').removeClass("font-green");
+                $('.menu-span').addClass("font-gray");
+            }
+
+            $('.comArrow').remove()
+            let arrowTag = "<arrow class=\'icon-green-arrow-left comArrow\'></arrow>";
+
+            $(this).find("span").removeClass("font-gray");
+            $(this).find("span").addClass("font-green");
+            $(this).addClass("actived");
+            $(this).append(arrowTag);
+            leftCompanySeq=$(this).attr("companySeq");
+            if(leftCompanySeq=="null") {
+                leftCompanySeq=null;
+            }
+            getPrograms(leftCompanySeq);
+        });
+
+        // 출력 리스트 수 변경 시
+        $(".size").on("change", function(){
+            size = $(this).val();
+            getPrograms(leftCompanySeq);
+        });
+
+        $(".content-wrap").on("change", ".search-wrap select", function(){
+            getPrograms(leftCompanySeq);
+        });
+
+        // 프로그램 리스트
+        function getPrograms(leftCompanySeq){
+            let searchTheme = $("#searchTheme").val();
+            if(searchTheme==""||searchTheme=="전체") {
+                searchTheme=null;
+            }
+            let searchType = $("#searchType").val();
+            if(searchType=="" || searchType=="전체") {
+                searchType=null;
+            }
+            let searchTarget = $("#searchTarget").val();
+            let searchTargetHtml = $("#searchTarget option:selected").html();
+            if(searchTarget=="" || searchTargetHtml=="전체") {
+                searchTarget=null;
+            }
+            let keyword = $("#keyword").val();
+            if(keyword=="") {
+                keyword=null;
+            }
+
+            $.ajax({
+                type:"get",
+                url:"/admin/api/program/list",
+                async:false,
+                data:{
+                    "size":size,
+                    "page":page-1,
+                    "searchType":searchType,
+                    "searchTheme":searchTheme,
+                    "searchTarget":searchTarget,
+                    "query":keyword,
+                    "companySeq":leftCompanySeq
+                },
+                success:function(data) {
+                    // console.log(data);
+                    if(data.content.length!=0 && data.content!=null) {
+                        let programTag = '';
+                        for(i=0; i<data.content.length; i++) {
+                            let programSeq = data.content[i].programSeq;
+                            let programTitle = data.content[i].title;
+                            let companyName = data.content[i].companyName;
+                            let area = data.content[i].area;
+                            let theme = data.content[i].theme;
+                            let type = data.content[i].type;
+
+                            programTag += '<tr class="list" programSeq="'+programSeq+'">';
+                            programTag += '<td class="t-center"><input id="chk'+i+'" class="chk" type="checkbox"/><label for="chk'+i+'"></label></td>';
+                            programTag += '<td class="list-num p-list t-center">'+data.content[i].rowNum+'</td>';
+                            programTag += '<td class="list-program p-list t-center">'+programTitle+'</td>';
+                            programTag += '<td class="list-group p-list t-center"><span class="status-green">'+companyName+'</span></td>';
+                            programTag += '<td class="list-address p-list t-center">'+area+'</td>';
+                            programTag += '<td class="list-theme p-list t-center">'+theme+'</td>';
+                            programTag += '<td class="list-type p-list t-center">'+type+'</td>';
+                            programTag += '</tr>';
+                        }
+                        $(".program-list-tbody").html(programTag);
+                    }else {
+                        let programTag = '<tr class="list"><td class="t-center" colspan="7">검색 결과가 없습니다.</td></tr>';
+                        $(".program-list-tbody").html(programTag);
+                    }
+                    fPagination(data, page);
+                }
+            });
+        };
+
+
+        // 단체명 검색 (돋보기 아이콘 클릭)
+        $("#companySearchBtn").on("click", function(){
+            getCompanies();
+        });
+        // 단체명 검색 (검색 후 enter)
+        $("#companyName").on("keydown", function(e){
+           if(e.keyCode==13) {
+               getCompanies();
+           }
+        });
+
+        // 단체명 불러오기
+        function getCompanies() {
+
+            let companyName = $("#companyName").val();
+            if(companyName=="") {
+                companyName=null;
+            }
+            $.ajax({
+                type:"get",
+                url:"/admin/api/company/list",
+                data: {
+                    "size":300,
+                    "keyword":companyName
+                },
+                success:function(data) {
+                    // console.log(data);
+                    let content = data.content;
+
+                    let leftComTag = "";
+                    if(content.length!=0 && content!=null) {
+                        leftComTag += "<a href='#' class='menu menu-1 actived' companySeq=null>";
+                        if(companyName==null){
+                            leftComTag += "<span class='menu-1 menu-span font-green bold'>전체</span>";
+                            leftComTag += "<arrow class='icon-green-arrow-left comArrow'></arrow>";
+                        }else {
+                            leftComTag += "<span class='menu-1 menu-span font-gray bold'>전체</span>";
+                        }
+                        for(i=0; i<content.length; i++) {
+                            let companySeq = content[i].companySeq;
+                            let companyName = content[i].name;
+
+                            leftComTag += "<a href='#' class='menu menu-1' companySeq='"+companySeq+"'>";
+                            leftComTag += "<span class='menu-1 menu-span font-gray bold'>"+companyName+"</span>";
+                        }
+                    }
+                    $(".category-menu-list").html(leftComTag);
+                }
+            });
+        }
+
+        // 모달 내 단체리스트
+        function getModalCompanies() {
+
+            $.ajax({
+                type:"get",
+                url:"/admin/api/company/list",
+                data: {
+                    "size":300,
+                },
+                success:function(data) {
+                    // console.log(data);
+
+                    let content = data.content;
+                    if(content.length!=0 && content!=null) {
+                        let comTag = "<option selected hidden value=''>단체명 선택</option>";
+                        for(i=0; i<content.length; i++) {
+                            let companySeq = content[i].companySeq;
+                            let companyName = content[i].name;
+                            let companyTel = content[i].tel;
+                            comTag += "<option class='optCompany' value='"+companySeq+"' tel='"+companyTel+"'>"+companyName+"</option>";
+                        }
+                        $(".companyList").html(comTag);
+                    }
+                }
+            });
+        }
+
+
+        // 카테고리 리스트 불러오기
+        function getCategories() {
+            $.ajax({
+                type:"get",
+                url:"/user/api/category/list",
+                data:{},
+                success:function(data) {
+                    console.log(data);
+                    // 테마
+                    let themeTag = "<div class='chk-area'>";
+                    let searchThemeTag = "<option selected hidden value=''>테마</option>";
+                    searchThemeTag += "<option>전체</option>";
+                    for(i=0; i<data.theme.length; i++) {
+                        searchThemeTag += "<option value='"+data.theme[i].cateSeq+"' class='themeOption'>"+data.theme[i].cateName+"</option>";
+                        themeTag += "<div class='chk-label'><input id='chkTheme"+i+"' class='chkAddTheme' type='checkbox' value='"+data.theme[i].cateSeq+"'/><label class='chkLabel' for='chkTheme"+i+"'>"+data.theme[i].cateName+"</label></div>";
+                        if(i==2 || i==5 || i==8 || i==11 || i==14 || i==17 || i==20 || i== 23 || i==26 || i==29) {
+                            themeTag += "</div>";
+                            themeTag += "<div class='chk-area'>";
+                        }
+                        if(i == data.theme.lastIndex) {
+                            themeTag += "</div>";
+                        }
+                    }
+                    $(".themeList").html(themeTag);
+                    $("#searchTheme").html(searchThemeTag);
+
+                    // 유형
+                    let typeTag = "<div class='chk-area'>";
+                    let searchTypeTag = "<option selected hidden value=''>유형</option>";
+                    searchTypeTag += "<option>전체</option>";
+                    for(i=0; i<data.type.length; i++) {
+                        let cateName = data.type[i].cateName;
+                        cateName = cateName.replaceAll("기타", "[기타]");
+                        searchTypeTag += "<option value='"+data.type[i].cateSeq+"' class='typeOption'>"+data.type[i].cateName+"</option>";
+                        typeTag +="<div class='chk-label'><input id='chkType"+i+"' class='chkAddType' type='checkbox' value='"+data.type[i].cateSeq+"'/><label class='chkLabel' for='chkType"+i+"'>"+cateName+"</label></div>";
+
+                        if(i==2 || i==5 || i==8 || i==11 || i==14 || i==17 || i==20 || i== 23 || i==26 || i==29) {
+                            typeTag += "</div>";
+                            typeTag += "<div class='chk-area'>";
+                        }
+                        if(i == data.type.lastIndex) {
+                            typeTag += "</div>";
+                        }
+                    }
+                    $(".typeList").html(typeTag);
+                    $("#searchType").html(searchTypeTag);
+
+                    // 대상
+                    let arrWhole = data.target.filter((element) => element.cateName == '전체');
+                    let arrTarget = data.target.filter((element) => element.cateName !== '전체');
+                    let targetTag = "<div class='chk-area'>";
+                    let searchTargetTag = "<option selected hidden value=''>대상</option>";
+                    searchTargetTag += "<option value='"+arrWhole[0].cateSeq+"' class='typeOption'>"+arrWhole[0].cateName+"</option>";
+                    targetTag += "<div class='chk-label'><input id='chkTarget0' class='chkAddTarget' type='checkbox' value='"+arrWhole[0].cateSeq+"'/><label class='chkLabel' for='chkTarget0'>"+arrWhole[0].cateName+"</label></div>";
+                    for(i=0; i<arrTarget.length; i++) {
+                        searchTargetTag += "<option value='"+arrTarget[i].cateSeq+"' class='typeOption'>"+arrTarget[i].cateName+"</option>";
+                        targetTag += "<div class='chk-label'><input id='chkTarget"+(i+1)+"' class='chkAddTarget' type='checkbox' value='"+arrTarget[i].cateSeq+"'/><label class='chkLabel' for='chkTarget"+(i+1)+"'>"+arrTarget[i].cateName+"</label></div>";
+                        if(i==1 || i==4 || i==7 || i==10 || i==13 || i==16 || i==19 || i== 22 || i==25 || i==28 || i==31 || i==34 || i==37 || i==40) {
+                            targetTag += "</div>";
+                            targetTag += "<div class='chk-area'>";
+                        }
+                        if(i == arrTarget.lastIndex) {
+                            typeTag += "</div>";
+                        }
+                    }
+                    $(".targetList").html(targetTag);
+                    $("#searchTarget").html(searchTargetTag);
+                }
+            });
+        }
+
+        // 프로그램 수정
+        function updateProgram() {
+
+            let editFormData = new FormData();
+
+            let editCompanySeq = $("#editCompanyList").val();
+            let editTitle = $("#editTitle").val();
+            let editScript = $("#editScript").val();
+
+            let strTheme = "";
+            $(".chkEditTheme").each(function(){
+                if($(this).prop("checked")) {
+                    strTheme += $(this).val() + "|";
+                }
+            });
+            let editTheme =strTheme.substring(0, strTheme.length-1);
+
+            let strType = "";
+            $(".chkEditType").each(function(){
+                if($(this).prop("checked")) {
+                    strType += $(this).val() + "|";
+                }
+            });
+            let editType =strType.substring(0, strType.length-1);
+
+
+            let strTarget = "";
+            $(".chkEditTarget").each(function(){
+                if($(this).prop("checked")) {
+                    strTarget += $(this).val() + "|";
+                }
+            });
+            let editTarget = strTarget.substring(0, strTarget.length-1);
+
+            let editArea = $("#editArea").val();
+            let editEduTime = $("#editEduTime").val();
+            let editOneTime  = $("#editOneTime").val();
+            let editMemberCount = $("#editMemberCount").val();
+            let editSchedule="";
+            $(".editSchedule").each(function(){
+                if($(this).val() != "") {
+                    editSchedule += $(this).val() + ", ";
+                }
+            });
+            editSchedule = editSchedule.substring(0, editSchedule.length-2);
+            let editMethod = $("#editMethod").val();
+            let editCostType = $("#editCostType").val();
+            if(editCostType==0) {
+                editCostType = 0;
+            }else {
+                editCostType = 1;
+            }
+            let editCost = $("#editCost").val();
+
+            let editTelType = $("#editTelType").val();
+            let editTel = $("#editTel").val();
+
+            if(editCompanySeq=="" || editCompanySeq==null) {
+                toastModal("단체명을 선택해주세요");
+                return;
+            }
+            if(editTitle=="") {
+                toastModal("프로그램명을 입력해주세요");
+                return;
+            }
+            if(editScript=="") {
+                toastModal("프로그램 설명을 입력해주세요");
+                return;
+            }
+            if(editTheme=="") {
+                toastModal("테마를 선택해주세요");
+                return;
+            }
+            if(editType=="") {
+                toastModal("유형을 선택해주세요");
+                return;
+            }
+            if(editTarget=="") {
+                toastModal("교육대상을 선택해주세요");
+                return;
+            }
+            if(editArea=="") {
+                toastModal("교육장소를 입력해주세요");
+                return;
+            }
+            if(editEduTime=="") {
+                toastModal("교육시간을 입력해주세요");
+                return;
+            }
+            if(editOneTime=="") {
+                toastModal("1회 교육시간을 입력해주세요");
+                return;
+            }
+            if(editMemberCount=="") {
+                toastModal("1회 교육인원을 입력해주세요");
+                return;
+            }
+            if(editSchedule=="") {
+                toastModal("교육일정을 입력해주세요");
+                return;
+            }
+            if(editMethod=="") {
+                toastModal("교육방법을 입력해주세요");
+                return;
+            }
+            if(editCostType==null) {
+                toastModal("참가비용 유형을 선택해주세요");
+                return;
+            }
+            if(editCost=="") {
+                toastModal("참가비용을 입력해주세요");
+                return;
+            }
+            if(editTel=="") {
+                toastModal("문의처를 입력해주세요")
+                return;
+            }
+            if($("#editThumbImage1").attr("src")==null || $("#editThumbImage1").attr("src")=="") {
+                toastModal("대표이미지를 등록해주세요");
+                return
+            }else {
+                if(editFile1!=undefined && editFile1!=null) {
+                    editFormData.append("img1", editFile1);
+                }
+            }
+
+            editFormData.append("programSeq", editProgramSeq);
+            editFormData.append("companySeq", editCompanySeq);
+            editFormData.append("title", editTitle);
+            editFormData.append("script", editScript);
+            editFormData.append("target", editTarget);
+            editFormData.append("theme", editTheme);
+            editFormData.append("type", editType);
+            editFormData.append("area", editArea);
+            editFormData.append("eduTime", editEduTime);
+            editFormData.append("oneTime", editOneTime);
+            editFormData.append("memberCount", editMemberCount);
+            editFormData.append("schedule", editSchedule);
+            editFormData.append("method", editMethod);
+            editFormData.append("cost", editCost);
+            editFormData.append("costType", editCostType);
+            editFormData.append("tel", editTel);
+            editFormData.append("telType", editTelType);
+            if(editFile2!=undefined&&editFile2!=null) {
+                editFormData.append("img2", editFile2);
+            }
+
+            $.ajax({
+                type: "post",
+                url: "/admin/api/program/update",
+                data: editFormData,
+                processData: false,
+                contentType: false,
+                success:function() {
+                    toastModal("프로그램을 수정했습니다.");
+                    setTimeout(() => location.reload(), 1000);
+                },
+                error:function (errors) {
+                    console.log("error = " + JSON.stringify(errors));
+                    toastModal("프로그램 수정을 실패하였습니다.");
+                }
+            });
+        }
+
+        // 프로그램 추가
+        function saveProgram() {
+
+            let addFormData = new FormData();
+
+            let addCompanySeq = $("#addCompanyList").val();
+            let addTitle = $("#addTitle").val();
+            let addScript = $("#addScript").val();
+
+            let strTheme = "";
+            $(".chkAddTheme").each(function(){
+                if($(this).prop("checked")) {
+                    strTheme += $(this).val() + "|";
+                }
+            });
+            let addTheme = strTheme.substring(0, strTheme.length-1);
+
+            let strType = "";
+            $(".chkAddType").each(function(){
+                if($(this).prop("checked")) {
+                    strType += $(this).val() + "|";
+                }
+            });
+            let addType = strType.substring(0, strType.length-1);
+
+            let strTarget = "";
+            $(".chkAddTarget").each(function(){
+               if($(this).prop("checked")) {
+                    strTarget += $(this).val() + "|";
+               }
+            });
+            let addTarget = strTarget.substring(0, strTarget.length-1);
+
+            let addArea = $("#addArea").val();
+            let addEduTime = $("#addEduTime").val();
+            let addOneTime  = $("#addOneTime").val();
+            let addMemberCount = $("#addMemberCount").val();
+            let addSchedule="";
+            $(".addSchedule").each(function(){
+                if($(this).val() != "") {
+                    addSchedule += $(this).val() + ", ";
+                }
+            });
+            addSchedule = addSchedule.substring(0, addSchedule.length-2);
+            let addMethod = $("#addMethod").val();
+            let addCostType = $("#addCostType").val();
+            if(addCostType==0) {
+                addCostType = 0;
+            }else {
+                addCostType = 1;
+            }
+            let addCost = $("#addCost").val();
+
+            let addTelType = $("#addTelType").val();
+            let addTel = $("#addTel").val();
+
+
+            // console.log(">>"+saveFile1);
+
+            if(addCompanySeq=="" || addCompanySeq==null) {
+                toastModal("단체명을 선택해주세요");
+                return;
+            }
+            if(addTitle=="") {
+                toastModal("프로그램명을 입력해주세요");
+                return;
+            }
+            if(addScript=="") {
+                toastModal("프로그램 설명을 입력해주세요");
+                return;
+            }
+            if(addTheme=="") {
+                toastModal("테마를 선택해주세요");
+                return;
+            }
+            if(addType=="") {
+                toastModal("유형을 선택해주세요");
+                return;
+            }
+            if(addTarget=="") {
+                toastModal("교육대상을 선택해주세요");
+                return;
+            }
+            if(addArea=="") {
+                toastModal("교육장소를 입력해주세요");
+                return;
+            }
+            if(addEduTime=="") {
+                toastModal("교육시간을 입력해주세요");
+                return;
+            }
+            if(addOneTime=="") {
+                toastModal("1회 교육시간을 입력해주세요");
+                return;
+            }
+            if(addMemberCount=="") {
+                toastModal("1회 교육인원을 입력해주세요");
+                return;
+            }
+            if(addSchedule=="") {
+                toastModal("교육일정을 입력해주세요");
+                return;
+            }
+            if(addMethod=="") {
+                toastModal("교육방법을 입력해주세요");
+                return;
+            }
+            if(addCostType==null) {
+                toastModal("참가비용 유형을 선택해주세요");
+                return;
+            }
+            if(addCost=="") {
+                toastModal("참가비용을 입력해주세요");
+                return;
+            }
+            if(addTel=="") {
+                toastModal("문의처를 입력해주세요")
+                return;
+            }
+            if(saveFile1==null || saveFile1==undefined) {
+                toastModal("대표이미지를 등록해주세요");
+                return
+            }else {
+                addFormData.append("img1", saveFile1);
+            }
+
+            addFormData.append("companySeq", addCompanySeq);
+            addFormData.append("title", addTitle);
+            addFormData.append("script", addScript);
+            addFormData.append("target", addTarget);
+            addFormData.append("theme", addTheme);
+            addFormData.append("type", addType);
+            addFormData.append("area", addArea);
+            addFormData.append("eduTime", addEduTime);
+            addFormData.append("oneTime", addOneTime);
+            addFormData.append("memberCount", addMemberCount);
+            addFormData.append("schedule", addSchedule);
+            addFormData.append("method", addMethod);
+            addFormData.append("cost", addCost);
+            addFormData.append("costType", addCostType);
+            addFormData.append("tel", addTel);
+            addFormData.append("telType", addTelType);
+            if(saveFile2!=undefined&&saveFile2!=null) {
+                addFormData.append("img2", saveFile2);
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/admin/api/program/save",
+                data: addFormData,
+                processData: false,
+                contentType: false,
+                success: function () {
+                    toastModal("프로그램을 추가했습니다.");
+                    setTimeout(() => location.reload(), 1000);
+                },
+                error: function (errors) {
+                    console.log("error = " + JSON.stringify(errors));
+                    toastModal("프로그램 추가를 실패하였습니다.");
+                }
+            });
+        }
+
+        // (추가) 참가비용 유형 변경 시
+        $("#addCostType").on("change", function(){
+            if($(this).val()==0) {
+                $("#addCost").val("무료");
+            }else {
+                $("#addCost").val("");
+            }
+        });
+
+        // (추가) 단체명 선택 시 단체 연락처 자동 입력
+        $("#addCompanyList").on("change", function(){
+            let companyTel = $("#addCompanyList .optCompany:selected").attr("tel");
+            if($("#addTelType").val()==0) {
+                $("#addTel").val(companyTel);
+            }else {
+                $("#addTel").val("");
+            }
+        });
+
+        // (추가) 문의처 유형 변경 시
+        $("#addTelType").on("change", function(){
+            let companyTel = $("#addCompanyList .optCompany:selected").attr("tel");
+            if($(this).val()==0){
+                if($("#addCompanyList").val()!=""&&$("#addCompanyList").val()!=null){
+                    $("#addTel").val(companyTel);
+                }else {
+                    toastModal("단체명을 선택해주세요");
+                    $("#addTel").val("");
+                }
+            }else {
+                $("#addTel").val("");
+            }
+        });
+
+        // 썸네일이미지1 등록 클릭 시
+        $("#addFile1").on("change", function() {
+            saveFile1 =$("#addFile1")[0].files[0];
+            let oFile = $(this)[0].files;
+            let url;
+
+            if(oFile.length<1) { // 첨부파일을 선택했다가 취소 할 경우
+                $("#addBeforeThumb1").removeClass("d-none");
+                $("#addAfterThumb1").addClass("d-none");
+            }else {
+                url=URL.createObjectURL(saveFile1);
+                $("#addBeforeThumb1").addClass("d-none");
+                $("#addAfterThumb1").removeClass("d-none");
+                $("#thumbImage1").attr("src", url);
+            }
+        });
+
+        // 썸네일이미지2 등록 클릭 시
+        $("#addFile2").on("change", function() {
+            let firstFileSrc = $("#thumbImage1").attr("src");
+            if(firstFileSrc==null || firstFileSrc==undefined || firstFileSrc=="") {
+                toastModal("1번 썸네일 이미지 먼저 등록해주세요");
+                $("#addFile2").val("");
+                return;
+            }
+            saveFile2 =$("#addFile2")[0].files[0];
+            let oFile = $(this)[0].files;
+            let url;
+            if(oFile.length<1) { // 첨부파일을 선택했다가 취소 할 경우
+                $("#addBeforeThumb2").removeClass("d-none");
+                $("#addAfterThumb2").addClass("d-none");
+            }else {
+                url=URL.createObjectURL(saveFile2);
+                $("#addBeforeThumb2").addClass("d-none");
+                $("#addAfterThumb2").removeClass("d-none");
+                $("#thumbImage2").attr("src", url);
+            }
+        });
+
+        // 배경클릭 시 사라지기
+        $('.modal-back').on('click', function(){
+            $("#addFile1").val("");
+            $("#addBeforeThumb1").removeClass("d-none");
+            $("#addAfterThumb1").addClass("d-none");
+            saveFile1=null;
+            $("#addFile2").val("");
+            $("#addBeforeThumb2").removeClass("d-none");
+            $("#addAfterThumb2").addClass("d-none");
+            saveFile2=null;
+
+            $("#editFile1").val("");
+            $("#editBeforeThumb1").removeClass("d-none");
+            $("#editAfterThumb1").addClass("d-none");
+            editFile1=null;
+            $("#editFile2").val("");
+            $("#editBeforeThumb2").removeClass("d-none");
+            $("#editAfterThumb2").addClass("d-none");
+            editFile2=null;
+        });
+
+        //닫기버튼 선택 시 사라지기
+        $('.close').on('click', function(){
+            $("#addFile1").val("");
+            $("#addBeforeThumb1").removeClass("d-none");
+            $("#addAfterThumb1").addClass("d-none");
+            saveFile1=null;
+            $("#addFile2").val("");
+            $("#addBeforeThumb2").removeClass("d-none");
+            $("#addAfterThumb2").addClass("d-none");
+            saveFile2=null;
+
+            $("#editFile1").val("");
+            $("#editBeforeThumb1").removeClass("d-none");
+            $("#editAfterThumb1").addClass("d-none");
+            editFile1=null;
+            $("#editFile2").val("");
+            $("#editBeforeThumb2").removeClass("d-none");
+            $("#editAfterThumb2").addClass("d-none");
+            editFile2=null;
+        });
+
+        // 체크박스 기능
+        $("#chkAll").on("click", function(){
+            var chkNum=$(".chk").length;
+            var checkedNum=$(".chk:checked").length;
+
+            if(chkNum!=checkedNum){
+                $(".chk").each(function(){
+                    $(this).prop("checked", true);
+                });
+            }else{
+                $(".chk").each(function(){
+                    $(this).prop("checked", false);
+                });
+            }
+        });
+
+        $(".program-list-tbody").on("click", ".chk", function(){
+            var chkNum=$(".chk").length;
+            var checkedNum=$(".chk:checked").length;
+
+            if(chkNum==checkedNum){
+                $("#chkAll").prop("checked", true);
+            }else{
+                $("#chkAll").prop("checked", false);
+            }
+        });
+    </script>
+    <script src="/js/slide.js"></script>
+    <!--script END-->
+</div>
+</html>

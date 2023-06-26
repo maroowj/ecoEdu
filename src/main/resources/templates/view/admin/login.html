@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin_login}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style layout:fragment="css"></style>
+
+<div layout:fragment="content">
+    <main role="main" class="main-content">
+        <div class="login-content">
+            <div class="login-wrap">
+                <div class="left-area logo">
+                    <img src="/images/logo_vertical_type.png"/>
+                </div>
+
+                <div class="right-area">
+                    <div class="login-area d-table">
+                        <div class="input-area">
+                            <div class="ma-b-10px">
+                                <input class="id" name="adm-id" id="adm-id" type="text" placeholder="아이디를 입력하세요." onkeyup="this.value=this.value.replace(/[^a-z0-9!@#$%^&*_-]/gi,'');"/>
+                            </div>
+                            <div>
+                                <input class="password" name="adm-pw" id="adm-pw" type="password" placeholder="비밀번호를 입력하세요."/>
+                            </div>
+                        </div>
+
+                        <div class="submit-area">
+                            <input class="btn-login bg-green" id="submitBtn" type="button" value="로그인"/>
+                        </div>
+                    </div>
+
+                    <div class="check-area d-table ma-t-20px">
+                        <input id="autoLogin" type="checkbox"><label for="autoLogin">자동 로그인</label>
+                        <input id="saveId" type="checkbox"><label for="saveId">아이디 저장</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!--script START-->
+    <script th:inline="javascript">
+
+        $(function(){
+            let savedId=getCookie("savedId");
+            let LoginKeep=getCookie("LoginKeep");
+
+            if( savedId == null ){
+                $("#saveId").attr("checked", false);
+            }else{
+                $("#adm-id").val(savedId);
+                $("#saveId").attr("checked", true);
+            }
+
+            if( LoginKeep == null ) $("#autoLogin").attr("checked", false);
+            else $("#autoLogin").attr("checked", true);
+        });
+
+        let isKeep = "false";
+        let isSave = "false";
+        $("#adm-id").on("keydown",function(e){
+            if(e.keyCode==13){
+                $("#adm-pw").focus();
+            }
+        });
+
+        $("#adm-pw").on("keydown",function(e){
+            if(e.keyCode==13){
+                $("#submitBtn").click();
+            }
+        });
+
+        $("#submitBtn").on("click", function(e) {
+            e.preventDefault();
+
+            fLogin();
+        });
+
+        function fLogin() {
+            if($("#autoLogin").prop("checked")) {
+                isKeep = "true";
+            }else {
+                isKeep = "false";
+            }
+
+            if($("#saveId").prop("checked")) {
+                isSave = "true";
+            }else {
+                isSave = "false";
+            }
+
+            var id = $("#adm-id").val();
+            var pw = $("#adm-pw").val();
+
+            if (id == "" || pw == "") {
+                alert("아이디와 비밀번호를 입력하세요!");
+                return;
+            }
+            $.ajax({
+                type : "POST",
+                url : "/admin/login",
+                contentType : "application/json",
+
+                data : JSON.stringify({
+                    "id" : id,
+                    "password" : pw,
+                    "isKeep": isKeep,
+                    "isSave": isSave
+                }),
+                success : function(data) {
+                    location.href="/admin";
+                },
+                error : function(xhr, status, error) {
+                    toastModal("로그인에 실패했습니다.\n아이디와 비밀번호를 확인해주세요.", 1000);
+                    console.log(error);
+                }
+            });
+        }
+
+        function getCookie(cookie_name) {
+            let x, y;
+            let val = document.cookie.split(';');
+
+            for (let i = 0; i < val.length; i++) {
+                x = val[i].substr(0, val[i].indexOf('='));
+                y = val[i].substr(val[i].indexOf('=') + 1);
+                x = x.replace(/^\s+|\s+$/g, ''); // 앞과 뒤의 공백 제거하기
+
+                if (x == cookie_name) {
+                    return unescape(y); // unescape로 디코딩 후 값 리턴
+                }
+            }
+        }
+    </script>
+    <!--script END-->
+</div>
+</html>

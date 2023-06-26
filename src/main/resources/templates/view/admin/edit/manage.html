@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin_layout}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style layout:fragment="css"></style>
+
+<div layout:fragment="content">
+    <main role="main" class="main-content main-content-edit-manage">
+
+        <!-- 컨텐츠 영역 -->
+        <div class="content-wrap">
+            <div class="search-wrap">
+                <div class="select-area right-bar-green18" style="margin-right: 10px;">
+                    <select id="searchRequestType" style=" width:150px;">
+                        <option value="" selected hidden>요청</option>
+                        <option value="">전체</option>
+                        <option value="1">단체 변경</option>
+                        <option value="0">프로그램 변경</option>
+                    </select>
+                </div>
+<!--                <div class="select-area right-bar-green18">-->
+<!--                    <select class="">-->
+<!--                        <option value="">단체명</option>-->
+<!--                        <option value="">프로그램명</option>-->
+<!--                    </select>-->
+<!--                </div>-->
+                <div class="search-area">
+                    <input type="text" id="searchKeyword" placeholder="검색어 입력" style="width:350px;"/>
+                    <i id="searchBtn" class="icon-green-search"></i>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <div class="top-wrap">
+                    <div class="title-wrap">
+                        <p class="title right-bar32">수정요청 관리</p>
+
+                        <select id="size" class="size">
+                            <option value="10" selected>10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+
+                    <div class="btn-wrap">
+                        <button id="btnComplete" class="btn-h44r medium bg-green font-white" state="처리완료">처리완료</button>
+                        <button id="btnConfirm" class="btn-h44r medium bg-navy font-white">요청확인</button>
+                        <button id="btnImpossible" class="btn-h44r medium bg-gray font-white">처리불가</button>
+                    </div>
+                </div>
+
+                <div class="d-flex">
+                    <div class="category-menu-wrap non-favicon-menu-wrap">
+                        <a href="#" class="menu menu-1 actived" title="전체">
+                            <span class="menu-1 font-green bold menu-span">전체</span>
+                            <arrow class="icon-green-arrow-left"></arrow>
+                        </a>
+                        <a href="#" class="menu menu-2" title="미확인">
+                            <span class="menu-2 font-gray bold menu-span">미확인</span>
+                        </a>
+                        <a href="#" class="menu menu-3" title="요청확인">
+                            <span class="menu-3 font-gray bold menu-span">요청확인</span>
+                        </a>
+                        <a href="#" class="menu menu-4" title="처리완료">
+                            <span class="menu-4 font-gray bold menu-span">처리완료</span>
+                        </a>
+                        <a href="#" class="menu menu-5" title="처리불가">
+                            <span class="menu-4 font-gray bold menu-span">처리불가</span>
+                        </a>
+                    </div>
+
+                    <div class="table-wrap edit-manage-list po-r">
+                        <div class="table-list">
+                            <table class="auto" style="table-layout: fixed; width: 100%;">
+                                <colgroup>
+                                    <col style="width: 6%">
+                                    <col style="width: 7%">
+                                    <col style="width: 12%">
+                                    <col style="width: 12%">
+                                    <col style="width: 21%">
+                                    <col style="width: 28%">
+                                    <col style="width: 14%">
+                                </colgroup>
+
+                                <thead>
+                                <tr class="title">
+                                    <td class="bold font-gray t-center"><input id="chkAll" type="checkbox"/><label for="chkAll"></label></td>
+                                    <td class="bold font-gray t-center">순번</td>
+                                    <td class="bold font-gray t-center">처리여부</td>
+                                    <td class="bold font-gray t-center">요청</td>
+                                    <td class="bold font-gray t-center">단체명</td>
+                                    <td class="bold font-gray t-center">프로그램명</td>
+                                    <td class="bold font-gray t-center">날짜</td>
+                                </tr>
+                                </thead>
+
+                                <tbody class="requestList"></tbody>
+                            </table>
+
+                            <!-- 페이지네이션 -->
+                            <div class="pagination">
+                                <a><i id="pre" class="icon-green-arrow-left"></i></a>
+                                <a class="active num">1</a>
+                                <a class="num">2</a>
+                                <a class="num">3</a>
+                                <a class="num">4</a>
+                                <a class="num">5</a>
+                                <a class="num">6</a>
+                                <a class="num">7</a>
+                                <a class="num">8</a>
+                                <a class="num">9</a>
+                                <a class="num">10</a>
+                                <a class=""><i id="next" class="icon-green-arrow-left"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- 모달 START -->
+
+        <!-- 프로그램 정보수정 요청내역 -->
+        <div id="viewModal2" class="modal d-none">
+            <div class="modal-wrap w100pro" style="width: 920px;">
+                <div class="modal-header">정보수정 요청 내역</div>
+                <div class="modal-body">
+                    <div class="modal-content">
+                        <p class="modal-title">프로그램 변경</p>
+                        <div class="part">
+                        <textarea id="proRequest" class="written textarea-gray" disabled>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                        </textarea>
+                        </div>
+
+                        <div class="part">
+                            <div><span class="favicon bold">단체명</span><span class="groupName" id="proGroupName">저어새네트워크</span></div>
+                            <div><span class="favicon bold">프로그램명</span><span class="program" id="proTitle">찾아가는 저어새 자연학교</span></div>
+                            <div><span class="favicon bold">작성자</span><span class="writer" id="proWriter">이미래</span><span class="level" id="proLevel">과장</span></div>
+                            <div><span class="favicon bold">연락처</span><span class="tel" id="proTel">010-0000-000</span></div>
+                            <div><span class="favicon bold">이메일</span><span class="email" id="proEmail">email@gamil.com</span></div>
+                        </div>
+
+                        <div class="part">
+                            <ul class="d-flex">
+                                <li>현재상태</li>
+                                <li>
+                                    <select id="state" class="select-gray">
+                                        <option value="" selected hidden>현재상태 선택</option>
+                                        <option value="미확인">미확인</option>
+                                        <option value="처리완료">처리완료</option>
+                                        <option value="요청처리">요청처리</option>
+                                        <option value="처리불가">처리불가</option>
+                                    </select>
+                                </li>
+                            </ul>
+                            <ul id="impossibleReasonProgram" class="d-flex">
+                                <li>불가사유</li>
+                                <li>
+                                    <select id="selectImpossible" class="select-gray">
+                                        <option selected hidden value="">불가사유 선택</option>
+                                        <option value="요청자 연락안됨">요청자 연락안됨</option>
+                                        <option value="허위기재">허위기재</option>
+                                        <option value="스팸">스팸</option>
+                                        <option value="기타">기타(직접입력)</option>
+                                    </select>
+                                    <textarea id="proDetail" class="ma-t-8px textarea-gray" placeholder="불가사유를 입력해주세요."></textarea>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="" class="close btn-h60r-light-green ma-r-20px" style="width: 180px;">닫기</button>
+                    <button id="savePro" class="save btn-h60r-green" style="width: 180px;">저장</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+
+
+        <!-- 수정요청 정보수정 요청내역 -->
+        <div id="viewModal" class="modal d-none">
+            <div class="modal-wrap w100pro" style="width: 920px;">
+                <div class="modal-header">정보수정 요청 내역</div>
+                <div class="modal-body">
+                    <div class="modal-content">
+                        <p class="modal-title">단체 변경</p>
+                        <div class="part">
+                        <textarea id="request" class="written textarea-gray" disabled>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                            수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기수정요청 내용 불러오기<br>
+                        </textarea>
+                        </div>
+
+                        <div class="part">
+                            <div><span class="favicon bold">단체명</span><span class="groupName">저어새네트워크</span></div>
+                            <div><span class="favicon bold">작성자</span><span class="writer">이미래</span><span class="level">과장</span></div>
+                            <div><span class="favicon bold">연락처</span><span class="tel">010-0000-000</span></div>
+                            <div><span class="favicon bold">이메일</span><span class="email">email@gamil.com</span></div>
+                        </div>
+
+                        <div class="part">
+                            <ul class="d-flex">
+                                <li>현재상태</li>
+                                <li>
+                                    <select id="stateSelect" class="select-status select-gray">
+                                        <option selected hidden value="">현재상태 선택</option>
+                                        <option value="미확인">미확인</option>
+                                        <option value="요청확인">요청확인</option>
+                                        <option value="처리완료">처리완료</option>
+                                        <option value="처리불가">처리불가</option>
+                                    </select>
+                                </li>
+                            </ul>
+                            <ul id="impossibleReasonGroup" class="d-none">
+                                <li>불가사유</li>
+                                <li>
+                                    <select id="impossibleSelect" class="select-status select-gray">
+                                        <option selected hidden value="">불가사유 선택</option>
+                                        <option value="요청자 연락안됨">요청자 연락안됨</option>
+                                        <option value="허위기재">허위기재</option>
+                                        <option value="스팸">스팸</option>
+                                        <option value="기타">기타(직접입력)</option>
+                                    </select>
+                                    <textarea id="detail" class="ma-t-8px textarea-gray" placeholder="불가사유를 입력해주세요." disabled></textarea>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="" class="close btn-h60r-light-green ma-r-20px" style="width: 180px;">닫기</button>
+                    <button id="saveGroup" class="save btn-h60r-green" style="width: 180px;">저장</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+
+
+        <!-- 요청내역 저장 -->
+        <div id="saveModal" class="modal d-none">
+            <div class="modal-wrap w100pro" style="width: 580px;">
+                <div class="modal-header">요청내역 저장</div>
+                <div class="modal-body">
+                    <div class="modal-content t-center">
+                        해당 요청내역을 저장하시겠습니까?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="" class="close btn-h60r-light-green ma-r-20px" style="width: 180px;">닫기</button>
+                    <button id="" class="save btn-h60r-green" style="width: 180px;">저장</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+
+
+        <!-- 요청내역 처리완료 -->
+        <div id="completeModal" class="modal d-none">
+            <div class="modal-wrap w100pro" style="width: 580px;">
+                <div class="modal-header">요청내역 처리완료</div>
+                <div class="modal-body">
+                    <div class="modal-content t-center">
+                        해당 요청내역을 완료처리 하시겠습니까?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="" class="close btn-h60r-light-green ma-r-20px" style="width: 180px;">닫기</button>
+                    <button id="finish" class="complete btn-h60r-green" style="width: 180px;">처리완료</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+
+
+        <!-- 요청내역 확인 -->
+        <div id="confirmModal" class="modal d-none">
+            <div class="modal-wrap w100pro" style="width: 580px;">
+                <div class="modal-header">요청내역 확인</div>
+                <div class="modal-body">
+                    <div class="modal-content t-center">
+                        해당 요청내역을 확인처리 하시겠습니까?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="" class="close btn-h60r-light-green ma-r-20px" style="width: 180px;">닫기</button>
+                    <button id="confirm" class="confirm btn-h60r-green" style="width: 180px;">요청확인</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+
+
+        <!-- 요청내역 처리불가 -->
+        <div id="impossibleModal" class="modal d-none" style="/*display:flex*/">
+            <div class="modal-wrap w100pro" style="width: 820px;">
+                <div class="modal-header">요청내역 처리불가</div>
+                <div class="modal-body">
+                    <div class="modal-content t-center">
+                        <ul class="d-flex">
+                            <li>불가사유</li>
+                            <li>
+                                <select id="modal-impossible" class="select-gray">
+                                    <option selected>요청자 연락안됨</option>
+                                    <option>허위기재</option>
+                                    <option>스팸</option>
+                                    <option value="기타">기타(직접입력)</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class="d-flex">
+                            <li>내용</li>
+                            <li><textarea id="impossibleScript" class="textarea-gray" placeholder="불가사유에 대한 설명을 입력해주세요."></textarea></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="" class="close btn-h60r-light-green ma-r-20px" style="width: 180px;">닫기</button>
+                    <button id="impossible" class="impossible btn-h60r-green" style="width: 180px;">처리불가</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+    </main>
+
+
+
+    <!--script START-->
+    <script>
+        let page=1;
+        let state;
+        let requestSeq;
+        let size=10;
+
+        $(function () {
+            requestList();
+        })
+
+        $("#size").on("change", function(){
+            requestList(state);
+        });
+
+        // 페이지 클릭 시 실행
+        $(".pagination").on("click", "a", function() {
+            page = parseInt($(this).attr("gopage"));
+            requestList(state);
+        });
+
+        // 처리 불가 ul 띄우기 (단체)
+        $("#stateSelect").on("change", function(){
+            state = $(this).val();
+            if(state=="처리불가") {
+                $("#impossibleReasonGroup").addClass("d-flex");
+                $("#impossibleReasonGroup").removeClass("d-none");
+            }else{
+                $("#impossibleReasonGroup").addClass("d-none");
+                $("#impossibleReasonGroup").removeClass("d-flex");
+            }
+        });
+        // 처리 불가 ul 띄우기 (프로그램)
+        $("#state").on("change", function(){
+            state = $(this).val();
+            if(state=="처리불가") {
+                $("#impossibleReasonProgram").addClass("d-flex");
+                $("#impossibleReasonProgram").removeClass("d-none");
+            }else{
+                $("#impossibleReasonProgram").addClass("d-none");
+                $("#impossibleReasonProgram").removeClass("d-flex");
+            }
+        });
+
+        // 불가사유 select 처리 (단체)
+        $("#impossibleSelect").on("change", function(){
+            let value = $(this).val();
+            if(value=="기타") {
+                $("#detail").prop("disabled", false);
+                $("#detail").focus();
+            }else {
+                $("#detail").prop("disabled", true);
+                $("#detail").val("");
+            }
+        });
+
+        // 불가사유 select 처리 (프로그램)
+        $("#selectImpossible").on("change", function(){
+            let value = $(this).val();
+            if(value=="기타") {
+                $("#proDetail").prop("disabled", false);
+                $("#proDetail").focus();
+            }else {
+                $("#proDetail").prop("disabled", true);
+                $("#proDetail").val("");
+            }
+        });
+
+        $("#searchKeyword").on("keydown", function(e){
+            if(e.keyCode==13) {
+                $("#searchBtn").click();
+            }
+        });
+
+        $("#searchBtn").on("click", function(){
+            requestList(state);
+        });
+
+        $("#searchRequestType").on("change", function(){
+            requestList(state);
+        });
+
+        //수정요청관리 리스트
+        function requestList(state) {
+            let requestType = $("#searchRequestType").val();
+            if(requestType=="") {
+                requestType=null;
+            }else if(requestType=="1") {
+                requestType = true;
+            }else if(requestType=="0") {
+                requestType = false;
+            }
+
+            let keyword = $("#searchKeyword").val();
+            size = $("#size").val();
+
+            $.ajax({
+                type: "GET",
+                url: "/admin/api/request/list",
+                data: {
+                    "status": status,
+                    "requestType": requestType,
+                    "keyword": keyword,
+                    "page":page-1,
+                    "size":size
+                },
+                success: function (data) {
+                    console.log(data);
+                    let listTag = "";
+                    let stateTag = "";
+                    let requestType = "";
+                    let title = "";
+                    if( data.content.length != 0 ) {
+                        data.content.forEach(function (data, index) {
+
+                            if (data.state == "미확인"){
+                                stateTag = "<td class='list-state t-center'><span class='status-gray'>" + data.state + "</span></td>"
+                            } else if (data.state == "처리불가") {
+                                stateTag = "<td class='list-state t-center'><span class='status-red'>" + data.state + "</span></td>"
+                            } else if (data.state == "요청확인") {
+                                stateTag = "<td class='list-state t-center'><span class='status-navy'>" + data.state + "</span></td>"
+                            } else if (data.state == "처리완료") {
+                                stateTag = "<td class='list-state t-center'><span class='status-green'>" + data.state + "</span></td>"
+                            }
+
+                            if (data.requestType == 1) {
+                                requestType = "단체 변경";
+                            } else if(data.requestType == 0) {
+                                requestType = "프로그램 변경";
+                            }
+
+                            if (data.title == null) {
+                                title ="-";
+                            } else {
+                                title = data.title;
+                            }
+
+                            listTag +=
+                                "<tr class='list' requestSeq='" + data.requestSeq + "' value='" + requestType + "'>" +
+                                "<td class='list-chk t-center'><input id='chk" + (index + 1) + "' type='checkbox' class='chk'><label for='chk" + (index + 1) + "'></label></td>" +
+                                "<td class='list-num t-center'>" + data.rowNum + "</td>" +
+                                stateTag +
+                                "<td class='list-request t-center'>" + requestType + "</td>" +
+                                "<td class='list-group t-center'><span class='status-green'>" + data.name + "</span></td>" +
+                                "<td class='list-program t-center'>" + title + "</td>" +
+                                "<td class='list-date t-center'>" + data.createDate.substring(0,10) + "</td>" +
+                                "</tr>";
+                        });
+                        $(".requestList").html(listTag);
+                    } else {
+                        $(".requestList").html(listTag);
+                    }
+                    fPagination(data, page);
+                },
+                error: function (errors) {
+                    console.log("errors = " + errors);
+                }
+            })
+        }
+
+        // 상태 선택 시 수정요청 리스트 조회
+        $(".category-menu-wrap").on("click", ".menu", function () {
+            page=1;
+            // css
+            $('.menu').removeClass('actived');
+            if($('.menu-span').hasClass("font-green")) {
+                $('.menu-span').removeClass("font-green");
+                $('.menu-span').addClass("font-gray");
+            }
+            $('.icon-green-arrow-left').remove()
+            let arrowTag = "<arrow class=\'icon-green-arrow-left\'></arrow>";
+            $(this).find("span").removeClass("font-gray");
+            $(this).find("span").addClass("font-green");
+            $(this).addClass("actived");
+            $(this).append(arrowTag);
+
+            // function
+            state = $(this).attr("title");
+
+            if (state === "전체") {
+                state = null;
+            }
+
+            requestList(state);
+        })
+
+        //처리완료 선택 시
+        $("#btnComplete").on("click", function () {
+            if ($(".requestList .chk:checked").length == 0) {
+                toastModal("변경할 요청사항을 선택해주세요.");
+            } else {
+                $('#completeModal').css('display', 'flex');
+            }
+        });
+        //요청확인 선택 시
+        $("#btnConfirm").on("click", function () {
+            if ($(".requestList .chk:checked").length == 0) {
+                toastModal("변경할 요청사항을 선택해주세요.");
+            } else {
+                $('#confirmModal').css('display', 'flex');
+            }
+        });
+
+        //처리 불가 모달 처리 사유 선택 시
+        $("#modal-impossible").on("change", function(){
+            let value = $(this).val();
+            if(value=="기타") {
+                $("#impossibleScript").prop("disabled", false);
+                $("#impossibleScript").focus();
+            }else {
+                $("#impossibleScript").prop("disabled", true);
+                $("#impossibleScript").val("");
+            }
+        });
+
+        //처리불가 선택 시
+        $("#btnImpossible").on("click", function () {
+            if ($(".requestList .chk:checked").length == 0) {
+                toastModal("변경할 요청사항을 선택해주세요.");
+            }else if($(".requestList .chk:checked").length > 1) {
+                toastModal("처리불가는 1개씩만 가능합니다.");
+            } else {
+                $('#impossibleModal').css('display', 'flex');
+            }
+        });
+
+        //처리완료 확인 선택 시
+        $("#finish").on("click", function () {
+            let state = "처리완료";
+            let chkRequestSeq = "";
+            let arrSeq = new Array();
+
+            $(".requestList .chk:checked").each(function () {
+                chkRequestSeq = $(this).parent().parent().attr("requestSeq");
+                arrSeq.push(chkRequestSeq);
+            });
+
+            updateState(arrSeq, state);
+        });
+
+        //요청확인 선택 시
+        $("#confirm").on("click", function () {
+            let state = "요청확인";
+            let chkRequestSeq = "";
+            let arrSeq = new Array();
+
+            $(".requestList .chk:checked").each(function () {
+                chkRequestSeq = $(this).parent().parent().attr("requestSeq");
+                arrSeq.push(chkRequestSeq);
+            });
+
+            updateState(arrSeq, state);
+        });
+
+        //처리불가 선택 시
+        $("#impossible").on("click", function () {
+            let state = "처리불가";
+            let impossible = $("#modal-impossible").val();
+            let detail=null;
+            if(impossible=="기타") {
+                detail = $("#impossibleScript").val()
+                if(detail=="") {
+                    toastModal("기타 사유를 입력하세요.");
+                    return;
+                }
+            }
+
+            let chkRequestSeq = "";
+            let arrSeq = new Array();
+
+            $(".requestList .chk:checked").each(function () {
+                chkRequestSeq = $(this).parent().parent().attr("requestSeq");
+                arrSeq.push(chkRequestSeq);
+            });
+
+            updateState(arrSeq, state, impossible, detail);
+        });
+
+        //상태변경 버튼 클릭 시 작동
+        function updateState(requestSeq, state, impossible, detail) {
+            $.ajax({
+                type: "GET",
+                url: "/admin/api/request/state",
+                data: {
+                    "requestSeq": requestSeq,
+                    "state": state,
+                    "impossible": impossible,
+                    "detail":detail
+                },
+                success: function () {
+                    toastModal("수정요청 상태를 변경하였습니다.");
+                    setTimeout(() => location.reload(), 1000);
+                }
+            })
+        }
+
+        // 상세내역 버튼 클릭 시
+        $(".requestList").on("click", ".list td:not(:first-child)", function() {
+            requestSeq = $(this).parent().attr("requestSeq");
+            let type = $(this).parent().attr("value");
+
+            if (type == "단체 변경") {
+                $('#viewModal').css('display', 'flex');
+                groupDetail(requestSeq);
+            } else if (type == "프로그램 변경") {
+                $('#viewModal2').css('display', 'flex');
+                programDetail(requestSeq);
+            }
+        });
+
+        // 단체 수정요청 상세내역 조회
+        function groupDetail() {
+            $.ajax({
+                type: "GET",
+                url: "/admin/api/request/detail",
+                data: {
+                    "requestSeq": requestSeq
+                },
+                success: function (data) {
+                    console.log(data);
+                    state=data.state;
+                    $("#request").html(data.request);
+                    $(".groupName").html(data.name);
+                    $(".writer").html(data.writer);
+                    $(".level").html(data.grade);
+                    $(".tel").html(data.phone);
+                    $(".email").html(data.email);
+                    $("#stateSelect").val(data.state);
+
+                    if (data.state == "처리불가") {
+                        $("#impossibleReasonGroup").addClass("d-flex");
+                        $("#impossibleReasonGroup").removeClass("d-none");
+                        $("#impossibleSelect").val(data.impossible);
+                        $("#detail").val(data.detail);
+                    }else {
+                        $("#impossibleReasonGroup").addClass("d-none");
+                        $("#impossibleReasonGroup").removeClass("d-flex");
+                    }
+                }
+            });
+
+            // 단체 수정요청 상세 수정
+            $("#saveGroup").on("click", function () {
+                state = $("#stateSelect").val();
+                let impossible = $("#impossibleSelect").val();
+                let detail = $("#detail").val();
+
+                if(state=="처리불가"){
+                    if(impossible==null || impossible=="") {
+                        toastModal("불가사유를 입력해주세요");
+                        return;
+                    }else if(impossible=="기타"){
+                        if(detail=="") {
+                            toastModal("불가사유를 입력해주세요");
+                            return;
+                        }
+                    }
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/api/request/update",
+                    data: JSON.stringify({
+                        "requestSeq": requestSeq,
+                        "state": state,
+                        "impossible": impossible,
+                        "detail": detail
+                    }),
+                    contentType: "application/json",
+                    success: function () {
+                        toastModal("수정요청을 변경하였습니다.");
+                        setTimeout(() => location.reload(), 1000);
+                    },
+                    error: function (errors) {
+                        console.log("errors = " + errors);
+                    }
+                })
+            });
+        }
+
+        // 프로그램 수정요청 상세내역 조회
+        function programDetail() {
+            $.ajax({
+                type: "GET",
+                url: "/admin/api/request/detail",
+                data: {
+                    "requestSeq": requestSeq
+                },
+                success: function (data) {
+                    console.log(data);
+                    state = data.state
+                    $("#proRequest").html(data.request);
+                    $("#proGroupName").html(data.name);
+                    $("#proTitle").html(data.title);
+                    $("#proWriter").html(data.writer);
+                    $("#proLevel").html(data.grade);
+                    $("#proTel").html(data.phone);
+                    $("#proEmail").html(data.email);
+                    $("#state").val(data.state);
+
+                    if (data.state == "처리불가") {
+                        $("#impossibleReasonProgram").addClass("d-flex");
+                        $("#impossibleReasonProgram").removeClass("d-none");
+                        $("#selectImpossible").val(data.impossible);
+                        $("#proDetail").val(data.detail);
+                    }else {
+                        $("#impossibleReasonProgram").addClass("d-none");
+                        $("#impossibleReasonProgram").removeClass("d-flex");
+                    }
+                }
+            });
+
+            // 프로그램 수정요청 상세 수정
+            $("#savePro").on("click", function () {
+                state = $("#state").val();
+                let impossible = $("#selectImpossible").val();
+                let detail = $("#proDetail").val();
+
+
+                if(state=="처리불가"){
+                    if(impossible==null || impossible=="") {
+                        toastModal("불가사유를 입력해주세요");
+                        return;
+                    }else if(impossible=="기타"){
+                        if(detail=="") {
+                            toastModal("불가사유를 입력해주세요");
+                            return;
+                        }
+                    }
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/api/request/update",
+                    data: JSON.stringify({
+                        "requestSeq": requestSeq,
+                        "state": state,
+                        "impossible": impossible,
+                        "detail": detail
+                    }),
+                    contentType: "application/json",
+                    success: function () {
+                        toastModal("수정요청을 변경하였습니다.");
+                        setTimeout(() => location.reload(), 1000);
+                    },
+                    error: function (errors) {
+                        console.log("errors = " + errors);
+                    }
+                })
+            });
+        }
+
+        //수정요청 내용 변경
+        function requestInsert() {
+
+        }
+
+        // 체크박스 기능
+        $("#chkAll").on("click", function(){
+            var chkNum=$(".chk").length;
+            var checkedNum=$(".chk:checked").length;
+
+            if(chkNum!=checkedNum){
+                $(".chk").each(function(){
+                    $(this).prop("checked", true);
+                });
+            }else{
+                $(".chk").each(function(){
+                    $(this).prop("checked", false);
+                });
+            }
+        });
+
+        $(".requestList").on("click", ".chk", function(){
+            var chkNum=$(".chk").length;
+            var checkedNum=$(".chk:checked").length;
+
+            if(chkNum==checkedNum){
+                $("#chkAll").prop("checked", true);
+            }else{
+                $("#chkAll").prop("checked", false);
+            }
+        });
+
+        //프로그램 상세내역 modal 확인을 위한 임시 스크립트 처리
+        //단체 정보수정 요청내역
+        $('.table-list tr.list:nth-child(1) td:not(:first-child)').click(function(){
+            $('#viewModal').css('display', 'flex');
+        });
+        //프로그램 정보수정 요청내역
+        $('.table-list tr.list:nth-child(2) td:not(:first-child)').click(function(){
+            $('#viewModal2').css('display', 'flex');
+        });
+    </script>
+    <!--script END-->
+</div>
+</html>

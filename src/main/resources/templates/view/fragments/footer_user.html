@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<style th:fragment="css"></style>
+
+<th:block th:fragment="footerFragment">
+
+    <div class="footer-wrap">
+        <div class="menu-area">
+            <ul>
+                <li>이용약관</li>
+                <li>개인정보취급방침</li>
+            </ul>
+        </div>
+        <div class="info-area">
+            <img class="logo auto" src="/images/logo_horizontal_type.png"/>
+            <ul>
+                <li><span>주소</span>인천시 미추홀구 매소홀로 290번길7, 학익동 736</li>
+                <li><span>대표번호</span>032-212-5300</li>
+                <li><span>팩스</span>032-212-2002</li>
+                <li><span>이메일</span>ieec5300@naver.com</li>
+                <li class="copyright">COPYRIGHT ⓒ 2022 인천환경교육센터. All Rights Reserved.</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!--이용약관-->
+    <div id="termsOfService" class="modal d-none" style="/*display: flex*/">
+        <div class="modal-wrap w100pro" style="">
+            <div class="modal-header">
+                <p>이용약관</p>
+                <div class="m-title-wrap">
+                    <div class="title-area"><i class="pre"></i><p class="m-title">이용약관</p></div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-content">
+                    <p class="content-title-big">제 1 장 총칙</p>
+                    <p class="content-title-small">제 1 조 (목적)</p>
+                    <p class="content-text">본 약관은 인천광역시환경교육센터(이하“센터”)가 운영하는 웹 사이트 (http://www.incheoneec.or.kr)의 제반 서비스의 이용조건 및 절차에 관한 사항 및 기타 필요한 사항을 규정함을 목적으로 한다.</p>
+                    <p class="content-title-small">제 2 조 (용어의 정의)</p>
+                    <p class="content-text">본 약관에서 사용하는 용어는 다음과 같이 정의한다.</p>
+                    <p class="content-text">①회원 : 기본 회원 정보를 입력하고 센터와 서비스 이용동의서를 동의하여 아이디를 부여받은 개인 및 단체</p>
+                    <p class="content-text">②아이디(ID) : 회원식별과 회원의 서비스 이용을 위해 회원이 선택하고 센터가 승인하는 문자와 숫자의 조합</p>
+                    <p class="content-text">③비밀번호(Password) : 회원이 통신상의 자신의 비밀을 보호하기 위해 선택한 문자와 숫자의 조합</p>
+                    <p class="content-text">④해지 : 센터 또는 회원에 의한 이용동의 기간의 종료</p>
+                    <p class="content-title-small">제 3 조 (약관의 공시 및 효력과 변경)</p>
+                    <p class="content-text">①본 약관은 회원가입 화면에 게시하여 공시하며 센터는 사정변경 및 영업상 중요한 사유가 있을 경우 약관을 변경할 수 있으며 변경된 약관은 공지사항을 통해 공시한다</p>
+                    <p class="content-text">②본 약관 및 차후 센터 사정에 따라 변경된 약관은 이용자에게 공시함으로써 효력을 발생한다.</p>
+                    <p class="content-title-small">제 4 조 (약관 외 준칙)</p>
+                    <p class="content-text">본 약관에 명시되지 않은 사항은 전기통신기본법, 전기통신사업법, 정보통신촉진법, ‘전자상거래등에서의 소비자 보호에 관한 법률’, ‘약관의 규제에관한법률’, ‘전자거래기본법’, ‘전자서명법’, ‘정보통신망 이용촉진등에 관한 법률’, ‘소비자보호법’ 등 기타 관계 법령에 규정되어 있을 경우 그 규정을 따르도록 한다.</p>
+                    <p class="content-title-big">제 2 장 이용신청</p>
+                    <p class="content-title-small">제 5 조 (이용신청)</p>
+                    <p class="content-text">①이용신청자가 회원가입 안내에서 본 약관과 개인정보보호정책에 동의하고 등록절차(센터의 소정 양식의 가입 신청서 작성)를 거쳐 '확인' 버튼을 누르면 이용신청을 할 수 있다.</p>
+                    <p class="content-text">②이용신청자는 반드시 실명과 실제 정보를 사용해야 하며 1개의 생년월일 및 이메일에 대하여 1건의 이용신청을 할 수 있다.</p>
+                    <p class="content-text">③실명이나 실제 정보를 입력하지 않은 이용자는 법적인 보호를 받을 수 없으며, 서비스 이용에 제한을 받을 수 있다.</p>
+                    <p class="content-title-small">제 6 조 (이용신청의 승낙)</p>
+                    <p class="content-text">①센터는 제5조에 따른 이용신청자에 대하여 제2항 및 제3항의 경우를 예외로 하여 서비스 이용을 승낙한다.</p>
+                    <p class="content-text">②센터는 아래 사항에 해당하는 경우에 그 제한사유가 해소될 때까지 승낙을 유보할 수 있다.</p>
+                    <p class="content-text">가. 서비스 관련 설비에 여유가 없는 경우</p>
+                    <p class="content-text">나. 기술상 지장이 있는 경우</p>
+                    <p class="content-text">다. 기타 센터 사정상 필요하다고 인정되는 경우</p>
+                    <p class="content-text">③센터는 아래 사항에 해당하는 경우에 승낙을 하지 않을 수 있다.</p>
+                    <p class="content-text">가. 다른 사람의 명의를 사용하여 신청한 경우</p>
+                    <p class="content-text">나. 이용자 정보를 허위로 기재하여 신청한 경우</p>
+                    <p class="content-text">다. 사회의 안녕질서 또는 미풍양속을 저해할 목적으로 신청한 경우</p>
+                    <p class="content-text">라. 기타 센터가 정한 이용신청 요건이 미비한 경우</p>
+                    <p class="content-title-big">제 3 장 계약 당사자의 의무</p>
+                    <p class="content-title-small">제 7 조 (센터의 의무)</p>
+                    <p class="content-text">①센터는 사이트를 안정적이고 지속적으로 운영할 의무가 있다.</p>
+                    <p class="content-text">②센터는 이용자로부터 제기되는 의견이나 불만이 정당하다고 인정될 경우에는 즉시 처리해야 한다. 단, 즉시 처리가 곤란한 경우에는 이용자에게 그 사유와 처리일정을 공지사항 또는 전자우편을 통해 통보해야 한다.</p>
+                    <p class="content-text">③제1항의 경우 수사상의 목적으로 관계기관 및 정보통신윤리위원회의 요청이 있거나 영장 제시가 있는 경우, 기타 관계 법령에 의한 경우는 예외로 한다.</p>
+                    <p class="content-title-small">제 8 조 (이용자의 의무)</p>
+                    <p class="content-text">①이용자는 본 약관 및 센터의 공지사항, 사이트 이용안내 등을 숙지하고 준수해야 하며 기타 센터의 업무에 방해되는 행위를 해서는 안된다.</p>
+                    <p class="content-text">②이용자는 센터의 사전 승인 없이 본 사이트를 이용해 어떠한 영리행위도 할 수 없다.</p>
+                    <p class="content-text">③이용자는 본 사이트를 통해 얻는 정보를 센터의 사전 승낙 없이 복사, 복제, 변경, 번역, 출판, 방송 및 기타의 방법으로 사용하거나 이를 타인에게 제공할 수 없다.</p>
+                    <p class="content-title-big">제 4 장 서비스의 제공 및 이용</p>
+                    <p class="content-title-small">제 9 조 (서비스 이용)</p>
+                    <p class="content-text">①이용자는 본 약관에 규정된 사항을 준수해 사이트를 이용한다.</p>
+                    <p class="content-text">②본 약관에 명시되지 않은 서비스 이용에 관한 사항은 센터가 정해 '공지사항'에 게시하거나 또는 별도로 공지하는 내용에 따른다.</p>
+                    <p class="content-title-small">제 10 조 (정보의 제공)</p>
+                    <p class="content-text">센터는 회원이 서비스 이용 중 필요하다고 인정되는 다양한 정보에 대하여 전자메일이나 서신우편 등의 방법으로 회원에게 정보를 제공할 수 있다.</p>
+                    <p class="content-title-small">제 11 조 (광고게재)</p>
+                    <p class="content-text">①센터는 서비스의 운용과 관련하여 서비스 화면, 홈페이지, 전자우편 등에 광고 등을 게재할 수 있다.</p>
+                    <p class="content-text">②센터는 사이트에 게재되어 있는 광고주의 판촉활동에 회원이 참여하거나 교신 또는 거래의 결과로서 발생하는 모든 손실 또는 손해에 대해 책임을 지지 않는다.</p>
+                    <p class="content-title-small">제 12 조 (서비스 이용의 제한)</p>
+                    <p class="content-text">본 사이트 이용 및 행위가 다음 각 항에 해당하는 경우 센터는 해당 이용자의 이용을 제한할 수 있다.</p>
+                    <p class="content-text">①공공질서 및 미풍양속, 기타 사회질서를 해하는 경우</p>
+                    <p class="content-text">②범죄행위를 목적으로 하거나 기타 범죄행위와 관련된다고 객관적으로 인정되는 경우</p>
+                    <p class="content-text">③타인의 명예를 손상시키거나 타인의 서비스 이용을 현저히 저해하는 경우</p>
+                    <p class="content-text">④타인의 의사에 반하는 내용이나 광고성 정보 등을 지속적으로 전송하는 경우</p>
+                    <p class="content-text">⑤해킹 및 컴퓨터 바이러스 유포 등으로 서비스의 건전한 운영을 저해하는 경우</p>
+                    <p class="content-text">⑥다른 이용자 또는 제3자의 지적재산권을 침해하거나 지적재산권자가 지적 재산권의 침해를 주장할 수 있다고 판단되는 경우</p>
+                    <p class="content-text">⑦타인의 아이디 및 비밀번호를 도용한 경우</p>
+                    <p class="content-text">⑧기타 관계 법령에 위배되는 경우 및 센터가 이용자로서 부적당하다고 판단한 경우</p>
+                    <p class="content-title-small">제 13 조 (서비스 제공의 중지)</p>
+                    <p class="content-text">센터는 다음 각 호에 해당하는 경우 서비스의 전부 또는 일부의 제공을 중지할 수 있다.</p>
+                    <p class="content-text">①전기통신사업법 상에 규정된 기간통신 사업자 또는 인터넷 망 사업자가 서비스를 중지했을 경우</p>
+                    <p class="content-text">②정전으로 서비스 제공이 불가능할 경우</p>
+                    <p class="content-text">③설비의 이전, 보수 또는 공사로 인해 부득이한 경우</p>
+                    <p class="content-text">④서비스 설비의 장애 또는 서비스 이용의 폭주 등으로 정상적인 서비스 제공이 어려운 경우</p>
+                    <p class="content-text">⑤전시, 사변, 천재지변 또는 이에 준하는 국가비상사태가 발생하거나 발생할 우려가 있는 경우</p>
+                    <p class="content-title-small">제 14 조 (게시물 관리)</p>
+                    <p class="content-text">센터는 건전한 통신문화 정착과 효율적인 사이트 운영을 위하여 이용자가 게시하거나 제공하는 자료가 제12조에 해당한다고 판단되는 경우에 임의로 삭제, 자료이동, 등록거부를 할 수 있다.</p>
+                    <p class="content-title-small">제 15 조 (서비스 이용 책임)</p>
+                    <p class="content-text">이용자는 센터에서 권한 있는 사원이 서명한 명시적인 서면에 구체적으로 허용한 경우를 제외하고는 서비스를 이용하여 불법상품을 판매하는 영업활동을 할 수 없으며 특히 해킹, 돈벌기 광고, 음란 사이트를 통한 상업행위, 상용 S/W 불법제공 등을 할 수 없다. 이를 어기고 발생한 영업활동의 결과 및 손실, 관계기관에 의한 구속 등 법적 조치 등에 관해서는 센터가 책임을 지지 않는다.</p>
+                    <p class="content-title-big">제 5 장 기타</p>
+                    <p class="content-title-small">제 16 조 (면책 및 손해배상)</p>
+                    <p class="content-text">①천재지변 또는 이에 준하는 불가항력으로 인하여 서비스를 제공할 수 없는 경우에는 센터의 서비스 제공 책임이 면제된다.</p>
+                    <p class="content-text">②센터는 이용자간 또는 이용자와 제3자간의 상호거래 관계에서 발생되는 결과에 대하여 어떠한 책임도 부담하지 않는다.</p>
+                    <p class="content-text">③센터는 이용자가 게시판에 게재한 정보, 자료, 내용 등에 관하여 사실의 정확성, 신뢰도 등에 어떠한 책임도 부담하지 않으며 이용자는 본인의 책임 아래 본 사이트를 이용해야 한다.</p>
+                    <p class="content-text">④이용자가 게시 또는 전송한 자료 등에 관하여 손해가 발생하거나 자료의 취사선택, 기타 무료로 제공되는 서비스 이용과 관련해 어떠한 불이익이 발생하더라도 이에 대한 모든 책임은 이용자에게 있다.</p>
+                    <p class="content-text">⑤아이디와 비밀번호의 관리 및 이용자의 부주의로 인하여 발생되는 손해 또는 제3자에 의한 부정사용 등에 대한 책임은 이용자에게 있다.</p>
+                    <p class="content-text">⑥이용자가 본 약관의 규정을 위반함으로써 센터에 손해가 발생하는 경우 이 약관을 위반한 이용자는 센터에 발생한 모든 손해를 배상해야 하며 동 손해로부터 센터를 면책시켜야 한다.</p>
+                    <p class="content-title-small">제 17 조 (개인신용정보 제공 및 활용에 대한 동의서)</p>
+                    <p class="content-text">센터가 회원 가입과 관련해 취득한 개인 신용 정보는 신용정보의 이용 및 보호에 관한 법률 제23조의 규정에 따라 타인에게 제공 및 활용 시 이용자의 동의를 얻어야 한다. 이용자의 동의는 센터가 회원으로 가입한 이용자의 신용정보를 신용정보기관, 신용정보업자 및 기타 이용자 등에게 제공해 이용자의 신용을 판단하기 위한 자료로서 활용하거나 공공기관에서 정책자료로 활용하는데 동의하는 것으로 간주한다.</p>
+                    <p class="content-title-small">제 18 조 (분쟁의 해결)</p>
+                    <p class="content-text">①센터와 이용자는 본 사이트 이용과 관련해 발생한 분쟁을 원만하게 해결하기 위하여 필요한 모든 노력을 해야 한다.</p>
+                    <p class="content-text">②제1항의 규정에도 불구하고 동 분쟁으로 인하여 소송이 제기될 경우 동 소송은 센터의 본사 소재지를 관할하는 법원의 관할로 본다.</p>
+                    <p class="content-text">&lt;부칙&gt; 본 약관은 2018년 11월 30일부터 적용한다.</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-back"></div>
+    </div>
+
+
+    <!--개인정보취급방침-->
+    <div id="privacyStatement" class="modal d-none" style="/*display: flex*/">
+        <div class="modal-wrap w100pro" style="">
+            <div class="modal-header">
+                <p>개인정보취급방침</p>
+                <div class="m-title-wrap">
+                    <div class="title-area"><i class="pre"></i><p class="m-title">개인정보취급방침</p></div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-content">
+                    <p class="content-text">인천광역시환경교육센터(이하 “센터”)는 귀하의 개인정보 보호를 중요시하며, ‘개인정보보호법’등 관련 법규를 준수하기 위하여 개인정보처리방침을 제정하고 이를 준수하고 있습니다. 개인정보처리방침을 통하여 귀하께서 제공하시는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며 정보보호를 위해 어떠한 조치가 취해지고 있는지를 알려 드립니다. 귀하께서 제공해주신 모든 정보는 관계 법령에 의거 철저히 관리되고 있으며 본 개인정보처리방침은 관련 법률 및 지침의 변경과 센터 내부 운영방침의 변경에 따라 변경될 수 있습니다. 변경사항은 본 사이트에서 확인하실 수 있습니다.</p>
+                    <p class="content-title-big">1. 개인 정보의 수집•이용 목적 :</p>
+                    <p class="content-text">센터가 개인정보를 수집하는 기본적인 목적은 회원가입, 공모 신청 및 안내, 강의 수강 및 등록, 자원봉사 신청 및 안내, 공지사항 전달 및 서비스 제공 등을 위한 것이며 수집된 정보를 바탕으로 보다 나은 서비스 혜택 제공을 위해 다양한 방법(이메일, SMS, 전화 등)을 통하여 서비스 관련 정보를 제공하는데 있습니다. 수집된 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며 이용 목적이 변경될 시에는 개인정보보호법 관련 법령에 따라 사전 동의를 구할 예정입니다.</p>
+                    <p class="content-text">가. 개인정보 수집 항목</p>
+                    <p class="content-text">센터는 회원가입, 공모 신청 및 안내, 강의 수강 및 등록, 자원봉사 신청 및 안내, 공지사항 전달 및 서비스 제공 등을 위해 아래와 같은 개인정보를 수집하고 있습니다.</p>
+                    <p class="content-text">- 필수 항목: 이름, 아이디, 전화번호(휴대폰번호), 이메일 주소</p>
+                    <p class="content-text">- 선택 항목: 생년월일, 소속기관명, 주소</p>
+                    <p class="content-title-big">2. 개인 정보의 보유 및 이용 기간 :</p>
+                    <p class="content-text">센터는 법령에 따른 개인정보 보유•이용기간 또는 정보주체로부터 개인정보를 수집시에 동의 받은 개인정보 보유•이용기간 내에서 개인정보를 처리•보유합니다.</p>
+                    <p class="content-text">개인정보 처리 및 보유기간은 다음과 같습니다.</p>
+                    <p class="content-text">홈페이지 회원 가입 및 관리 : 인천광역시환경교육센터 홈페이지 탈퇴시까지</p>
+                    <p class="content-title-big">3. 개인정보 수집 및 이용 동의를 거부할 권리</p>
+                    <p class="content-text">귀하는 개인정보의 수집 및 이용에 대하여 동의하지 않을 권리가 있습니다. 단, 센터에서 수집하는 개인정보는 서비스 제공에 있어 필수적인 정보로써 개인정보의 수집 및 이용에 동의하지 않는 이용자는 서비스 이용이 제한될 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-back"></div>
+    </div>
+
+
+
+    <!-- modal START(카테고리 검색) -->
+
+    <!-- 유형 선택 -->
+    <div class="main-content">
+        <div id="selectTypeModal" class="modal d-none">
+            <div class="modal-wrap w100pro" style="">
+                <div class="modal-header">
+                    <p>유형 선택</p>
+                    <div class="m-title-wrap">
+                        <div class="title-area"><i class="pre"></i><p class="m-title">유형 선택</p></div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-content">
+                        <div class="select-type-area w100pro">
+                            <select id="typeSelect">
+                                <!--                                <option class="typeValue" value="noValue" selected disabled hidden>유형선택</option>-->
+                                <!--                                <option class="typeValue" value="강의, 해설">강의, 해설</option>-->
+                                <!--                                <option class="typeValue" value="견학, 체험">견학, 체험</option>-->
+                                <!--                                <option class="typeValue" value="토의, 토론">토의, 토론</option>-->
+                                <!--                                <option class="typeValue" value="조사, 관찰">조사, 관찰</option>-->
+                                <!--                                <option class="typeValue" value="실험, 실습">실험, 실습</option>-->
+                                <!--                                <option class="typeValue" value="프로젝트">프로젝트</option>-->
+                                <!--                                <option class="typeValue" value="기타">기타(직접입력)</option>-->
+                            </select>
+
+                            <!--'기타(직접입력)' 선택 시 보여지는 입력필드-->
+                            <input class="input-direct" type="text" placeholder="유형을 입력해주세요."/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!--유형 미선택 시 기본 버튼(지역 선택 시 해당버튼 사라지기)-->
+                    <button id="" class="none btn-h60r-light-green font-green">유형을 선택해주세요.</button>
+                    <!--유형 선택시 활성화 되는 버튼(2개 이상 선택 시 +'외 1' 문구가 붙음)-->
+                    <button id="typeSearchBtn" class="close btn-h60r-green font-white po-r search-btn" hidden>
+                        <span><span id="searchTypeName" class="font-white bold">프로젝트</span>(으)로 검색</span>
+                        <i class="favicon po-a"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+
+        <!-- 테마 선택 -->
+        <div id="selectThemeModal" class="modal d-none">
+            <div class="modal-wrap w100pro" style="">
+                <div class="modal-header">
+                    <p>테마 선택</p>
+                    <div class="m-title-wrap">
+                        <div class="title-area"><i class="pre"></i><p class="m-title">테마 선택</p></div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-content">
+                        <ul id="themeUl" class="w100pro">
+                            <!--                            <li class="forest basic-back-color">-->
+                            <!--                                <input class="themeChk" type="checkbox" value="숲"/>-->
+                            <!--                                <div class="select-theme-area">-->
+                            <!--                                    <img class="forest1" src="/images/theme_forest.svg"/>-->
+                            <!--                                    <img class="forest2" src="/images/theme_forest_white.svg" style="display: none"/>-->
+                            <!--                                    <p>숲</p>-->
+                            <!--                                </div>-->
+                            <!--                            </li>-->
+                            <!--                            <li class="water basic-back-color">-->
+                            <!--                                <input class="themeChk" type="checkbox" value="물"/>-->
+                            <!--                                <div class="select-theme-area">-->
+                            <!--                                    <img class="water1" src="/images/theme_water.svg"/>-->
+                            <!--                                    <img class="water2" src="/images/theme_water_white.svg" style="display: none"/>-->
+                            <!--                                    <p>물</p>-->
+                            <!--                                </div>-->
+                            <!--                            </li>-->
+                            <!--                            <li class="biology basic-back-color">-->
+                            <!--                                <input class="themeChk" type="checkbox" value="생물"/>-->
+                            <!--                                <div class="select-theme-area">-->
+                            <!--                                    <img class="biology1" src="/images/theme_biology.svg"/>-->
+                            <!--                                    <img class="biology2" src="/images/theme_biology_white.svg" style="display: none"/>-->
+                            <!--                                    <p>생물</p>-->
+                            <!--                                </div>-->
+                            <!--                            </li>-->
+                            <!--                            <li class="live basic-back-color">-->
+                            <!--                                <input class="themeChk" type="checkbox" value="생활"/>-->
+                            <!--                                <div class="select-theme-area">-->
+                            <!--                                    <img class="live1" src="/images/theme_live.svg"/>-->
+                            <!--                                    <img class="live2" src="/images/theme_live_white.svg" style="display: none"/>-->
+                            <!--                                    <p>생활</p>-->
+                            <!--                                </div>-->
+                            <!--                            </li>-->
+                            <!--                            <li class="resource basic-back-color">-->
+                            <!--                                <input class="themeChk" type="checkbox" value="자원"/>-->
+                            <!--                                <div class="select-theme-area">-->
+                            <!--                                    <img class="resource1" src="/images/theme_resource.svg"/>-->
+                            <!--                                    <img class="resource2" src="/images/theme_resource_white.svg" style="display: none"/>-->
+                            <!--                                    <p>자원</p>-->
+                            <!--                                </div>-->
+                            <!--                            </li>-->
+                            <!--                            <li class="climate basic-back-color">-->
+                            <!--                                <input class="themeChk" type="checkbox" value="기후에너지"/>-->
+                            <!--                                <div class="select-theme-area">-->
+                            <!--                                    <img class="climate1" src="/images/theme_climate.svg"/>-->
+                            <!--                                    <img class="climate2" src="/images/theme_climate_white.svg" style="display: none"/>-->
+                            <!--                                    <p>기후 에너지</p>-->
+                            <!--                                </div>-->
+                            <!--                            </li>-->
+                            <!--                            <li class="climate basic-back-color">-->
+                            <!--                                <input class="themeChk" type="checkbox" value="숲"/>-->
+                            <!--                                <div class="select-theme-area">-->
+                            <!--                                    <img class="climate1" src="/images/theme_climate.svg"/>-->
+                            <!--                                    <img class="climate2" src="/images/theme_climate_white.svg" style="display: none"/>-->
+                            <!--                                    <p>기후에너지기후</p>-->
+                            <!--                                </div>-->
+                            <!--                            </li>-->
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!--테마 미선택 시 기본 버튼(지역 선택 시 해당버튼 사라지기)-->
+                    <button id="" class="none btn-h60r-light-green font-green">테마를 선택해주세요.</button>
+                    <!--테마 선택시 활성화 되는 버튼(2개 이상 선택 시 +'외 1' 문구가 붙음)-->
+                    <button id="themeSearchBtn" class="close btn-h60r-green font-white po-r search-btn" hidden>
+                        <span style="display: flex"><span id="searchThemeName" class="font-white bold">생활</span><span class="etc">&nbsp;외 <span class="etcNum">2</span></span>(으)로 검색</span>
+                        <i class="favicon po-a"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+
+        <!-- 대상 선택 -->
+        <div id="selectTargetModal" class="modal d-none">
+            <div class="modal-wrap w100pro" style="">
+                <div class="modal-header">
+                    <p>대상 선택</p>
+                    <div class="m-title-wrap">
+                        <div class="title-area"><i class="pre"></i><p class="m-title">대상 선택</p></div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-content">
+                        <ul id="targetUl" class="w100pro">
+                            <!--                            <li><input class="targetChk" id="targetAll" type="checkbox" /><span>전체</span><i class=""></i></li>-->
+                            <!--                            <li><input class="targetChk" id="target1" type="checkbox" /><span>전연령</span><i class=""></i></li>-->
+                            <!--                            <li><input class="targetChk" id="target2" type="checkbox" /><span>성인</span><i class=""></i></li>-->
+                            <!--                            <li><input class="targetChk" id="target3" type="checkbox" /><span>청소년</span><i class=""></i></li>-->
+                            <!--                            <li><input class="targetChk" id="target4" type="checkbox" /><span>가족</span><i class=""></i></li>-->
+                            <!--                            <li><input class="targetChk" id="target5" type="checkbox" /><span>초등 5학년~중학생</span><i class=""></i></li>-->
+                            <!--                            <li><input class="targetChk" id="target6" type="checkbox" /><span>초등 3~6학년</span><i class=""></i></li>-->
+                            <!--                            <li><input class="targetChk" id="target7" type="checkbox" /><span>초등 고학년</span><i class=""></i></li>-->
+                            <!--                            <li><input class="targetChk" id="target8" type="checkbox" /><span>초등 저학년</span><i class=""></i></li>-->
+                            <!--                            <li><input class="targetChk" id="target9" type="checkbox" /><span>초등생</span><i class=""></i></li>-->
+                            <!--                            <li><input class="targetChk" id="target10" type="checkbox" /><span>유아</span><i class=""></i></li>-->
+                            <!--                            <li><input class="targetChk" id="target11" type="checkbox" /><span>고령자</span><i class=""></i></li>-->
+                            <!--                            <li><input class="targetChk" id="target12" type="checkbox" /><span>교직원</span><i class=""></i></li>-->
+                            <!--                            <li><input class="targetChk" id="target13" type="checkbox" /><span>생태강사</span><i class=""></i></li>-->
+                            <!--                            <li><input class="targetChk" id="target14" type="checkbox" /><span>장애아동</span><i class=""></i></li>-->
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!--대상 미선택 시 기본 버튼(대상 선택 시 해당버튼 사라지기)-->
+                    <button id="" class="none btn-h60r-light-green font-green">대상을 선택해주세요.</button>
+                    <!--대상 선택시 활성화 되는 버튼(2개 이상 선택 시 +'외 1' 문구가 붙음)-->
+                    <button id="targetSearchBtn" class="close btn-h60r-green font-white po-r search-btn" hidden>
+                        <span style="display: flex"><span id="searchTargetName" class="font-white bold">전연령</span><span class="etc">&nbsp;외 <span class="etcNum">2</span></span>(으)로 검색</span>
+                        <i class="favicon po-a"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+
+        <!-- 지역 선택 -->
+        <div id="selectAreaModal" class="modal d-none" style="/*display: flex*/">
+            <div class="modal-wrap w100pro">
+                <div class="modal-header">
+                    <p>지역 선택</p>
+                    <div class="m-title-wrap">
+                        <div class="title-area"><i class="pre"></i><p class="m-title">지역 선택</p></div>
+                        <button class="sel-map"><i class="favicon"></i>지도에서 선택</button>
+                        <button class="sel-list"><i class="favicon"></i>목록에서 선택</button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-content">
+                        <div class="part w100pro">
+                            <div class="part-left">
+                                <ul class="area-list">
+                                    <li class="all"><input class="areaChk" id="areaAll" type="checkbox" />전체<i class="menu-back"></i></li>
+                                    <li class="ganghwa-ongjin-gun"><input class="areaChk" id="area1" type="checkbox" value="강화·옹진군" /><span>강화·옹진군</span><i class=""></i></li>
+                                    <li class="gyeyang-gu"><input class="areaChk" id="area2" type="checkbox" value="계양구" /><span>계양구</span><i class=""></i></li>
+                                    <li class="namdong-gu"><input class="areaChk" id="area3" type="checkbox" value="남동구" /><span>남동구</span><i class=""></i></li>
+                                    <li class="dong-gu"><input class="areaChk" id="area4" type="checkbox" value="동구" /><span>동구</span><i class=""></i></li>
+                                    <li class="michuholgu"><input class="areaChk" id="area5" type="checkbox" value="미추홀구" /><span>미추홀구</span><i class=""></i></li>
+                                    <li class="bupyeong-gu"><input class="areaChk" id="area6" type="checkbox" value="부평구" /><span>부평구</span><i class=""></i></li>
+                                    <li class="western"><input class="areaChk" id="area7" type="checkbox" value="서구" /><span>서구</span><i class=""></i></li>
+                                    <li class="yeonsu-gu"><input class="areaChk" id="area8" type="checkbox" value="연수구" /><span>연수구</span><i class=""></i></li>
+                                    <!--                                    <li class="ongjin-gun"><input class="areaChk" id="area9" type="checkbox" value="강화·옹진군" /><span>옹진군</span><i class=""></i></li>-->
+                                    <li class="jung-gu"><input class="areaChk" id="area10" type="checkbox" value="중구" /><span>중구</span><i class=""></i></li>
+                                </ul>
+                            </div>
+                            <div class="part-right">
+                                <div class="incheon-city-area">
+                                    <!--지역 선택 전 기본 이미지-->
+                                    <img class="ganghwa-gun sel-before" src="/images/incheon_city/ganghwa-gun.svg"/>
+                                    <img class="jung-gu sel-before" src="/images/incheon_city/jung-gu.svg"/>
+                                    <img class="ongjin-gun sel-before" src="/images/incheon_city/ongjin-gun.svg"/>
+                                    <img class="western sel-before" src="/images/incheon_city/western.svg"/>
+                                    <img class="gyeyang-gu sel-before" src="/images/incheon_city/gyeyang-gu.svg"/>
+                                    <img class="bupyeong-gu sel-before" src="/images/incheon_city/bupyeong-gu.svg"/>
+                                    <img class="dong-gu sel-before" src="/images/incheon_city/dong-gu.svg"/>
+                                    <img class="michuholgu sel-before" src="/images/incheon_city/michuholgu.svg"/>
+                                    <img class="namdong-gu sel-before" src="/images/incheon_city/namdong-gu.svg"/>
+                                    <img class="yeonsu-gu sel-before" src="/images/incheon_city/yeonsu-gu.svg"/>
+
+                                    <!--지역 선택 시 녹색으로 변화되는 지역 이미지-->
+                                    <div class="select-after">
+                                        <img class="ganghwa-gun-sel d-none" src="/images/incheon_city/ganghwa-gun_green.svg"/>
+                                        <img class="jung-gu-sel d-none" src="/images/incheon_city/jung-gu_green.svg"/>
+                                        <img class="ongjin-gun-sel d-none" src="/images/incheon_city/ongjin-gun_green.svg"/>
+                                        <img class="western-sel d-none" src="/images/incheon_city/western_green.svg"/>
+                                        <img class="gyeyang-gu-sel d-none" src="/images/incheon_city/gyeyang-gu_green.svg"/>
+                                        <img class="bupyeong-gu-sel d-none" src="/images/incheon_city/bupyeong-gu_green.svg"/>
+                                        <img class="dong-gu-sel d-none" src="/images/incheon_city/dong-gu_green.svg"/>
+                                        <img class="michuholgu-sel d-none" src="/images/incheon_city/michuholgu_green.svg"/>
+                                        <img class="namdong-gu-sel d-none" src="/images/incheon_city/namdong-gu_green.svg"/>
+                                        <img class="yeonsu-gu-sel d-none" src="/images/incheon_city/yeonsu-gu_green.svg"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!--지역 미선택 시 기본 버튼(지역 선택 시 해당버튼 사라지기)-->
+                    <button id="" class="none btn-h60r-light-green font-green">지역을 선택해주세요.</button>
+                    <!--지역 선택시 활성화 되는 버튼(2개 이상 선택 시 +'외 1' 문구가 붙음)-->
+                    <button id="areaSearchBtn" class="close btn-h60r-green font-white po-r search-btn" hidden>
+                        <span style="display: flex"><span id="searchAreaName" class="font-white bold">전연령</span><span class="etc">&nbsp;외 <span class="etcNum">2</span></span>(으)로 검색</span>
+                        <i class="favicon po-a"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+    </div>
+
+    <!--script START-->
+    <script>
+        getCategoryList();
+
+        function getCategoryList() {
+
+            $.ajax({
+                type:"get",
+                url: "/user/api/category/list",
+                async:false,
+                data:{},
+                success:function(data) {
+                    // console.log(data);
+
+                    // 모달 내 프로그램 유형 tag
+                    let typeTag = '<option class="typeValue" value="noValue" selected disabled hidden>유형선택</option>';
+                    for(i=0; i<data.type.length; i++) {
+                        let typeName = data.type[i].cateName;
+                        let dotCateName = typeName.replaceAll(',', ' ·');
+                        if(!typeName.includes("기타 ")) {
+                            typeTag += '<option class="typeValue" value="'+dotCateName+'">'+dotCateName+'</option>';
+                        }
+                    }
+                    typeTag += '<option class="typeValue" value="기타">기타</option>';
+                    $('#typeSelect').html(typeTag);
+
+                    // 모달 내 프로그램 테마 tag
+                    let themeTag = '';
+                    let beforeImg = ''; // 클릭 전 이미지 경로
+                    let afterImg = ''; // 클릭 후 이미지 경로
+                    let themeList = data.theme;
+                    themeList.reverse();
+                    for(i=0; i<themeList.length; i++) {
+                        let themeName = themeList[i].cateName;
+                        let beforeImg = themeList[i].beforeImg;
+                        let afterImg = themeList[i].afterImg;
+                        // // 테마명에 따른 이미지 경로 지정해주기 (테마 추가 될 시 꼭 case 추가하기)
+                        // switch (themeName) {
+                        //     case '숲':
+                        //         beforeImg = '/images/theme_forest.svg';
+                        //         afterImg = '/images/theme_forest_white.svg';
+                        //         break;
+                        //     case '물':
+                        //         beforeImg = '/images/theme_water.svg';
+                        //         afterImg = '/images/theme_water_white.svg';
+                        //         break;
+                        //     case '생물':
+                        //         beforeImg = '/images/theme_biology.svg';
+                        //         afterImg = '/images/theme_biology_white.svg';
+                        //         break;
+                        //     case '생활':
+                        //         beforeImg = '/images/theme_live.svg';
+                        //         afterImg = '/images/theme_live_white.svg';
+                        //         break;
+                        //     case '자원':
+                        //         beforeImg = '/images/theme_resource.svg';
+                        //         afterImg = '/images/theme_resource_white.svg';
+                        //         break;
+                        //     case '기후 에너지':
+                        //         beforeImg = '/images/theme_climate.svg';
+                        //         afterImg = '/images/theme_climate_white.svg';
+                        //         break;
+                        // }
+
+                        themeTag += '<li class="forest basic-back-color">';
+                        themeTag += '<input class="themeChk" type="checkbox" value="'+themeName+'"/>';
+                        themeTag += '<div class="select-theme-area">';
+                        themeTag += '<img class="forest1" src="'+beforeImg+'"/>';
+                        themeTag += '<img class="forest2" src="'+afterImg+'" style="display: none"/>';
+                        themeTag += '<p>'+themeName+'</p>';
+                        themeTag += '</div>';
+                        themeTag += '</li>';
+                    }
+                    $("#themeUl").html(themeTag);
+
+                    // 모달 내 프로그램 대상 tag
+                    let targetTag = '<li><input class="targetChk" id="targetAll" type="checkbox" value="전체" /><span>전체</span><i class=""></i></li>';;
+                    for(i=0; i<data.target.length; i++) {
+                        let targetName = data.target[i].cateName;
+                        if(targetName!='전체') {
+                            targetTag += '<li><input className="targetChk" id="target'+i+'" type="checkbox" value="'+targetName +'"/><span>'+targetName+'</span><i class=""></i></li>';
+                        }
+                    }
+                    $("#targetUl").html(targetTag);
+
+                },
+                error : function(xhr, status, error) {
+                    toastModal("값을 불러오는데 실패했습니다.", 1000);
+                    console.log(error);
+                }
+            });
+        }
+
+        /**************  모달 기능 스크립트 start **************/
+        // 지역 검색
+        $("#areaSearchBtn").on("click", function(){
+            let category = "지역";
+            let query = "";
+            $(".main-content #selectAreaModal input:checked").each(function(){
+                if($(this).val()!="on") {
+                    query += $(this).val() + ",";
+                }
+            });
+            query = query.substring(0, query.length-1);
+            location.href="/list?category="+category+"&query="+query;
+        });
+
+        // 대상 검색
+        $("#targetSearchBtn").on("click", function(){
+            let category = "교육대상";
+            let query = "";
+            $(".main-content #selectTargetModal input:checked").each(function(){
+                if($(this).val()!="전체"){
+                    query += $(this).val() + ",";
+                }
+            });
+            query = query.substring(0, query.length-1);
+            location.href="/list?category="+category+"&query="+query;
+        });
+
+        // 테마 검색
+        $("#themeSearchBtn").on("click", function(){
+            let category = "교육테마";
+            let query = "";
+            $(".main-content #selectThemeModal input:checked").each(function(){
+                query += $(this).val() + ",";
+            });
+            query = query.substring(0, query.length-1);
+            location.href="/list?category="+category+"&query="+query;
+        });
+
+        // 유형 검색
+        $("#typeSearchBtn").on("click", function(){
+            let category = "교육유형";
+            let query = $(".main-content #selectTypeModal select option:selected").val();
+            let txtQuery = $('#selectTypeModal .modal-content input').val();
+            if(txtQuery!="") {
+                query = txtQuery;
+            }
+            location.href="/list?category="+category+"&query="+query;
+        });
+
+
+    </script>
+    <!--script END-->
+
+</th:block>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/user_layout_main}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style layout:fragment="css">
+    html{
+        background-color: #F6F7F9;
+    }
+    .modal input[type="checkbox"]{
+        /*display: block;*/
+        display: contents;
+    }
+</style>
+
+<div layout:fragment="content">
+    <main role="main" class="main-content">
+
+        <!-- 컨텐츠 영역 -->
+        <div class="content-wrap po-a" style="z-index: 9">
+
+            <!--타이틀 영역-->
+            <div class="title-wrap po-r">
+                <p class="title">통합환경교육의 산실,</p>
+                <p class="title">생태학습도시로 함께 갑니다!</p>
+                <p>카테고리를 선택하여 진행하는 교육현황을 확인하세요.</p>
+
+                <!--모바일-->
+                <p class="title"><span class="fw700">카테고리</span>를 선택하여</p>
+                <p class="title">교육현황을 확인하세요.</p>
+            </div>
+
+            <!--카테고리 박스-->
+            <div class="category-box-wrap" id="category-box-wrap">
+                <div class="box-wrap-slide">
+                    <div class="box category-box-area" value="지역">
+                        <div class="box-front t-center">
+                            <div class="box-center">
+                                <img src="/images/place_2.svg"/>
+                                <p class="title">지역(구/군)</p>
+                            </div>
+                        </div>
+                        <div class="box-back"></div>
+                    </div>
+                    <div class="box category-box-target" value="교육대상">
+                        <div class="box-front t-center">
+                            <div class="box-center">
+                                <img src="/images/target_2.svg"/>
+                                <p class="title">대상</p>
+                            </div>
+                        </div>
+                        <div class="box-back"></div>
+                    </div>
+                    <div class="box category-box-theme" value="교육테마">
+                        <div class="box-front t-center">
+                            <div class="box-center">
+                                <img src="/images/theme_2.svg"/>
+                                <p class="title">테마</p>
+                            </div>
+                        </div>
+                        <div class="box-back"></div>
+                    </div>
+                    <div class="box category-box-type" value="교육유형">
+                        <div class="box-front t-center">
+                            <div class="box-center">
+                                <img src="/images/type_2.svg"/>
+                                <p class="title">유형</p>
+                            </div>
+                        </div>
+                        <div class="box-back"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--배경 영역-->
+        <div class="main-back">
+            <div class="main-back-top"></div>
+            <div class="main-back-bottom"></div>
+        </div>
+
+
+    </main>
+
+
+    <!--script START-->
+    <script></script>
+    <!--script END-->
+</div>
+</html>

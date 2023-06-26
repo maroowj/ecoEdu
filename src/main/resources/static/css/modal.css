@@ -1,0 +1,2950 @@
+/* 모달 백그라운드 */
+.modal-back{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000025;
+    backdrop-filter: blur(15px);
+    z-index: 9000;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-back2{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000025;
+    backdrop-filter: blur(15px);
+    z-index: 9000;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+    width: 100%;
+}
+
+/* 사라지기 */
+.fade{
+    opacity: 0;
+    display: none;
+}
+
+/* 나타나기 */
+.show{
+    overflow: hidden;
+}
+
+/* 모달 */
+.modal{
+    /*페이지가 로드될 때 modal 숨기기*/
+    display: none;
+}
+.modal .modal-wrap{
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+    position: fixed;
+    z-index: 9999;
+    overflow: hidden;
+    outline: 0;
+    /*display: table;*/
+    box-shadow: 0px 10px 30px #00000015;
+    margin: 20px;
+}
+
+.modal .modal-header{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.modal .modal-header{
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 78px;
+    text-align: center;
+}
+
+.modal .modal-header p{
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 78px;
+    text-align: center;
+}
+
+.modal .modal-body{
+    width: 100%;
+    height: 100%;
+    padding: 0 30px;
+}
+
+.modal .modal-content{
+    word-break: break-all;
+    width: 100%;
+    height: 100%;
+
+    overflow-x: hidden;
+    overflow-y: auto; 
+}
+
+.modal .modal-footer{
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.modal .modal-footer button{
+    padding: 0px 20px;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+}
+.modal .modal-footer button.none{
+    cursor: unset;
+}
+.modal .modal-footer button.none:hover{
+    background: #EBF2E3;
+}
+.modal .modal-footer button > span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal .modal-footer button span{
+    font-size: 1.125rem;
+}
+.modal-footer button.btn-h60r-green i.favicon{
+    background: url('/images/white_go_arrow.svg') no-repeat;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+    right: 20px;
+    top: 15px;
+}
+
+
+
+/*어드민 START*/
+
+/* 프로그램 현황 내 프로그램 상세 */
+.main-content-program-list #detailModal .modal-body{
+    padding-top: 40px;
+    height: 550px;
+}
+.main-content-program-list #detailModal .modal-content{
+    padding-right: 30px;
+}
+.main-content-program-list #detailModal .modal-content div:nth-child(1){
+    display: flex;
+}
+.main-content-program-list #detailModal .modal-content div:nth-child(1) div.part-right{
+    padding-left: 20px;
+}
+.main-content-program-list #detailModal .modal-content div:nth-child(1) div.part-right .title-area{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.main-content-program-list #detailModal .modal-content div:nth-child(1) div.part-right .title-area p{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 10px;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.main-content-program-list #detailModal .modal-content div:nth-child(1) div.part-right .title-area p span{
+    font-size: 1.125rem;
+    margin-left: 8px;
+    display: table-cell;
+    /*display: inline-block;*/
+}
+
+.main-content-program-list #detailModal .part-left{
+    position: relative;
+    justify-content: center;
+}
+.main-content-program-list #detailModal .part-left .img-area{
+    width: 370px;
+    height: 222px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /*justify-content: center;*/
+    position: relative;
+}
+.main-content-program-list #detailModal .part-left .img-area ul.img-slide{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 740px;
+    display: flex;
+    justify-content: space-between;
+    transition: 0.5s ease-out;
+}
+.main-content-program-list #detailModal .part-left .img-area ul.img-slide li{
+    width: 370px;
+    height: 222px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    object-fit: cover;
+}
+.main-content-program-list #detailModal .part-left .img-area ul.img-slide li:not(:last-child){
+    float: left;
+}
+.main-content-program-list #detailModal .part-left .img-area ul.img-slide li img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    overflow: hidden;
+    position: absolute;
+
+    border: none;
+    /*border-radius: 16px;*/
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-content-program-list #detailModal .part-left .img-area i.prev-img{
+    position: absolute;
+    background: url('/images/bold_white_arrow.svg') no-repeat;
+    background-size: 26px;
+    width: 26px;
+    height: 26px;
+    top: calc((100% - 24px) / 2);
+    left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    z-index: 9999;
+    cursor: pointer;
+}
+.main-content-program-list #detailModal .part-left .img-area i.prev-img:hover{
+    transform: translateY(-5px);
+}
+.main-content-program-list #detailModal .part-left .img-area i.next-img{
+    position: absolute;
+    background: url('/images/bold_white_arrow.svg') no-repeat;
+    background-size: 26px;
+    width: 26px;
+    height: 26px;
+    top: calc((100% - 24px) / 2);
+    right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    z-index: 9999;
+    transform: rotate(-180deg);
+    cursor: pointer;
+}
+.main-content-program-list #detailModal .part-left .img-area i.next-img:hover{
+    transform: rotate(-180deg ) translateY(5px);
+}
+.main-content-program-list #detailModal .part-left ul.pagination-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 202px;
+    z-index: 999999;
+}
+.main-content-program-list #detailModal .part-left ul.pagination-img li{
+    width: 7px;
+    height: 7px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.29);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.19);
+}
+.main-content-program-list #detailModal .part-left ul.pagination-img li.focus{
+    background: rgb(255, 255, 255);
+}
+.main-content-program-list #detailModal .part-left ul.pagination-img li:nth-child(2){
+    margin-left: 8px;
+}
+
+.main-content-program-list #detailModal div:nth-child(1) div.part-right .info-area div{
+    font-size: 1.0625rem;
+}
+.main-content-program-list #detailModal div.part:nth-child(1) div.info-area div{
+    display: flex;
+    align-items: flex-start;
+    word-break: break-all;
+}
+.main-content-program-list #detailModal div.part:nth-child(1) div.info-area div span:nth-of-type(2){
+    color: #5C9021;
+    padding: 0px 10px;
+    border: 1px solid #5C9021;
+    border-radius: 35px;
+    margin-left: 6px;
+    font-size: 0.9375rem;
+}
+.main-content-program-list #detailModal div.part:nth-child(1) div.info-area div:not(:last-child){
+    margin-bottom: 6px;
+}
+.main-content-program-list #detailModal div.part:nth-child(1) div.info-area div:nth-child(1)::before{
+    content: '';
+    background-image: url('/images/basic_place.svg');
+    background-repeat: no-repeat;
+    background-size: 17px 17px;
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+    margin-top: 3px;
+}
+.main-content-program-list #detailModal div.part:nth-child(1) div.info-area div:nth-child(2)::before{
+    content: '';
+    background-image: url('/images/b_tel.svg');
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+.main-content-program-list #detailModal div.part:nth-child(1) div.info-area div:nth-child(3)::before{
+    content: '';
+    background-image: url('/images/basic_target.svg');
+    background-repeat: no-repeat;
+    background-size: 17px 17px;
+    width: 17px;
+    height: 17px;
+    margin-right: 4px;
+    margin-top: 2px;
+}
+.main-content-program-list #detailModal div.part:nth-child(1) div.info-area div:nth-child(4)::before{
+    content: '';
+    background-image: url('/images/black_calendar.svg');
+    background-repeat: no-repeat;
+    background-size: 17px 17px;
+    width: 17px;
+    height: 17px;
+    margin-right: 4px;
+    margin-top: 3px;
+}
+.main-content-program-list #detailModal div.part:nth-child(1) div.info-area div:nth-child(5)::before{
+    content: '';
+    background-image: url('/images/basic_theme.svg');
+    background-repeat: no-repeat;
+    background-size: 19px 19px;
+    width: 19px;
+    height: 19px;
+    margin-right: 2px;
+    margin-top: 3px;
+}
+.main-content-program-list #detailModal div.part:nth-child(1) div.info-area div:nth-child(6)::before{
+    content: '';
+    background-image: url('/images/menu_edit.svg');
+    background-repeat: no-repeat;
+    background-size: 17px 17px;
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+.main-content-program-list #detailModal div.part:nth-child(1) div.info-area div.info-url::before{
+    content: '';
+    background-image: url('/images/gren_url.svg');
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+.main-content-program-list #detailModal div.part:nth-child(1) div.info-area div.info-cafe::before{
+    content: '';
+    background-image: url('/images/gren_url.svg');
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+.main-content-program-list #detailModal div.part:nth-child(2)::after {
+    content: '';
+    background-color: #EFEFEF;
+    margin: 30px 0px;
+    width: 100%;
+    height: 1px;
+    display: block;
+}
+.main-content-program-list #detailModal div.part:nth-child(2)::before {
+    content: '';
+    background-color: #EFEFEF;
+    margin: 30px 0px;
+    width: 100%;
+    height: 1px;
+    display: block;
+}
+.main-content-program-list #detailModal div.part:nth-child(2) p{
+    display: flex;
+    align-items: center;
+}
+.main-content-program-list #detailModal div.part:nth-child(2) p::before {
+    content: '';
+    background-image: url('/images/b_program.svg');
+    background-repeat: no-repeat;
+    background-size: 19px 19px;
+    width: 19px;
+    height: 19px;
+    display: inline-block;
+    margin-right: 2px;
+    margin-top: -2px;
+}
+.main-content-program-list #detailModal div.part:nth-child(2) p,
+.main-content-program-list #detailModal div.part:nth-child(2) div,
+.main-content-program-list #detailModal div.part:nth-child(3) span{
+    font-size: 1.0625rem;
+}
+.main-content-program-list #detailModal div.part:nth-child(2) div{
+    word-break: break-all;
+    text-align: justify;
+}
+.main-content-program-list #detailModal div.part:nth-child(2) p{
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+.main-content-program-list #detailModal div.part:nth-child(3) span:first-child{
+    font-weight: 700;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+}
+.main-content-program-list #detailModal div.part:nth-child(3) span:first-child::after{
+    content: '';
+    background-color: #dddddd;
+    width: 1px;
+    height: 15px;
+    display: inline-block;
+    margin-left: 10px;
+}
+.main-content-program-list #detailModal div.part:nth-child(3) div:nth-child(3) span{
+    color: #282B6B;
+    display: flex;
+    align-items: center;
+}
+.main-content-program-list #detailModal div.part:nth-child(3) div:nth-child(3) span:nth-child(1)::before{
+    content: '';
+    background-image: url('/images/navy_cost.svg');
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+    margin-right: 2px;
+}
+
+
+
+/* 카테고리 관리(대상) */
+.main-content-target-manage #addModal ul:first-of-type,
+.main-content-target-manage #editModal ul:first-of-type{
+    margin-bottom: 16px;
+}
+.main-content-target-manage #addModal ul:first-of-type,
+.main-content-target-manage #editModal ul:first-of-type{
+    align-items: center;
+}
+.main-content-target-manage #addModal ul li:first-child,
+.main-content-target-manage #editModal ul li:first-child{
+    width: 150px;
+    font-size: 1.125rem;
+}
+.main-content-target-manage #addModal ul li:nth-child(2),
+.main-content-target-manage #editModal ul li:nth-child(2){
+    width: 100%;
+}
+.main-content-target-manage #addModal ul li:nth-child(2) input[type="text"],
+.main-content-target-manage #editModal ul li:nth-child(2) input[type="text"]{
+    width: 420px;
+    background-color: #F6F7F9;
+    border: none;
+    border-radius: 16px;
+    height: 50px;
+    padding: 1rem;
+}
+.main-content-target-manage #addModal ul li:nth-child(2) textarea,
+.main-content-target-manage #editModal ul li:nth-child(2) textarea{
+    width: 100%;
+    height: 200px;
+    background-color: #F6F7F9;
+    border: none;
+    border-radius: 16px;
+    padding: 1rem;
+}
+.main-content-target-manage #deleteModal .modal-body .modal-content{
+    line-height: 150px;
+    font-size: 1.25rem;
+}
+.main-content-target-manage #deleteModal .modal-body .modal-message{
+    line-height: 40px;
+    font-size: 1.2rem;
+}
+
+/* 대상상세 */
+.main-content-target-manage #detailModal .modal-body .modal-content{
+    max-height: 350px;
+}
+.main-content-target-manage #detailModal li:nth-child(1){
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.main-content-target-manage #detailModal li:nth-child(1)::before{
+    content: '';
+    background-image: url('/images/basic_target.svg');
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+    margin-right: 4px;
+    display: inline-block;
+}
+.main-content-target-manage #detailModal li:nth-child(2){
+    word-break: break-all;
+    text-align: justify;
+    font-size: 1.0625rem;
+}
+
+
+/* 카테고리 관리(테마) */
+.main-content-theme-manage #addModal .modal-content,
+.main-content-theme-manage #editModal .modal-content{
+    overflow-x: unset;
+    overflow-y: unset;
+}
+.main-content-theme-manage #addModal ul:not(:last-of-type),
+.main-content-theme-manage #editModal ul:not(:last-of-type){
+    margin-bottom: 16px;
+}
+.main-content-theme-manage #addModal ul:first-child,
+.main-content-theme-manage #editModal ul:first-child{
+    align-items: center;
+}
+.main-content-theme-manage #addModal ul li:first-child,
+.main-content-theme-manage #editModal ul li:first-child{
+    width: 150px;
+    font-size: 1.125rem;
+}
+.main-content-theme-manage #addModal ul li:nth-child(2),
+.main-content-theme-manage #editModal ul li:nth-child(2){
+    width: 100%;
+}
+.main-content-theme-manage #addModal ul li:nth-child(2) input[type="text"],
+.main-content-theme-manage #editModal ul li:nth-child(2) input[type="text"]{
+    width: 420px;
+    background-color: #F6F7F9;
+    border: none;
+    border-radius: 16px;
+    height: 50px;
+    padding: 1rem;
+}
+.main-content-theme-manage #addModal ul li:nth-child(2) textarea,
+.main-content-theme-manage #editModal ul li:nth-child(2) textarea{
+    width: 100%;
+    height: 100%;
+    background-color: #F6F7F9;
+    border: none;
+    border-radius: 16px;
+    padding: 1rem;
+    min-height: 200px;
+}
+.main-content-theme-manage #addModal ul:nth-child(3) li:nth-child(2) > div,
+.main-content-theme-manage #editModal ul:nth-child(3) li:nth-child(2) > div{
+    display: flex;
+    /*z-index: 1;*/
+}
+.main-content-theme-manage #addModal ul:nth-child(3) li:nth-child(2) div.addThemeSymbol1 img,
+.main-content-theme-manage #addModal ul:nth-child(3) li:nth-child(2) div.addThemeSymbol2 img,
+.main-content-theme-manage #editModal ul:nth-child(3) li:nth-child(2) div.editThemeSymbol1 img,
+.main-content-theme-manage #editModal ul:nth-child(3) li:nth-child(2) div.editThemeSymbol2 img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+    /*z-index: -1;*/
+}
+.main-content-theme-manage #addModal ul:nth-child(3) li:nth-child(2) div.addThemeSymbol1,
+.main-content-theme-manage #addModal ul:nth-child(3) li:nth-child(2) div.addThemeSymbol2,
+.main-content-theme-manage #editModal ul:nth-child(3) li:nth-child(2) div.editThemeSymbol1,
+.main-content-theme-manage #editModal ul:nth-child(3) li:nth-child(2) div.editThemeSymbol2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F6F7F9;
+    border-radius: 16px;
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+    overflow: hidden;
+}
+.main-content-theme-manage #addModal ul:nth-child(3) li:nth-child(2) div.addThemeSymbol1:hover,
+.main-content-theme-manage #addModal ul:nth-child(3) li:nth-child(2) div.addThemeSymbol2:hover,
+.main-content-theme-manage #editModal ul:nth-child(3) li:nth-child(2) div.editThemeSymbol1:hover,
+.main-content-theme-manage #editModal ul:nth-child(3) li:nth-child(2) div.editThemeSymbol2:hover{
+    background: #EFEFEF;
+}
+.main-content-theme-manage #addModal ul:nth-child(3) li:nth-child(2) div.addThemeSymbol2,
+.main-content-theme-manage #editModal ul:nth-child(3) li:nth-child(2) div.editThemeSymbol2{
+    margin-left: 10px;
+}
+.main-content-theme-manage #addModal ul:nth-child(3) li:nth-child(2) i.add,
+.main-content-theme-manage #editModal ul:nth-child(3) li:nth-child(2) i.add{
+    background: url('/images/black_plus.svg') no-repeat;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    opacity: 20%;
+}
+.main-content-theme-manage #addModal ul:nth-child(3) li:nth-child(2) .symbol-wrap,
+.main-content-theme-manage #editModal ul:nth-child(3) li:nth-child(2) .symbol-wrap{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: space-between;
+    align-items: center;
+}
+.main-content-theme-manage #addModal ul:nth-child(3) li:nth-child(2) .symbol-wrap p,
+.main-content-theme-manage #editModal ul:nth-child(3) li:nth-child(2) .symbol-wrap p{
+    color: #a0a0a0;
+    font-size: 0.8125rem;
+    padding-top: 10px;
+    font-weight: 700;
+
+    /*드래그 방지*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.main-content-theme-manage #addModal ul:nth-child(3) li:nth-child(2) p.info,
+.main-content-theme-manage #editModal ul:nth-child(3) li:nth-child(2) p.info{
+    color: #A0A0A0;
+    font-size: 0.75rem;
+    padding-top: 10px;
+}
+.main-content-theme-manage #deleteModal .modal-body .modal-content{
+    line-height: 150px;
+    font-size: 1.25rem;
+}
+
+.main-content-theme-manage #deleteModal .modal-body .modal-message{
+    line-height: 40px;
+    font-size: 1.2rem;
+}
+
+/* 테마상세 */
+.main-content-theme-manage #detailModal .modal-body .modal-content{
+    max-height: 350px;
+}
+.main-content-theme-manage #detailModal li:nth-child(1){
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.main-content-theme-manage #detailModal li:nth-child(1)::before{
+    content: '';
+    background-image: url('/images/basic_theme.svg');
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+    margin-right: 4px;
+    display: inline-block;
+}
+.main-content-theme-manage #detailModal li:nth-child(2){
+    word-break: break-all;
+    text-align: justify;
+    font-size: 1.0625rem;
+}
+
+
+
+/* 카테고리 관리(유형) */
+.main-content-type-manage #addModal ul:first-of-type,
+.main-content-type-manage #editModal ul:first-of-type{
+    margin-bottom: 16px;
+    align-items: center;
+}
+.main-content-type-manage #addModal ul li:first-child,
+.main-content-type-manage #editModal ul li:first-child{
+    width: 150px;
+    font-size: 1.125rem;
+}
+.main-content-type-manage #addModal ul li:nth-child(2),
+.main-content-type-manage #editModal ul li:nth-child(2){
+    width: 100%;
+}
+.main-content-type-manage #addModal ul li:nth-child(2) input[type="text"],
+.main-content-type-manage #editModal ul li:nth-child(2) input[type="text"]{
+    width: 420px;
+    background-color: #F6F7F9;
+    border: none;
+    border-radius: 16px;
+    height: 50px;
+    padding: 1rem;
+    margin-right: 20px;
+}
+.main-content-type-manage #addModal ul li:nth-child(2) input[type="checkbox"] + label,
+.main-content-type-manage #editModal ul li:nth-child(2) input[type="checkbox"] + label{
+    font-size: 1.125rem;
+}
+.main-content-type-manage #addModal ul li:nth-child(2) textarea,
+.main-content-type-manage #editModal ul li:nth-child(2) textarea{
+    width: 100%;
+    height: 200px;
+    background-color: #F6F7F9;
+    border: none;
+    border-radius: 16px;
+    padding: 1rem;
+}
+.main-content-type-manage #deleteModal .modal-body .modal-content{
+    line-height: 150px;
+    font-size: 1.25rem;
+}
+
+/* 유형상세 */
+.main-content-type-manage #detailModal .modal-body .modal-content{
+    max-height: 350px;
+}
+.main-content-type-manage #detailModal li:nth-child(1){
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.main-content-type-manage #detailModal li:nth-child(1)::before{
+    content: '';
+    background-image: url('/images/basic_type.svg');
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+    margin-right: 4px;
+    display: inline-block;
+}
+.main-content-type-manage #detailModal li:nth-child(2){
+    word-break: break-all;
+    text-align: justify;
+    font-size: 1.0625rem;
+}
+
+
+/* 단체 상세 modal */
+.main-content-group-manage #detailModal .modal-body{
+    padding-top: 40px;
+}
+.main-content-group-manage #detailModal .modal-body .modal-content{
+    max-height: 550px;
+}
+.main-content-group-manage #detailModal .modal-content div:nth-child(1){
+    display: flex;
+}
+.main-content-group-manage #detailModal .modal-content div:nth-child(1) div.part-right{
+    padding-left: 20px;
+}
+.main-content-group-manage #detailModal .modal-content div:nth-child(1) div.part-right .title-area{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.main-content-group-manage #detailModal .modal-content div:nth-child(1) div.part-right .title-area p{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 10px;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.main-content-group-manage #detailModal .modal-content div:nth-child(1) div.part-right .title-area p span{
+    font-size: 1.125rem;
+    margin-left: 8px;
+    /*display: inline-block;*/
+}
+.main-content-group-manage #detailModal div:nth-child(1) img{
+    width: 300px;
+    height: 180px;
+    border: none;
+    border-radius: 16px;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-content-group-manage #detailModal div:nth-child(1) div.part-right .info-area div{
+    font-size: 1.0625rem;
+}
+.main-content-group-manage #detailModal div.part:nth-child(1) div.info-area div{
+    display: flex;
+    align-items: flex-start;
+    word-break: break-all;
+}
+.main-content-group-manage #detailModal div.part:nth-child(1) div.info-area div:not(:last-child){
+    margin-bottom: 6px;
+}
+.main-content-group-manage #detailModal div.part:nth-child(1) div.info-area div:nth-child(1)::before{
+    content: '';
+    background-image: url('/images/basic_place.svg');
+    background-repeat: no-repeat;
+    background-size: 17px 17px;
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+    margin-top: 3px;
+}
+.main-content-group-manage #detailModal div.part:nth-child(1) div.info-area div:nth-child(2)::before{
+    content: '';
+    background-image: url('/images/b_tel.svg');
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+.main-content-group-manage #detailModal div.part:nth-child(1) div.info-area div:nth-child(3)::before{
+    content: '';
+    background-image: url('/images/basic_target.svg');
+    background-repeat: no-repeat;
+    background-size: 17px 17px;
+    width: 17px;
+    height: 17px;
+    margin-right: 4px;
+    margin-top: 2px;
+}
+.main-content-group-manage #detailModal div.part:nth-child(1) div.info-area div:nth-child(4)::before{
+    content: '';
+    background-image: url('/images/menu_edit.svg');
+    background-repeat: no-repeat;
+    background-size: 17px 17px;
+    width: 17px;
+    height: 17px;
+    margin-right: 4px;
+    margin-top: 3px;
+}
+.main-content-group-manage #detailModal div.part:nth-child(1) div.info-area div:nth-child(5)::before{
+    content: '';
+    background-image: url('/images/basic_theme.svg');
+    background-repeat: no-repeat;
+    background-size: 19px 19px;
+    width: 19px;
+    height: 19px;
+    margin-right: 2px;
+    margin-top: 3px;
+}
+.main-content-group-manage #detailModal div.part:nth-child(1) div.info-area div:nth-child(6)::before{
+    content: '';
+    background-image: url('/images/menu_edit.svg');
+    background-repeat: no-repeat;
+    background-size: 17px 17px;
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+.main-content-group-manage #detailModal div.part:nth-child(1) div.info-area div.info-url::before{
+    content: '';
+    background-image: url('/images/gren_url.svg');
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+.main-content-group-manage #detailModal div.part:nth-child(1) div.info-area div.info-cafe::before{
+    content: '';
+    background-image: url('/images/gren_url.svg');
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+.main-content-group-manage #detailModal div.part:nth-child(1) div.info-area div#detailHome a:hover,
+.main-content-group-manage #detailModal div.part:nth-child(1) div.info-area div#detailCafe a:hover,
+.main-content-group-manage #detailModal div.part:nth-child(1) div.info-area div#detailEmail a:hover{
+    color: #5C9021;
+}
+.main-content-group-manage #detailModal div.part:nth-child(2)::after {
+    content: '';
+    background-color: #EFEFEF;
+    margin: 30px 0px;
+    width: 100%;
+    height: 1px;
+    display: block;
+}
+.main-content-group-manage #detailModal div.part:nth-child(2)::before {
+    content: '';
+    background-color: #EFEFEF;
+    margin: 30px 0px;
+    width: 100%;
+    height: 1px;
+    display: block;
+}
+.main-content-group-manage #detailModal div.part:nth-child(2) p{
+    display: flex;
+    align-items: center;
+}
+.main-content-group-manage #detailModal div.part:nth-child(2) p::before {
+    content: '';
+    background-image: url('/images/b_group.svg');
+    background-repeat: no-repeat;
+    background-size: 19px 19px;
+    width: 19px;
+    height: 19px;
+    display: inline-block;
+    margin-right: 4px;
+    margin-top: -2px;
+}
+.main-content-group-manage #detailModal div.part:nth-child(2) p,
+.main-content-group-manage #detailModal div.part:nth-child(2) div,
+.main-content-group-manage #detailModal div.part:nth-child(3) span{
+    font-size: 1.0625rem;
+}
+.main-content-group-manage #detailModal div.part:nth-child(2) div{
+    word-break: break-all;
+    text-align: justify;
+}
+.main-content-group-manage #detailModal div.part:nth-child(2) p{
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+.main-content-group-manage #detailModal div.part:nth-child(3) span:first-child{
+    font-weight: 700;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+}
+.main-content-group-manage #detailModal div.part:nth-child(3) span:first-child::after{
+    content: '';
+    background-color: #dddddd;
+    width: 1px;
+    height: 15px;
+    display: inline-block;
+    margin-left: 10px;
+}
+.main-content-group-manage #detailModal div.part:nth-child(3) div:nth-child(2),
+.main-content-group-manage #detailModal div.part:nth-child(3) div:nth-child(3){
+    display: flex;
+    align-items: flex-start;
+}
+.main-content-group-manage #detailModal div.part:nth-child(3) div:nth-child(3) span{
+    display: flex;
+    align-items: center;
+}
+
+
+/* 단체관리 */
+/* 단체추가 */
+.main-content-group-manage #addModal .modal-content{
+    height: 550px;
+    padding-right: 30px;
+}
+.main-content-group-manage #addModal ul:not(:last-child){
+    margin-bottom: 16px;
+}
+.main-content-group-manage #addModal ul{
+    display: flex;
+}
+.main-content-group-manage #addModal ul li:first-child{
+    width: 150px;
+    font-size: 1.125rem;
+}
+.main-content-group-manage #addModal ul > li:nth-child(2){
+    width: calc(822px - 150px);
+}
+.main-content-group-manage #addModal ul li input[type="text"]{
+    height: 50px;
+}
+.main-content-group-manage #addModal ul li span{
+    padding-left: 4px;
+}
+.main-content-group-manage #addModal ul:not(:nth-child(2)),
+.main-content-group-manage #addModal ul:not(:nth-child(3)){
+    align-items: center;
+}
+.main-content-group-manage #addModal ul:nth-child(2),
+.main-content-group-manage #addModal ul:nth-child(3),
+.main-content-group-manage #addModal ul:nth-child(4),
+.main-content-group-manage #addModal ul:nth-child(11){
+    align-items: flex-start;
+}
+.main-content-group-manage #addModal ul:nth-child(2) #addThumb{
+    background-color: #F6F7F9;
+    width: 500px;
+    height: 281.25px;
+    border-radius: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.main-content-group-manage #addModal ul:nth-child(2) #addThumb:hover{
+    background: #EFEFEF;
+}
+.main-content-group-manage #addModal ul:nth-child(2) #addThumb div div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-content-group-manage #addModal ul:nth-child(2) #addThumb span:first-of-type{
+    padding-left: 4px;
+}
+.main-content-group-manage #addModal ul:nth-child(3) textarea{
+    background-color: #F6F7F9;
+    width: 100%;
+    height: 120px;
+}
+.main-content-group-manage #addModal ul:nth-child(1) input,
+.main-content-group-manage #addModal ul:nth-child(7) input,
+.main-content-group-manage #addModal ul:nth-child(8) input,
+.main-content-group-manage #addModal ul:nth-child(9) input{
+    width: 100%;
+}
+.main-content-group-manage #addModal ul:nth-child(5) input,
+.main-content-group-manage #addModal ul:nth-child(6) select,
+.main-content-group-manage #addModal ul:nth-child(10) input{
+    width: 240px;
+}
+.main-content-group-manage #addModal ul:nth-child(4) input:nth-child(1){
+    width: 70px;
+}
+.main-content-group-manage #addModal ul:nth-child(4) input:not(:nth-child(1)){
+    width: 50px;
+    margin-left: 16px;
+}
+.main-content-group-manage #addModal ul:nth-child(4) span.start-date-text{
+    padding-left: 4px;
+}
+.main-content-group-manage #addModal ul:nth-child(4) p.font-red{
+    font-size: 0.8125rem;
+    padding-top: 8px;
+}
+.main-content-group-manage #addModal ul:nth-child(11) input:first-child{
+    width: 420px;
+}
+.main-content-group-manage #addModal ul:nth-child(11) input:last-child{
+    width: 100%;
+}
+.main-content-group-manage #addModal ul:nth-child(11) button{
+    padding: 0px 30px;
+    margin-left: 8px;
+}
+
+
+/* 단체수정 */
+.main-content-group-manage #editModal .modal-content{
+    height: 550px;
+    padding-right: 30px;
+}
+.main-content-group-manage #editModal ul:not(:last-child){
+    margin-bottom: 16px;
+}
+.main-content-group-manage #editModal ul li:first-child{
+    width: 150px;
+    font-size: 1.125rem;
+}
+.main-content-group-manage #editModal ul{
+    display: flex;
+}
+.main-content-group-manage #editModal ul > li:nth-child(2){
+    width: calc(822px - 150px);
+}
+.main-content-group-manage #editModal ul li input[type="text"]{
+    height: 50px;
+}
+.main-content-group-manage #editModal ul li span{
+    padding-left: 4px;
+}
+.main-content-group-manage #editModal ul:nth-child(1) input{
+    width: 100%;
+}
+.main-content-group-manage #editModal ul:nth-child(2) #editThumb{
+    background-color: #F6F7F9;
+    width: 500px;
+    height: 281.25px;
+    border-radius: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.main-content-group-manage #editModal ul:nth-child(2) #editThumb:hover{
+    background: #EFEFEF;
+}
+.main-content-group-manage #editModal ul:nth-child(2) #editThumb div div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-content-group-manage #editModal ul:nth-child(2) #editThumb span:first-of-type{
+    padding-left: 4px;
+}
+.main-content-group-manage #editModal ul:nth-child(1) input{
+    width: 100%;
+}
+.main-content-group-manage #editModal ul:not(:nth-child(2)),
+.main-content-group-manage #editModal ul:not(:nth-child(3)){
+    align-items: center;
+}
+.main-content-group-manage #editModal ul:nth-child(2),
+.main-content-group-manage #editModal ul:nth-child(3),
+.main-content-group-manage #editModal ul:nth-child(4),
+.main-content-group-manage #editModal ul:nth-child(11){
+    align-items: flex-start;
+}
+.main-content-group-manage #editModal ul:nth-child(2) #addThumb{
+    background-color: #F6F7F9;
+    width: 500px;
+    height: 281.25px;
+    border-radius: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.main-content-group-manage #editModal ul:nth-child(2) #addThumb div div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-content-group-manage #editModal ul:nth-child(2) #addThumb span:first-of-type{
+    padding-left: 4px;
+}
+.main-content-group-manage #editModal ul:nth-child(3) textarea{
+    background-color: #F6F7F9;
+    width: 100%;
+    height: 120px;
+}
+.main-content-group-manage #editModal ul:nth-child(1) input,
+.main-content-group-manage #editModal ul:nth-child(7) input,
+.main-content-group-manage #editModal ul:nth-child(8) input,
+.main-content-group-manage #editModal ul:nth-child(9) input{
+    width: 100%;
+}
+.main-content-group-manage #editModal ul:nth-child(5) input,
+.main-content-group-manage #editModal ul:nth-child(6) select,
+.main-content-group-manage #editModal ul:nth-child(10) input{
+    width: 240px;
+}
+.main-content-group-manage #editModal ul:nth-child(4) input:nth-child(1){
+    width: 70px;
+}
+.main-content-group-manage #editModal ul:nth-child(4) input:not(:nth-child(1)){
+    width: 50px;
+    margin-left: 16px;
+}
+.main-content-group-manage #editModal ul:nth-child(4) span.start-date-text{
+    padding-left: 4px;
+}
+.main-content-group-manage #editModal ul:nth-child(4) p.font-red{
+    font-size: 0.8125rem;
+    padding-top: 8px;
+}
+.main-content-group-manage #editModal ul:nth-child(11) input:first-child{
+    width: 420px;
+}
+.main-content-group-manage #editModal ul:nth-child(11) input:last-child{
+    width: 100%;
+}
+.main-content-group-manage #editModal ul:nth-child(11) button{
+    padding: 0px 30px;
+    margin-left: 8px;
+}
+
+/* 단체삭제 */
+.main-content-group-manage #deleteModal .modal-body .modal-content{
+    line-height: 150px;
+    font-size: 1.25rem;
+}
+
+.main-content-group-manage #deleteModal .modal-body .modal-message{
+    line-height: 40px;
+    font-size: 1.2rem;
+}
+
+/* 프로그램 관리 */
+/* 프로그램 상세 */
+.main-content-program-manage #detailModal .modal-body{
+    padding-top: 40px;
+    height: 550px;
+}
+.main-content-program-manage #detailModal .modal-content{
+    padding-right: 30px;
+}
+.main-content-program-manage #detailModal .modal-content div:nth-child(1){
+    display: flex;
+}
+
+.main-content-program-manage #detailModal .part-left{
+    position: relative;
+    justify-content: center;
+}
+.main-content-program-manage #detailModal .part-left .img-area{
+    width: 370px;
+    height: 222px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /*justify-content: center;*/
+    position: relative;
+}
+.main-content-program-manage #detailModal .part-left .img-area ul.img-slide{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 740px;
+    display: flex;
+    justify-content: space-between;
+    transition: 0.5s ease-out;
+}
+.main-content-program-manage #detailModal .part-left .img-area ul.img-slide li{
+    width: 370px;
+    height: 222px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    object-fit: cover;
+}
+.main-content-program-manage #detailModal .part-left .img-area ul.img-slide li:not(:last-child){
+    float: left;
+}
+.main-content-program-manage #detailModal .part-left .img-area ul.img-slide li img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    overflow: hidden;
+    position: absolute;
+
+    border: none;
+    /*border-radius: 16px;*/
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-content-program-manage #detailModal .part-left .img-area i.prev-img{
+    position: absolute;
+    background: url('/images/bold_white_arrow.svg') no-repeat;
+    background-size: 26px;
+    width: 26px;
+    height: 26px;
+    top: calc((100% - 24px) / 2);
+    left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    z-index: 9999;
+    cursor: pointer;
+}
+.main-content-program-manage #detailModal .part-left .img-area i.prev-img:hover{
+    transform: translateY(-5px);
+}
+.main-content-program-manage #detailModal .part-left .img-area i.next-img{
+    position: absolute;
+    background: url('/images/bold_white_arrow.svg') no-repeat;
+    background-size: 26px;
+    width: 26px;
+    height: 26px;
+    top: calc((100% - 24px) / 2);
+    right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    z-index: 9999;
+    transform: rotate(-180deg);
+    cursor: pointer;
+}
+.main-content-program-manage #detailModal .part-left .img-area i.next-img:hover{
+    transform: rotate(-180deg ) translateY(5px);
+}
+.main-content-program-manage #detailModal .part-left ul.pagination-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 202px;
+    z-index: 999999;
+}
+.main-content-program-manage #detailModal .part-left ul.pagination-img li{
+    width: 7px;
+    height: 7px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.29);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.19);
+}
+.main-content-program-manage #detailModal .part-left ul.pagination-img li.focus{
+    background: rgb(255, 255, 255);
+}
+.main-content-program-manage #detailModal .part-left ul.pagination-img li:nth-child(2){
+    margin-left: 8px;
+}
+
+.main-content-program-manage #detailModal .modal-content div:nth-child(1) div.part-right{
+    padding-left: 20px;
+}
+.main-content-program-manage #detailModal .modal-content div:nth-child(1) div.part-right .title-area{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.main-content-program-manage #detailModal .modal-content div:nth-child(1) div.part-right .title-area p{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 10px;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.main-content-program-manage #detailModal .modal-content div:nth-child(1) div.part-right .title-area p span{
+    font-size: 1.125rem;
+    margin-left: 8px;
+    display: table-cell;
+    /*display: inline-block;*/
+}
+
+.main-content-program-manage #detailModal div:nth-child(1) div.part-right .info-area div{
+    font-size: 1.0625rem;    
+}
+
+.main-content-program-manage #detailModal div.part:nth-child(1) div.info-area div{
+    display: flex;
+    align-items: flex-start;
+    word-break: break-all;
+}
+.main-content-program-manage #detailModal div.part:nth-child(1) div.info-area div span:nth-of-type(2){
+    color: #5C9021;
+    padding: 0px 10px;
+    border: 1px solid #5C9021;
+    border-radius: 35px;
+    margin-left: 6px;
+    font-size: 0.9375rem;
+}
+.main-content-program-manage #detailModal div.part:nth-child(1) div.info-area div:not(:last-child){
+    margin-bottom: 6px;
+}
+.main-content-program-manage #detailModal div.part:nth-child(1) div.info-area div:nth-child(1)::before{
+    content: '';
+    background-image: url('/images/basic_place.svg');
+    background-repeat: no-repeat;
+    background-size: 17px 17px;
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+    margin-top: 3px;
+}
+.main-content-program-manage #detailModal div.part:nth-child(1) div.info-area div:nth-child(2)::before{
+    content: '';
+    background-image: url('/images/b_tel.svg');
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+.main-content-program-manage #detailModal div.part:nth-child(1) div.info-area div:nth-child(3)::before{
+    content: '';
+    background-image: url('/images/basic_target.svg');
+    background-repeat: no-repeat;
+    background-size: 17px 17px;
+    width: 17px;
+    height: 17px;
+    margin-right: 4px;
+    margin-top: 2px;
+}
+.main-content-program-manage #detailModal div.part:nth-child(1) div.info-area div:nth-child(4)::before{
+    content: '';
+    background-image: url('/images/black_calendar.svg');
+    background-repeat: no-repeat;
+    background-size: 17px 17px;
+    width: 17px;
+    height: 17px;
+    margin-right: 4px;
+    margin-top: 3px;
+}
+.main-content-program-manage #detailModal div.part:nth-child(1) div.info-area div:nth-child(5)::before{
+    content: '';
+    background-image: url('/images/basic_theme.svg');
+    background-repeat: no-repeat;
+    background-size: 19px 19px;
+    width: 19px;
+    height: 19px;
+    margin-right: 2px;
+    margin-top: 3px;
+}
+.main-content-program-manage #detailModal div.part:nth-child(1) div.info-area div:nth-child(6)::before{
+    content: '';
+    background-image: url('/images/menu_edit.svg');
+    background-repeat: no-repeat;
+    background-size: 17px 17px;
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+.main-content-program-manage #detailModal div.part:nth-child(1) div.info-area div.info-url::before{
+    content: '';
+    background-image: url('/images/gren_url.svg');
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+.main-content-program-manage #detailModal div.part:nth-child(1) div.info-area div.info-cafe::before{
+    content: '';
+    background-image: url('/images/gren_url.svg');
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+.main-content-program-manage #detailModal div.part:nth-child(2)::after {
+    content: '';
+    background-color: #EFEFEF;
+    margin: 30px 0px;
+    width: 100%;
+    height: 1px;
+    display: block;
+}
+.main-content-program-manage #detailModal div.part:nth-child(2)::before {
+    content: '';
+    background-color: #EFEFEF;
+    margin: 30px 0px;
+    width: 100%;
+    height: 1px;
+    display: block;
+}
+.main-content-program-manage #detailModal div.part:nth-child(2) p{
+    display: flex;
+    align-items: center;
+}
+.main-content-program-manage #detailModal div.part:nth-child(2) p::before {
+    content: '';
+    background-image: url('/images/b_program.svg');
+    background-repeat: no-repeat;
+    background-size: 19px 19px;
+    width: 19px;
+    height: 19px;
+    display: inline-block;
+    margin-right: 2px;
+    margin-top: -2px;
+}
+.main-content-program-manage #detailModal div.part:nth-child(2) p,
+.main-content-program-manage #detailModal div.part:nth-child(2) div,
+.main-content-program-manage #detailModal div.part:nth-child(3) span{
+    font-size: 1.0625rem;
+}
+.main-content-program-manage #detailModal div.part:nth-child(2) div{
+    word-break: break-all;
+    text-align: justify;
+}
+.main-content-program-manage #detailModal div.part:nth-child(2) p{
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+.main-content-program-manage #detailModal div.part:nth-child(3) span:first-child{
+    font-weight: 700;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+}
+.main-content-program-manage #detailModal div.part:nth-child(3) span:first-child::after{
+    content: '';
+    background-color: #dddddd;
+    width: 1px;
+    height: 15px;
+    display: inline-block;
+    margin-left: 10px;
+}
+.main-content-program-manage #detailModal div.part:nth-child(3) div:nth-child(3) span{
+    color: #282B6B;
+    display: flex;
+    align-items: center;
+}
+.main-content-program-manage #detailModal div.part:nth-child(3) div:nth-child(3) span:nth-child(1)::before{
+    content: '';
+    background-image: url('/images/navy_cost.svg');
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+    margin-right: 2px;
+}
+
+/* 프로그램 추가 */
+.main-content-program-manage #addModal .modal-content {
+    height: 550px;
+    padding-right: 30px;
+}
+.main-content-program-manage #addModal ul:not(:last-child){
+    margin-bottom: 16px;
+}
+.main-content-program-manage #addModal ul li:first-child{
+    width: 170px;
+    font-size: 1.125rem;
+}
+.main-content-program-manage #addModal ul > li:nth-child(2){
+    width: calc(822px - 170px);
+}
+.main-content-program-manage #addModal ul li input[type="text"]{
+    height: 50px;
+}
+.main-content-program-manage #addModal ul li span.essential{
+    padding-left: 8px;
+}
+.main-content-program-manage #addModal ul:nth-child(1),
+.main-content-program-manage #addModal ul:nth-child(6),
+.main-content-program-manage #addModal ul:nth-child(9),
+.main-content-program-manage #addModal ul:nth-child(10){
+    display: flex;
+    align-items: center;
+}
+.main-content-program-manage #addModal ul:nth-child(5),
+.main-content-program-manage #addModal ul:nth-child(6),
+.main-content-program-manage #addModal ul:nth-child(7){
+    align-items: flex-start;
+}
+.main-content-program-manage #addModal ul:nth-child(1) select{
+    width: 420px;
+}
+.main-content-program-manage #addModal ul:nth-child(2) input[type="text"]{
+    width: 100%;
+}
+.main-content-program-manage #addModal ul:nth-child(3) > li:nth-child(2){
+    display: flex;
+    align-items: flex-start;
+    justify-content: right;
+}
+.main-content-program-manage #addModal ul:nth-child(3) .addThumb1,
+.main-content-program-manage #addModal ul:nth-child(3) .addThumb2{
+    width: calc((652px - 10px) / 2);
+    height: 180.56px;
+    background-color: #F6F7F9;
+    border-radius: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.main-content-program-manage #addModal ul:nth-child(3) .addThumb1:hover,
+.main-content-program-manage #addModal ul:nth-child(3) .addThumb2:hover{
+    background: #EFEFEF;
+}
+.main-content-program-manage #addModal ul:nth-child(3) .addThumb2{
+    margin-left: 10px;
+}
+.main-content-program-manage #addModal ul:nth-child(3) .addThumb1 div div,
+.main-content-program-manage #addModal ul:nth-child(3) .addThumb2 div div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-content-program-manage #addModal ul:nth-child(3) .addThumb1 span:first-of-type,
+.main-content-program-manage #addModal ul:nth-child(3) .addThumb2 span:first-of-type{
+    padding-left: 4px;
+}
+.main-content-program-manage #addModal ul:nth-child(4) textarea{
+    background-color: #F6F7F9;
+    width: 100%;
+    height: 100%;
+    min-height: 120px;
+}
+.main-content-program-manage #addModal ul:nth-child(5) li:nth-child(2) div.themeList{
+    padding: 1rem;
+    background: #F6F7F9;
+    border-radius: 16px;
+}
+.main-content-program-manage #addModal ul:nth-child(5) li:nth-child(2) .chk-area{
+    width: 100%;
+    display: flex;
+}
+.main-content-program-manage #addModal ul:nth-child(5) li:nth-child(2) .chk-area:not(:last-child){
+    margin-bottom: 8px;
+}
+.main-content-program-manage #addModal ul:nth-child(5) li:nth-child(2) .chk-area .chk-label{
+    width: calc(100%/3);
+}
+
+.main-content-program-manage #addModal ul:nth-child(6) li:nth-child(2) div.typeList{
+    padding: 1rem;
+    background: #F6F7F9;
+    border-radius: 16px;
+}
+.main-content-program-manage #addModal ul:nth-child(6) li:nth-child(2) .chk-area{
+    width: 100%;
+    display: flex;
+}
+.main-content-program-manage #addModal ul:nth-child(6) li:nth-child(2) .chk-area:not(:last-child){
+    margin-bottom: 8px;
+}
+.main-content-program-manage #addModal ul:nth-child(6) li:nth-child(2) .chk-area .chk-label{
+    width: calc(100%/3);
+}
+.main-content-program-manage #addModal ul:nth-child(7) #eduTarget-add{
+    padding: 1rem;
+    background-color: #F6F7F9;
+    border-radius: 16px;
+}
+.main-content-program-manage #addModal ul:nth-child(7) #eduTarget-add .chk-area{
+    width: 100%;
+    display: flex;
+}
+.main-content-program-manage #addModal ul:nth-child(7) #eduTarget-add .chk-area:not(:last-child){
+    margin-bottom: 8px;
+}
+.main-content-program-manage #addModal ul:nth-child(7) #eduTarget-add .chk-label{
+    width: calc(100%/3);
+}
+.main-content-program-manage #addModal ul:nth-child(8){
+    align-items: flex-start;
+}
+.main-content-program-manage #addModal ul:nth-child(8) li:nth-child(2) select{
+    width: 240px;
+}
+.main-content-program-manage #addModal ul:nth-child(8) li:nth-child(2) input[type="text"]{
+    width: 100%;
+    display: table-cell;
+    margin-top: 8px;
+}
+.main-content-program-manage #addModal ul:nth-child(9) ul li:nth-child(2){
+    display: flex;
+    align-items: center;
+}
+.main-content-program-manage #addModal ul:nth-child(9) ul li:nth-child(2){
+    display: flex;
+    align-items: center;
+}
+.main-content-program-manage #addModal ul:nth-child(9) .area-gray,
+.main-content-program-manage #addModal ul:nth-child(10) .area-gray{
+    padding: 0px;
+}
+.main-content-program-manage #addModal ul:nth-child(9) select{
+    padding-right: 70px;
+}
+.main-content-program-manage #addModal ul:nth-child(9) .horizon{
+    content: '';
+    width: 8px;
+    height: 1px;
+    background-color: #1D1D1B;
+    display: inline-block;
+    margin: 5px 8px;
+}
+.main-content-program-manage #addModal ul:nth-child(10) select{
+    padding-right: 70px;
+}
+.main-content-program-manage #addModal ul:nth-child(10) select:last-child{
+    margin-left: 8px;
+}
+/* 1회 교육인원 ul:nth-child(10) */
+.main-content-program-manage #addModal ul:nth-child(11){
+    display: flex;
+    align-items: center;
+}
+.main-content-program-manage #addModal ul:nth-child(11) select:nth-child(1){
+    padding-right: 20px;
+    width: 140px;
+    margin-right: 8px;
+}
+.main-content-program-manage #addModal ul:nth-child(11) select:nth-of-type(2),
+.main-content-program-manage #addModal ul:nth-child(11) select:nth-of-type(3){
+    padding-right:70px;
+}
+.main-content-program-manage #addModal ul:nth-child(11) span.horizon{
+    content: '';
+    width: 8px;
+    height: 1px;
+    background-color: #1D1D1B;
+    display: inline-block;
+    margin: 5px 8px;
+}
+.main-content-program-manage #addModal ul:nth-child(12) div{
+    width: 240px;
+    background-color: #F6F7F9;
+    border-radius: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.main-content-program-manage #addModal ul:nth-child(12) div:not(:first-child){
+    margin-top: 8px;
+}
+.main-content-program-manage #addModal ul:nth-child(12) div input{
+    width: 200px;
+}
+/* 입력필드 추가버튼 */
+.main-content-program-manage #addModal ul:nth-child(12) div:nth-child(1) button{
+    background-image: url('/images/black_plus.svg');
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+/* 입력필드 제거버튼 */
+.main-content-program-manage #addModal ul:nth-child(12) div:not(:nth-child(1)) button{
+    background-image: url('/images/black_minus.svg');
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+.main-content-program-manage #addModal ul:nth-child(13) input{
+    width: 420px;
+}
+.main-content-program-manage #addModal ul:nth-child(14) li:nth-child(2) div{
+    margin-top: 8px;
+}
+.main-content-program-manage #addModal ul:nth-child(14) textarea{
+    background-color: #F6F7F9;
+    width: 100%;
+    height: 100%;
+    min-height: 120px;
+}
+.main-content-program-manage #addModal ul:nth-child(14) select,
+.main-content-program-manage #addModal ul:nth-child(15) select,
+.main-content-program-manage #addModal ul:nth-child(15) input{
+    width: 240px;
+}
+.main-content-program-manage #addModal ul:nth-child(15) input{
+    margin-top: 8px;
+}
+
+
+/* 프로그램 수정 */
+.main-content-program-manage #editModal .modal-content {
+    height: 550px;
+    padding-right: 30px;
+}
+.main-content-program-manage #editModal ul:not(:last-child){
+    margin-bottom: 16px;
+}
+.main-content-program-manage #editModal ul li:first-child{
+    width: 170px;
+    font-size: 1.125rem;
+}
+.main-content-program-manage #editModal ul > li:nth-child(2){
+    width: calc(822px - 170px);
+}
+.main-content-program-manage #editModal ul li input[type="text"]{
+    height: 50px;
+}
+.main-content-program-manage #editModal ul li span.essential{
+    padding-left: 8px;
+}
+.main-content-program-manage #editModal ul:nth-child(1),
+.main-content-program-manage #editModal ul:nth-child(2),
+.main-content-program-manage #editModal ul:nth-child(9),
+.main-content-program-manage #editModal ul:nth-child(10){
+    display: flex;
+    align-items: center;
+}
+.main-content-program-manage #editModal ul:nth-child(5),
+.main-content-program-manage #editModal ul:nth-child(6),
+.main-content-program-manage #editModal ul:nth-child(7){
+    align-items: flex-start;
+}
+.main-content-program-manage #editModal ul:nth-child(1) select{
+    width: 420px;
+}
+.main-content-program-manage #editModal ul:nth-child(2) input[type="text"]{
+    width: 100%;
+}
+.main-content-program-manage #editModal ul:nth-child(3) > li:nth-child(2){
+    display: flex;
+    align-items: flex-start;
+    justify-content: right;
+}
+.main-content-program-manage #editModal ul:nth-child(3) .editThumb1,
+.main-content-program-manage #editModal ul:nth-child(3) .editThumb2{
+    width: calc((652px - 10px) / 2);
+    height: 180.56px;
+    background-color: #F6F7F9;
+    border-radius: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.main-content-program-manage #editModal ul:nth-child(3) .editThumb1:hover,
+.main-content-program-manage #editModal ul:nth-child(3) .editThumb2:hover{
+    background: #EFEFEF;
+}
+.main-content-program-manage #editModal ul:nth-child(3) .editThumb2{
+    margin-left: 10px;
+}
+.main-content-program-manage #editModal ul:nth-child(3) .editThumb1 div div,
+.main-content-program-manage #editModal ul:nth-child(3) .editThumb2 div div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-content-program-manage #editModal ul:nth-child(3) .editThumb1 span:first-of-type,
+.main-content-program-manage #editModal ul:nth-child(3) .editThumb2 span:first-of-type{
+    padding-left: 4px;
+}
+.main-content-program-manage #editModal ul:nth-child(4) textarea{
+    background-color: #F6F7F9;
+    width: 100%;
+    height: 100%;
+    min-height: 120px;
+}
+.main-content-program-manage #editModal ul:nth-child(5) li:nth-child(2) div.themeList{
+    padding: 1rem;
+    background: #F6F7F9;
+    border-radius: 16px;
+}
+.main-content-program-manage #editModal ul:nth-child(5) li:nth-child(2) .chk-area{
+    width: 100%;
+    display: flex;
+}
+.main-content-program-manage #editModal ul:nth-child(5) li:nth-child(2) .chk-area:not(:last-child){
+    margin-bottom: 8px;
+}
+.main-content-program-manage #editModal ul:nth-child(5) li:nth-child(2) .chk-area .chk-label{
+    width: calc(100%/3);
+}
+
+.main-content-program-manage #editModal ul:nth-child(6) li:nth-child(2) div.typeList{
+    padding: 1rem;
+    background: #F6F7F9;
+    border-radius: 16px;
+}
+.main-content-program-manage #editModal ul:nth-child(6) li:nth-child(2) .chk-area{
+    width: 100%;
+    display: flex;
+}
+.main-content-program-manage #editModal ul:nth-child(6) li:nth-child(2) .chk-area:not(:last-child){
+    margin-bottom: 8px;
+}
+.main-content-program-manage #editModal ul:nth-child(6) li:nth-child(2) .chk-area .chk-label{
+    width: calc(100%/3);
+}
+.main-content-program-manage #editModal ul:nth-child(7) #eduTarget-edit{
+    padding: 1rem;
+    background-color: #F6F7F9;
+    border-radius: 16px;
+}
+.main-content-program-manage #editModal ul:nth-child(7) #eduTarget-edit .chk-area{
+    width: 100%;
+    display: flex;
+}
+.main-content-program-manage #editModal ul:nth-child(7) #eduTarget-edit .chk-area:not(:last-child){
+    margin-bottom: 8px;
+}
+.main-content-program-manage #editModal ul:nth-child(7) #eduTarget-edit .chk-label{
+    width: calc(100%/3);
+}
+.main-content-program-manage #editModal ul:nth-child(8){
+    align-items: flex-start;
+}
+.main-content-program-manage #editModal ul:nth-child(8) li:nth-child(2) select{
+    width: 240px;
+}
+.main-content-program-manage #editModal ul:nth-child(8) li:nth-child(2) input[type="text"]{
+    width: 100%;
+    display: table-cell;
+    margin-top: 8px;
+}
+.main-content-program-manage #editModal ul:nth-child(9) ul li:nth-child(2){
+    display: flex;
+    align-items: center;
+}
+.main-content-program-manage #editModal ul:nth-child(9) ul li:nth-child(2){
+    display: flex;
+    align-items: center;
+}
+.main-content-program-manage #editModal ul:nth-child(9) .area-gray,
+.main-content-program-manage #editModal ul:nth-child(10) .area-gray{
+    padding: 0px;
+}
+.main-content-program-manage #editModal ul:nth-child(9) select{
+    padding-right: 70px;
+}
+.main-content-program-manage #editModal ul:nth-child(9) .horizon{
+    content: '';
+    width: 8px;
+    height: 1px;
+    background-color: #1D1D1B;
+    display: inline-block;
+    margin: 5px 8px;
+}
+.main-content-program-manage #editModal ul:nth-child(10) select{
+    padding-right: 70px;
+}
+.main-content-program-manage #editModal ul:nth-child(10) select:last-child{
+    margin-left: 8px;
+}
+/* 1회 교육인원 ul:nth-child(10) */
+.main-content-program-manage #editModal ul:nth-child(11){
+    display: flex;
+    align-items: center;
+}
+.main-content-program-manage #editModal ul:nth-child(11) select:nth-child(1){
+    padding-right: 20px;
+    width: 140px;
+    margin-right: 8px;
+}
+.main-content-program-manage #editModal ul:nth-child(11) select:nth-of-type(2),
+.main-content-program-manage #editModal ul:nth-child(11) select:nth-of-type(3){
+    padding-right:70px;
+}
+.main-content-program-manage #editModal ul:nth-child(11) span.horizon{
+    content: '';
+    width: 8px;
+    height: 1px;
+    background-color: #1D1D1B;
+    display: inline-block;
+    margin: 5px 8px;
+}
+.main-content-program-manage #editModal ul:nth-child(12) div{
+    width: 240px;
+    background-color: #F6F7F9;
+    border-radius: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.main-content-program-manage #editModal ul:nth-child(12) div:not(:first-child){
+    margin-top: 8px;
+}
+.main-content-program-manage #editModal ul:nth-child(12) div input{
+    width: 200px;
+}
+/* 입력필드 추가버튼 */
+.main-content-program-manage #editModal ul:nth-child(12) div:nth-child(1) button{
+    background-image: url('/images/black_plus.svg');
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+/* 입력필드 제거버튼 */
+.main-content-program-manage #editModal ul:nth-child(12) div:not(:nth-child(1)) button{
+    background-image: url('/images/black_minus.svg');
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+.main-content-program-manage #editModal ul:nth-child(13) input{
+    width: 420px;
+}
+.main-content-program-manage #editModal ul:nth-child(14) li:nth-child(2) div{
+    margin-top: 8px;
+}
+.main-content-program-manage #editModal ul:nth-child(14) textarea{
+    background-color: #F6F7F9;
+    width: 100%;
+    height: 100%;
+    min-height: 120px;
+}
+.main-content-program-manage #editModal ul:nth-child(14) select,
+.main-content-program-manage #editModal ul:nth-child(15) select,
+.main-content-program-manage #editModal ul:nth-child(15) input{
+    width: 240px;
+}
+.main-content-program-manage #editModal ul:nth-child(15) input{
+    margin-top: 8px;
+}
+
+/* 프로그램 삭제 */
+.main-content-program-manage #deleteModal .modal-body .modal-content{
+    line-height: 150px;
+    font-size: 1.25rem;
+}
+
+
+
+/* 수정요청 관리 */
+/* 요청내역 처리 */
+.main-content-edit-manage #saveModal .modal-body .modal-content,
+.main-content-edit-manage #confirmModal .modal-body .modal-content,
+.main-content-edit-manage #completeModal .modal-body .modal-content{
+    line-height: 150px;
+    font-size: 1.25rem;
+}
+
+/*요청내역 처리불가*/
+.main-content-edit-manage #impossibleModal .modal-content{
+    max-height: 323px;
+}
+.main-content-edit-manage #impossibleModal ul{
+    display: flex;
+}
+.main-content-edit-manage #impossibleModal ul:nth-child(1){
+    align-items: center;
+}
+.main-content-edit-manage #impossibleModal ul:nth-child(2){
+    align-items: flex-start;
+}
+.main-content-edit-manage #impossibleModal ul li{
+    width: calc(100% - 150px);
+}
+.main-content-edit-manage #impossibleModal ul li:nth-child(1){
+    width: 150px;
+    text-align: left;
+    font-size: 1.125rem;
+}
+.main-content-edit-manage #impossibleModal ul:not(:last-child){
+    margin-bottom: 16px;
+}
+.main-content-edit-manage #impossibleModal ul:nth-child(1) li:nth-child(2) select{
+    width: 240px;
+    float: left;
+}
+.main-content-edit-manage #impossibleModal ul:nth-child(2) li:nth-child(2) textarea{
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+}
+
+/* 요청내역 확인(단체) */
+.main-content-edit-manage #viewModal .modal-content {
+    height: 550px;
+    padding-right: 30px;
+}
+.main-content-edit-manage #viewModal p.modal-title{
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+.main-content-edit-manage #viewModal p.modal-title::before{
+    content: '';
+    width: 6px;
+    height: 17px;
+    border-radius: 1px;
+    background-color: #5C9021;
+    display: inline-block;
+    margin-right: 8px;
+}
+.main-content-edit-manage #viewModal .written{
+    background-color: #F6F7F9;
+    border-radius: 16px;
+    padding: 1rem;
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+
+    overflow: auto;
+    word-break: break-all;
+}
+.main-content-edit-manage #viewModal .modal-content div.part:not(:last-child)::after{
+    content: '';
+    background-color: #EFEFEF;
+    margin: 30px 0px;
+    width: 100%;
+    height: 1px;
+    display: block;
+}
+.main-content-edit-manage #viewModal .modal-content div.part:not(:nth-child(1)) div{
+    display: flex;
+}
+.main-content-edit-manage #viewModal div:nth-child(2) div span:nth-child(1){
+    font-size: 1.0625rem;
+    display: flex;
+    align-items: center;
+}
+.main-content-edit-manage #viewModal div:nth-child(2) div span:nth-child(1)::after{
+    content: '';
+    background-color: #dddddd;
+    width: 1px;
+    height: 18px;
+    display: inline-block;
+    margin: 0px 10px;
+}
+.main-content-edit-manage #viewModal div:nth-child(2) div span:nth-child(2){
+    font-size: 1.0625rem;
+}
+.main-content-edit-manage #viewModal .part div:nth-child(1) span.favicon::before{
+    content: '';
+    background: url('/images/b_group.svg') no-repeat;  
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.main-content-edit-manage #viewModal .part div:nth-child(2) span.favicon::before{
+    content: '';
+    background: url('/images/basic_target.svg') no-repeat;  
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.main-content-edit-manage #viewModal .part div:nth-child(3) span.favicon::before{
+    content: '';
+    background: url('/images/b_tel.svg') no-repeat;  
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.main-content-edit-manage #viewModal .part div:nth-child(4) span.favicon::before{
+    content: '';
+    background: url('/images/b_email.svg') no-repeat;  
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.main-content-edit-manage #viewModal span.level{
+    border: 1px solid #5C9021;
+    border-radius: 24px;
+    height: 24px;
+    line-height: 22px;
+    padding: 0px 10px;
+    color: #5C9021;
+    margin-left: 8px;
+    font-size: 0.9375rem;
+    text-align: center;
+}
+.main-content-edit-manage #viewModal div.part:last-child ul{
+    align-items: center;
+}
+.main-content-edit-manage #viewModal div.part:last-child ul li:nth-child(1){
+    width: 100px;
+    font-size: 1.125rem;
+}
+.main-content-edit-manage #viewModal div.part:last-child ul li:nth-child(2){
+    width: 100%;
+}
+.main-content-edit-manage #viewModal div.part:last-child ul li:nth-child(2) select{
+    width: 240px;
+}
+.main-content-edit-manage #viewModal div.part:last-child ul:nth-child(2){
+    margin-top: 16px;
+}
+.main-content-edit-manage #viewModal div.part:last-child ul:nth-child(2) textarea{
+    width: 100%;
+    height: 140px;
+    
+    overflow: auto;
+    word-break: break-all;
+}
+.main-content-edit-manage #viewModal div.part:last-child ul:nth-child(2){
+    align-items: flex-start;
+}
+
+
+/* 요청내역 확인(프로그램) */
+.main-content-edit-manage #viewModal2 .modal-content {
+    height: 550px;
+    padding-right: 30px;
+}
+.main-content-edit-manage #viewModal2 p.modal-title{
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+.main-content-edit-manage #viewModal2 p.modal-title::before{
+    content: '';
+    width: 6px;
+    height: 17px;
+    border-radius: 1px;
+    background-color: #5C9021;
+    display: inline-block;
+    margin-right: 8px;
+}
+.main-content-edit-manage #viewModal2 .written{
+    background-color: #F6F7F9;
+    border-radius: 16px;
+    padding: 1rem;
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+}
+.main-content-edit-manage #viewModal2 .modal-content div.part:not(:last-child)::after{
+    content: '';
+    background-color: #EFEFEF;
+    margin: 30px 0px;
+    width: 100%;
+    height: 1px;
+    display: block;
+}
+.main-content-edit-manage #viewModal2 .modal-content div.part:not(:nth-child(1)) div{
+    display: flex;
+}
+.main-content-edit-manage #viewModal2 div:nth-child(2) div span:nth-child(1){
+    font-size: 1.0625rem;
+    display: flex;
+    align-items: center;
+}
+.main-content-edit-manage #viewModal2 div:nth-child(2) div span:nth-child(1)::after{
+    content: '';
+    background-color: #dddddd;
+    width: 1px;
+    height: 18px;
+    display: inline-block;
+    margin: 0px 10px;
+}
+.main-content-edit-manage #viewModal2 div:nth-child(2) div span:nth-child(2){
+    font-size: 1.0625rem;
+}
+.main-content-edit-manage #viewModal2 .part div:nth-child(1) span.favicon::before{
+    content: '';
+    background: url('/images/b_group.svg') no-repeat;  
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.main-content-edit-manage #viewModal2 .part div:nth-child(2) span.favicon::before{
+    content: '';
+    background: url('/images/b_program.svg') no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.main-content-edit-manage #viewModal2 .part div:nth-child(3) span.favicon::before{
+    content: '';
+    background: url('/images/basic_target.svg') no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.main-content-edit-manage #viewModal2 .part div:nth-child(4) span.favicon::before{
+    content: '';
+    background: url('/images/b_tel.svg') no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.main-content-edit-manage #viewModal2 .part div:nth-child(5) span.favicon::before{
+    content: '';
+    background: url('/images/b_email.svg') no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.main-content-edit-manage #viewModal2 span.level{
+    border: 1px solid #5C9021;
+    border-radius: 24px;
+    height: 24px;
+    line-height: 22px;
+    padding: 0px 10px;
+    color: #5C9021;
+    margin-left: 8px;
+    font-size: 0.9375rem;
+    text-align: center;
+}
+.main-content-edit-manage #viewModal2 div.part:last-child ul{
+    align-items: center;
+}
+.main-content-edit-manage #viewModal2 div.part:last-child ul li:nth-child(1){
+    width: 100px;
+    font-size: 1.125rem;
+}
+.main-content-edit-manage #viewModal2 div.part:last-child ul li:nth-child(2){
+    width: 100%;
+}
+.main-content-edit-manage #viewModal2 div.part:last-child ul li:nth-child(2) select{
+    width: 240px;
+}
+.main-content-edit-manage #viewModal2 div.part:last-child ul:nth-child(2){
+    margin-top: 16px;
+}
+.main-content-edit-manage #viewModal2 div.part:last-child ul:nth-child(2) textarea{
+    width: 100%;
+    height: 140px;
+}
+.main-content-edit-manage #viewModal2 div.part:last-child ul:nth-child(2){
+    align-items: flex-start;
+}
+/*어드민 END*/
+
+
+
+
+
+/*사용자 START*/
+
+/*지역선택 modal*/
+.main-content #selectAreaModal .modal-content,
+.top-menu-content #selectAreaModal2 .modal-content{
+    overflow: hidden;
+}
+.main-content #selectAreaModal .part,
+.top-menu-content #selectAreaModal2 .part{
+    display: flex;
+    /*height: 450px;*/
+    align-items: center;
+}
+.main-content #selectAreaModal div.part-left ul li,
+.top-menu-content #selectAreaModal2 div.part-left ul li{
+    font-size: 1.125rem;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: default;
+}
+.main-content #selectAreaModal div.part-left ul li:hover,
+.top-menu-content #selectAreaModal2 div.part-left ul li:hover{
+    background-color: #f6f7f98c;
+}
+.main-content #selectAreaModal div.part-left ul li i.favicon,
+.top-menu-content #selectAreaModal2 div.part-left ul li i.favicon{
+    background: url('/images/green_checked_list.svg');
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    background-size: 24px 24px;
+}
+.main-content #selectAreaModal div.part-right,
+.top-menu-content #selectAreaModal2 div.part-right{
+    border-left: 1px solid #EFEFEF;
+    /*position: relative;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-content #selectAreaModal div.part-right .incheon-city-area,
+.top-menu-content #selectAreaModal2 div.part-right .incheon-city-area{
+    position: relative;
+    /*height: 520px;*/
+    /*margin-top: 30px;*/
+}
+.main-content #selectAreaModal div.part-right .incheon-city-area img,
+.top-menu-content #selectAreaModal2 div.part-right .incheon-city-area img{
+    position: absolute;
+    cursor: pointer;
+}
+.main-content #selectAreaModal .modal-footer button.btn-h60r-light-green:hover,
+.top-menu-content #selectAreaModal2 .modal-footer button.btn-h60r-light-green:hover{
+    background-color: #EBF2E3;
+    cursor: default;
+}
+
+
+/*대상선택 modal*/
+.main-content #selectTargetModal ul li,
+.top-menu-content #selectTargetModal2 ul li{
+    font-size: 1.125rem;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.main-content #selectTargetModal ul li:hover,
+.top-menu-content #selectTargetModal2 ul li:hover{
+    background-color: #f6f7f98c;
+}
+.main-content #selectTargetModal ul li i.favicon,
+.top-menu-content #selectTargetModal2 ul li i.favicon{
+    background: url('/images/green_checked_list.svg');
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    background-size: 24px 24px;
+}
+.main-content #selectTargetModal li span,
+.top-menu-content #selectTargetModal2 li span{
+    width: 90%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    /*display: inline-block;*/
+}
+
+
+/*테마선택 modal*/
+.main-content #selectThemeModal ul li,
+.top-menu-content #selectThemeModal2 ul li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    cursor: pointer;
+}
+.main-content #selectThemeModal ul li.basic-back-color,
+.top-menu-content #selectThemeModal2 ul li.basic-back-color{
+    background-color: #F6F7F9;
+    /*color: #1D1D1B;*/
+}
+.main-content #selectThemeModal ul li.selected-back-color,
+.top-menu-content #selectThemeModal2 ul li.selected-back-color{
+    background-color: #5C9021;
+    /*color: white;*/
+}
+.main-content #selectThemeModal ul li p,
+.top-menu-content #selectThemeModal2 ul li p{
+    text-align: center;
+    font-size: 1.125rem;
+    padding: 0 0.3rem;
+}
+.main-content #selectThemeModal ul li div.select-theme-area,
+.top-menu-content #selectThemeModal2 ul li div.select-theme-area{
+    text-align: center;
+}
+.main-content #selectThemeModal .modal-footer button,
+.top-menu-content #selectThemeModal2 .modal-footer button{
+    width: 320px;
+}
+
+
+/*유형선택 modal*/
+.main-content #selectTypeModal .modal-content,
+.top-menu-content #selectTypeModal2 .modal-content{
+    /*height: 150px;*/
+    display: flex;
+    align-items: center;
+}
+.main-content #selectTypeModal select,
+.top-menu-content #selectTypeModal2 select{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    font-size: 1.125rem;
+    text-align: center;
+    border: none;
+    border-radius: 16px;
+    background-color: #F6F7F9;
+
+    background-image: url('/images/black_arrow_down.svg');
+    background-position: calc(100% - 20px) center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+.main-content #selectTypeModal input,
+.top-menu-content #selectTypeModal2 input{
+    display: block;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    border: none;
+    border-radius: 16px;
+    background-color: #F6F7F9;
+    margin-top: 10px;
+    font-size: 1.125rem;
+}
+
+
+
+/*정보수정 요청내역확인*/
+/* 요청내역 확인(단체) */
+.content-edit-list-user #viewModal{
+    display: none;
+}
+.content-edit-list-user #viewModal .modal-body{
+    padding-bottom: 30px;
+}
+.content-edit-list-user #viewModal .modal-content {
+    /*height: 550px;*/
+    /*padding-right: 30px;*/
+}
+.content-edit-list-user #viewModal p.modal-title{
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+.content-edit-list-user #viewModal p.modal-title::before{
+    content: '';
+    width: 6px;
+    height: 17px;
+    border-radius: 1px;
+    background-color: #5C9021;
+    display: inline-block;
+    margin-right: 8px;
+}
+.content-edit-list-user #viewModal .written{
+    background-color: #F6F7F9;
+    border-radius: 16px;
+    padding: 1rem;
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+
+    overflow: auto;
+    word-break: break-all;
+}
+.content-edit-list-user #viewModal .modal-content div.part:not(:last-child)::after{
+    content: '';
+    background-color: #EFEFEF;
+    margin: 30px 0px;
+    width: 100%;
+    height: 1px;
+    display: block;
+}
+.content-edit-list-user #viewModal div.part:not(:nth-child(1)) div{
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+}
+.content-edit-list-user #viewModal div:nth-child(2) div span:nth-child(1){
+    font-size: 1.0625rem;
+    display: flex;
+    align-items: center;
+}
+.content-edit-list-user #viewModal div:nth-child(2) div span:nth-child(1)::after{
+    content: '';
+    background-color: #dddddd;
+    width: 1px;
+    height: 18px;
+    display: inline-block;
+    margin: 0px 10px;
+}
+/**/
+.content-edit-list-user #viewModal div.part:nth-of-type(2) div:nth-child(1) span:nth-child(2),
+.content-edit-list-user #viewModal div.part:nth-of-type(2) div:nth-child(3) span:nth-child(2){
+    font-size: 1.0625rem;
+    width: calc(100% - 93.03px);
+}
+.content-edit-list-user #viewModal div.part:nth-of-type(3) div:nth-child(2) span:nth-child(2){
+    width: calc(100% - 82.38px);
+}
+.content-edit-list-user #viewModal div:nth-child(2) div.state-part div:nth-child(1) span:nth-child(2){
+    font-size: 0.875rem;
+    padding: 0 1rem;
+}
+/**/
+.content-edit-list-user #viewModal .part div:nth-child(1) span.favicon::before{
+    content: '';
+    background: url('/images/b_group.svg') no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.content-edit-list-user #viewModal .part div:nth-child(2) span.favicon::before{
+    content: '';
+    background: url('/images/basic_target.svg') no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.content-edit-list-user #viewModal .part div:nth-child(3) span.favicon::before{
+    content: '';
+    background: url('/images/b_tel.svg') no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.content-edit-list-user #viewModal .part div:nth-child(4) span.favicon::before{
+    content: '';
+    background: url('/images/b_email.svg') no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.content-edit-list-user #viewModal span.level{
+    border: 1px solid #5C9021;
+    border-radius: 24px;
+    height: 24px;
+    line-height: 22px;
+    padding: 0px 10px;
+    color: #5C9021;
+    margin-left: 8px;
+    font-size: 0.9375rem;
+    text-align: center;
+}
+.content-edit-list-user #viewModal div.part:last-child ul{
+    align-items: center;
+}
+.content-edit-list-user #viewModal div.part:last-child ul li:nth-child(1){
+    width: 100px;
+    font-size: 1.125rem;
+}
+.content-edit-list-user #viewModal div.part:last-child ul li:nth-child(2){
+    width: 100%;
+}
+.content-edit-list-user #viewModal div.part:last-child ul li:nth-child(2) select{
+    width: 240px;
+}
+.content-edit-list-user #viewModal div.part:last-child ul:nth-child(2){
+    margin-top: 16px;
+}
+.content-edit-list-user #viewModal div.part:last-child ul:nth-child(2) textarea{
+    width: 100%;
+    height: 140px;
+
+    overflow: auto;
+    word-break: break-all;
+}
+.content-edit-list-user #viewModal div.part:last-child ul:nth-child(2){
+    align-items: flex-start;
+}
+
+
+/* 요청내역 확인(프로그램) */
+.content-edit-list-user #viewModal2 .modal-body{
+    padding-bottom: 30px;
+}
+.content-edit-list-user #viewModal2 .modal-content {
+    height: 550px;
+}
+.content-edit-list-user #viewModal2 p.modal-title{
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+.content-edit-list-user #viewModal2 p.modal-title::before{
+    content: '';
+    width: 6px;
+    height: 17px;
+    border-radius: 1px;
+    background-color: #5C9021;
+    display: inline-block;
+    margin-right: 8px;
+}
+.content-edit-list-user #viewModal2 .written{
+    background-color: #F6F7F9;
+    border-radius: 16px;
+    padding: 1rem;
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+}
+.content-edit-list-user #viewModal2 .modal-content div.part:not(:last-child)::after{
+    content: '';
+    background-color: #EFEFEF;
+    margin: 30px 0px;
+    width: 100%;
+    height: 1px;
+    display: block;
+}
+
+.content-edit-list-user #viewModal2 .modal-content div.part:not(:nth-child(1)) div{
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.content-edit-list-user #viewModal2 div:nth-child(2) div span:nth-child(1){
+    font-size: 1.0625rem;
+    display: flex;
+    align-items: center;
+}
+.content-edit-list-user #viewModal2 div:nth-child(2) div span:nth-child(1)::after{
+    content: '';
+    background-color: #dddddd;
+    width: 1px;
+    height: 18px;
+    display: inline-block;
+    margin: 0px 10px;
+}
+/**/
+.content-edit-list-user #viewModal2 div.part:nth-of-type(2) div:nth-child(1) span:nth-child(2),
+.content-edit-list-user #viewModal2 div.part:nth-of-type(2) div:nth-child(4) span:nth-child(2),
+.content-edit-list-user #viewModal2 div.part:nth-of-type(2) div:nth-child(5) span:nth-child(2){
+    font-size: 1.0625rem;
+    width: calc(100% - 93.03px);
+}
+.content-edit-list-user #viewModal2 div.part:nth-of-type(2) div:nth-child(2) span:nth-child(2){
+    font-size: 1.0625rem;
+    width: calc(100% - 123.7px);
+}
+.content-edit-list-user #viewModal2 div.part:nth-of-type(3) div:nth-child(2) span:nth-child(2){
+    width: calc(100% - 82.38px);
+}
+.content-edit-list-user #viewModal2 div:nth-child(2) div.state-part div:nth-child(1) span:nth-child(2){
+    font-size: 0.875rem;
+    padding: 0 1rem;
+}
+/**/
+.content-edit-list-user #viewModal2 .part div:nth-child(1) span.favicon::before{
+    content: '';
+    background: url('/images/b_group.svg') no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.content-edit-list-user #viewModal2 .part div:nth-child(2) span.favicon::before{
+    content: '';
+    background: url('/images/b_program.svg') no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.content-edit-list-user #viewModal2 .part div:nth-child(3) span.favicon::before{
+    content: '';
+    background: url('/images/basic_target.svg') no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.content-edit-list-user #viewModal2 .part div:nth-child(4) span.favicon::before{
+    content: '';
+    background: url('/images/b_tel.svg') no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.content-edit-list-user #viewModal2 .part div:nth-child(5) span.favicon:before{
+    content: '';
+    background: url('/images/b_email.svg') no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.content-edit-list-user #viewModal2 span.level{
+    border: 1px solid #5C9021;
+    border-radius: 24px;
+    height: 24px;
+    line-height: 22px;
+    padding: 0px 10px;
+    color: #5C9021;
+    margin-left: 8px;
+    font-size: 0.9375rem;
+    text-align: center;
+}
+.content-edit-list-user #viewModal2 div.part:last-child ul{
+    align-items: center;
+}
+.content-edit-list-user #viewModal2 div.part:last-child ul li:nth-child(1){
+    width: 100px;
+    font-size: 1.125rem;
+}
+.content-edit-list-user #viewModal2 div.part:last-child ul li:nth-child(2){
+    width: 100%;
+}
+.content-edit-list-user #viewModal2 div.part:last-child ul:nth-child(2){
+    margin-top: 16px;
+}
+.content-edit-list-user #viewModal2 div.part:last-child ul:nth-child(2) textarea{
+    width: 100%;
+    height: 140px;
+}
+.content-edit-list-user #viewModal2 div.part:last-child ul:nth-child(2){
+    align-items: flex-start;
+}
+
+/*정보수정 요청하기*/
+.content-edit-list-user #addModal .modal-content{
+    padding-right: 30px;
+}
+.content-edit-list-user #addModal button{
+    margin-left: 0;
+}
+.content-edit-list-user #addModal .modal-content > p{
+    font-size: 1.125rem;
+    padding-bottom: 20px;
+}
+.content-edit-list-user #addModal .modal-content div.btn-area::after{
+    content: '';
+    background-color: #EFEFEF;
+    margin: 30px 0px;
+    width: 100%;
+    height: 1px;
+    display: block;
+}
+.content-edit-list-user #addModal .modal-content div.btn-area button:nth-child(1){
+    margin-right: 10px;
+}
+
+.content-edit-list-user #addModal .modal-content ul{
+    width: 100%;
+}
+.content-edit-list-user #addModal .modal-content ul li{
+    display: flex;
+    align-items: center;
+}
+.content-edit-list-user #addModal .modal-content ul:not(:last-child){
+    margin-bottom: 16px;
+}
+.content-edit-list-user #addModal .modal-content ul li:nth-child(1){
+    width: 150px;
+    font-size: 1.125rem;
+}
+.content-edit-list-user #addModal .modal-content ul li:nth-child(2){
+    /*width: calc(100% - 150px);*/
+}
+
+/*단체 변경 선택 시*/
+.content-edit-list-user #addModal .modal-content .selected-group:nth-of-type(1) li select{
+    width: 420px;
+}
+.content-edit-list-user #addModal .modal-content .selected-group:nth-of-type(2) li input,
+.content-edit-list-user #addModal .modal-content .selected-group:nth-of-type(3) li input,
+.content-edit-list-user #addModal .modal-content .selected-group:nth-of-type(4) li input{
+    width: 240px;
+}
+.content-edit-list-user #addModal .modal-content .selected-group:nth-of-type(5) li input{
+    width: 420px;
+}
+.content-edit-list-user #addModal .modal-content .selected-group:nth-of-type(6) li,
+.content-edit-list-user #addModal .modal-content .selected-group:nth-of-type(7) li{
+    align-items: flex-start;
+}
+.content-edit-list-user #addModal .modal-content .selected-group:nth-of-type(6) li textarea{
+    width: 100%;
+    height: 300px;
+}
+.content-edit-list-user #addModal .modal-content .selected-group:nth-of-type(7) li .pw-area{
+    width: 420px;
+}
+.content-edit-list-user #addModal .modal-content .selected-group:nth-of-type(7) li .pw-area .direct-input-area{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.content-edit-list-user #addModal .modal-content .selected-group:nth-of-type(7) li input{
+    width: 85%;
+    background: transparent;
+    padding-left: 0;
+    padding-right: 0;
+}
+.content-edit-list-user #addModal .modal-content .selected-group:nth-of-type(7) li #cannotView{
+    right: 20px;
+    background: url('/images/cannot_view.svg');
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.content-edit-list-user #addModal .modal-content .selected-group:nth-of-type(7) li #canView{
+    right: 20px;
+    background: url('/images/can_view.svg');
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.content-edit-list-user #addModal .modal-content .selected-group:nth-of-type(7) li span.font-red{
+    padding-top: 10px;
+}
+
+/*프로그램 변경 선택 시*/
+.content-edit-list-user #addModal .modal-content div.selected-program:nth-of-type(1) li{
+    width: calc(100% - 150px);
+}
+.content-edit-list-user #addModal .modal-content ul.selected-program:nth-of-type(1){
+    width: 100%;
+    margin-bottom: 16px;
+}
+.content-edit-list-user #addModal .modal-content ul.selected-program:nth-of-type(1) li select{
+    width: 100%;
+}
+
+
+/*사용자 END*/
+
+
+
+
+
+
+
+
+/*
+.modal-backdrop{
+
+.modal.fade .modal-dialog{
+    transition: transform 0.1s ease-out;
+    transform: translate(0, -50px);
+}
+
+.modal-content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    pointer-events: auto;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+}
+
+.modal-body{
+    position: relative;
+    flex: 1 1 auto;
+    padding: 2rem 2rem 0rem 2rem;
+}
+
+*/

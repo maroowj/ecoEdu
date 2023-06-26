@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<th:block th:fragment="topMenuFragment">
+
+    <style th:fragment="css">
+        .modal input[type="checkbox"]{
+            /*display: block;*/
+            display: contents;
+        }
+        @media screen and (min-width: 961px){
+            .header-wrap img{
+                display: block;
+            }
+        }
+        @media screen and (max-width: 960px){
+            .header-wrap{
+                justify-content: center;
+            }
+            .header-wrap img{
+                display: none;
+            }
+            .header-wrap .category-area{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .header-wrap .category-area i.prev{
+                background: url('/images/black_arrow_down.svg') no-repeat;
+                transform: rotate(90deg);
+                width: 30px;
+                height: 30px;
+                display: inline-block;
+                vertical-align: middle;
+                cursor: pointer;
+            }
+            .header-wrap .category-area i.home{
+                background: url('/images/home.svg') no-repeat;
+                width: 30px;
+                height: 30px;
+                display: inline-block;
+                vertical-align: middle;
+                cursor: pointer;
+                margin-left: 10px;
+            }
+            .header-wrap .category-area .category-title{
+                margin-left: -40px;
+            }
+            .header-wrap .category-area2{
+                right: unset;
+                top: 60px;
+                z-index: 99999;
+                padding-top: 0;
+            }
+        }
+    </style>
+
+    <div class="header-wrap">
+        <img class="logo cupoint" src="/images/logo_horizontal_type.png" onclick="location.href='/'"/>
+        <div class="category-area">
+            <div>
+                <i class="prev" onclick="window.history.back();"></i>
+                <i class="home" onclick="location.href='/'"></i>
+            </div>
+            <div class="category-title">
+                <span class="menu-title"></span> <!--페이지명-->
+            </div>
+            <ul class="pc">
+                <li class="menu-category">카테고리</li>
+                <li class="menu-info" onclick="location.href='/info/center'">환경센터 소개</li>
+                <li class="menu-edit bg-green font-white" onclick="location.href='/list/edit'">정보수정 요청</li>
+            </ul>
+            <i class="sliding-menu"></i>
+        </div>
+
+        <div class="category-area2 po-r">
+            <div class="category-menu-list">
+                <ul>
+                    <li class="" onclick="location.href='/list'">전체보기</li>
+                    <li class="category-area">지역(구/군)</li>
+                    <li class="category-target">대상</li>
+                    <li class="category-theme">테마</li>
+                    <li class="category-type">유형</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="category-menu-back"></div>
+
+
+    <!--mobile 슬라이딩메뉴 START-->
+    <div class="sliding-menu">
+        <div class="sliding-menu-wrap" style="">
+            <div class="close-wrap">
+                <i class="close"></i>
+            </div>
+
+            <ul>
+                <li class="po-r">카테고리<arrow class="up po-a"></arrow></li>
+                <li class="category-all" onclick="location.href='/list'">전체보기</li>
+                <li class="category-area" onclick="">지역(구/군)</li>
+                <li class="category-target" onclick="">대상</li>
+                <li class="category-theme" onclick="">테마</li>
+                <li class="category-type" onclick="">유형</li>
+                <li class="category-info" onclick="location.href='/info/center'">환경센터 소개</li>
+                <li class="category-edit" onclick="location.href='/list/edit'">정보수정 요청</li>
+            </ul>
+        </div>
+        <div class="sliding-menu-back"></div>
+    </div>
+    <!--mobile 슬라이딩메뉴 START-->
+
+
+    <!--탑버튼-->
+    <div class="top-button">
+        <i class="favicon"></i>
+    </div>
+
+
+    <!--script START-->
+    <script></script>
+    <!--script END-->
+</th:block>
+</html>

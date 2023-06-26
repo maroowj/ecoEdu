@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin_layout}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style layout:fragment="css"></style>
+
+<div layout:fragment="content">
+    <main role="main" class="main-content main-content-program-list">
+
+            <!-- 컨텐츠 영역 -->
+            <div class="content-wrap">
+                <div class="search-wrap">
+                    <div class="search-area">
+                        <input type="text" id="keyword" placeholder="프로그램명 검색"/>
+                        <i id="programSearchBtn" class="icon-green-search"></i>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="top-wrap">
+                        <div class="title-wrap">
+                            <p class="title right-bar32">프로그램 현황</p>
+
+                            <select class="size">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap table-list-program po-r">
+                        <div class="table-list">
+                            <table class="auto" style="table-layout: fixed; width: 100%;">
+                                <thead>
+                                <colgroup>
+                                    <col style="width: 8%">
+                                    <col style="width: 28%">
+                                    <col style="width: 15%">
+                                    <col style="width: 13%">
+                                    <col style="width: 12%">
+                                    <col style="width: 12%">
+                                    <col style="width: 12%">
+                                </colgroup>
+                                <tr class="title">
+                                    <td class="bold font-gray t-center">순번</td>
+                                    <td class="bold font-gray t-center">프로그램명</td>
+                                    <td class="bold font-gray t-center">단체명</td>
+                                    <td class="bold font-gray t-center">지역</td>
+                                    <td class="bold font-gray t-center">대상</td>
+                                    <td class="bold font-gray t-center">테마</td>
+                                    <td class="bold font-gray t-center">유형</td>
+                                </tr>
+                                </thead>
+
+                                <tbody class="program-list-tbody">
+<!--                                <tr th:each="num : ${#numbers.sequence(1, 20)}" class="list">-->
+<!--                                    <td class="list-num t-center">10000000000000</td>-->
+<!--                                    <td class="list-title t-center">제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목</td>-->
+<!--                                    <td class="list-group t-center"><span class="status-green">글로벌에코투어연구소</span></td>-->
+<!--                                    <td class="list-address t-center">미추홀구</td>-->
+<!--                                    <td class="list-program t-center">성인, 청소년</td>-->
+<!--                                    <td class="list-theme t-center">기후에너지</td>-->
+<!--                                    <td class="list-type t-center">견학, 체험</td>-->
+<!--                                </tr>-->
+                                </tbody>
+                            </table>
+
+                            <!-- 페이지네이션 -->
+                            <div class="pagination">
+<!--                                <a><i id="pre" class="icon-green-arrow-left"></i></a>-->
+<!--                                <a class="active num">1</a>-->
+<!--                                <a class="num">2</a>-->
+<!--                                <a class="num">3</a>-->
+<!--                                <a class="num">4</a>-->
+<!--                                <a class="num">5</a>-->
+<!--                                <a class="num">6</a>-->
+<!--                                <a class="num">7</a>-->
+<!--                                <a class="num">8</a>-->
+<!--                                <a class="num">9</a>-->
+<!--                                <a class="num">10</a>-->
+<!--                                <a class=""><i id="next" class="icon-green-arrow-left"></i></a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- modal START -->
+
+            <!-- 프로그램 상세 -->
+        <div id="detailModal" class="modal d-none" style="/*display: flex*/">
+            <div class="modal-wrap w100pro" style="width: 920px;">
+                <div class="modal-body">
+                    <div class="modal-content t-center">
+                        <div class="part w100pro">
+                            <div class="part-left">
+                                <div class="img-area">
+                                    <!--이미지 슬라이드 영역-->
+                                    <ul id="detailImgUl" class="img-slide">
+                                        <li class="img1"><img id="detailImg1" src="" onerror="this.src='/images/no_image.svg'"/></li>
+                                        <li class="img2"><img id="detailImg2" src="" onerror="this.src='/images/no_image.svg'"/></li>
+                                    </ul>
+
+                                    <!--화살표 눌러 이미지 슬라이딩-->
+                                    <i class="prev-img"></i>
+                                    <i class="next-img"></i>
+                                </div>
+
+                                <!--이미지 슬라이드 페이지네이션-->
+                                <ul class="pagination-img">
+                                    <li class="first focus"></li>
+                                    <li class="second"></li>
+                                </ul>
+                            </div>
+                            <div class="part-right t-left">
+                                <div class="title-area">
+                                    <p id="detailTitle" class="title">찾아가는 저어새네트워크저어새네트워크저어새네트워크<span id="detailCompany" class="status-green bold">저어새네트워크</span></p>
+                                </div>
+                                <div class="info-area">
+                                    <div id="detailAddress" class="info-address">미추홀구 매소홀로매소홀로매소홀로매소홀로매소홀로매소홀로매소홀로 418번길 14-32</div>
+                                    <div id="detailTel" class="info-tel">010-1234-5678</div>
+                                    <div class="info-target-area"><span id="detailTarget" class="info-target">성인, 청소년</span><span id="detailMemberCount" class="info-num">15~30명</span></div>
+                                    <div id="detailSchedule" class="info-date">3월~8월</div>
+                                    <div id="detailTheme" class="info-theme">기후에너지</div>
+                                    <div id="detailType" class="info-type">견학, 체험, 실습</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="part w100pro">
+                            <p class="t-left">프로그램 설명</p>
+                            <div id="detailScript" class="info-content d-table w100pro t-left">
+                                프로그램설명 내용 불러오기프로그램설명 내용 불러오기프로그램설명 내용 불러오기프로그램설명 내용 불러오기
+                                프로그램설명 내용 불러오기프로그램설명 내용 불러오기프로그램설명 내용 불러오기프로그램설명 내용 불러오기프로그램설명 내용 불러오기
+                                프로그램설명 내용 불러오기프로그램설명 내용 불러오기프로그램설명 내용 불러오기프로그램설명 내용 불러오기프로그램설명 내용 불러오기
+                            </div>
+                        </div>
+                        <div class="part w100pro">
+                            <div class="w100pro f-left"><span>교육시간</span><span id="detailEduTime" class="edu-date">5회 11차시</span></div>
+                            <div class="w100pro f-left"><span class="f-left">1회 교육시간</span><span id="detailOneTime" class="once-time f-left">1차시 40분</span></div>
+                            <div class="w100pro"><span class="f-left">참가비용</span><span id="detailCost" class="cost f-left">60만원(1학급), 환경부 지원사업으로 진행될 경우 참가비 없음</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="" class="close btn-h60r-green" style="width: 180px;">닫기</button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+
+    </main>
+
+
+    <!--script START-->
+    <script>
+        let size=10;
+        let page=1;
+
+        getPrograms();
+
+        // 프로그램 상세 보기
+        $(".table-list").on("click", ".list ", function(){
+            //검색결과가 없는 경우 모달 숨기기
+            if($('.table-list td').innerText == '검색 결과가 없습니다.'){
+                $('.modal').css('display', 'none');
+            }else{
+                $('.modal').css('display', 'flex');
+            }
+
+            let programSeq = $(this).attr("programSeq");
+            $("#detailModal").css("display", "flex");
+            programDetails(programSeq);
+        });
+
+        // 키워드 입력 후 엔터
+        $("#keyword").on("keydown", function(e){
+            if(e.keyCode==13) {
+                $("#programSearchBtn").click();
+            }
+        });
+
+        // 프로그램 검색
+        $("#programSearchBtn").on("click", function(){
+            getPrograms();
+        });
+
+        // 출력 리스트 수 변경 시
+        $(".size").on("change", function(){
+            size = $(this).val();
+            getPrograms(); //수정-이미래
+        });
+
+        // 페이지 클릭 시 실행
+        $(".pagination").on("click", "a", function() {
+            page = parseInt($(this).attr("gopage"));
+            getPrograms();
+        });
+
+        // 프로그램 리스트
+        function getPrograms(){
+            let keyword = $("#keyword").val();
+            if(keyword=="") {
+                keyword=null;
+            }
+
+            $.ajax({
+                type:"get",
+                url:"/admin/api/program/list",
+                async:false,
+                data:{
+                    "size":size,
+                    "page":page-1,
+                    "query":keyword,
+                },
+                success:function(data) {
+                    console.log(data);
+                    if(data.content.length!=0 && data.content!=null) {
+                        let programTag = '';
+                        for(i=0; i<data.content.length; i++) {
+                            let programSeq = data.content[i].programSeq;
+                            let programTitle = data.content[i].title;
+                            let companyName = data.content[i].companyName;
+                            let area = data.content[i].area;
+                            let theme = data.content[i].theme;
+                            let type = data.content[i].type;
+                            let target = data.content[i].target;
+                            target = target.replaceAll(",", ", ")
+                            programTag += '<tr class="list" programSeq="'+programSeq+'">';
+                            programTag += '<td class="list-num p-list t-center">'+data.content[i].rowNum+'</td>';
+                            programTag += '<td class="list-program p-list t-center">'+programTitle+'</td>';
+                            programTag += '<td class="list-group p-list t-center"><span class="status-green">'+companyName+'</span></td>';
+                            programTag += '<td class="list-address p-list t-center">'+area+'</td>';
+                            programTag += '<td class="list-address p-list t-center">'+target+'</td>';
+                            programTag += '<td class="list-theme p-list t-center">'+theme+'</td>';
+                            programTag += '<td class="list-type p-list t-center">'+type+'</td>';
+                            programTag += '</tr>';
+                        }
+                        $(".program-list-tbody").html(programTag);
+                    }else {
+                        let programTag = '<tr class="list"><td class="t-center" colspan="7">검색 결과가 없습니다.</td></tr>';
+                        $(".program-list-tbody").html(programTag);
+                    }
+                    fPagination(data, page);
+                }
+            });
+        };
+
+        // 프로그램 상세 정보 불러오기
+        function programDetails(programSeq){
+            $.ajax({
+                type:"get",
+                url:"/admin/api/program/detail",
+                data: {
+                    "programSeq": programSeq
+                },
+                success:function(data) {
+                    // console.log(data);
+                    let detail = data.programDetail;
+                    let detailTarget = data.target;
+                    let detailTheme = data.theme;
+                    let detailType= data.type;
+
+                    if(detail.imgUrl1!=null && detail.imgUrl1!="") {
+                        $("#detailImg1").attr("src", detail.imgUrl1);
+                    }else {
+                        $("#detailImg1").attr("src", "/images/no_image.svg");
+                    }
+                    if(detail.imgUrl2!=null && detail.imgUrl2!="") {
+                        $(".img2").removeClass("d-none");
+                        $("#detailImg2").attr("src", detail.imgUrl2);
+                    }else {
+                        $(".img2").addClass("d-none");
+                    }
+
+                    // p 태그
+                    $("#detailTitle").text(detail.title);
+                    $("#detailCompany").text(detail.companyName);
+                    // div span 태그
+                    $("#detailAddress").html(detail.address);
+                    $("#detailTel").html(detail.tel);
+                    $("#detailMemberCount").html(detail.memberCount);
+                    $("#detailSchedule").html(detail.schedule);
+                    $("#detailScript").html(detail.script);
+                    $("#detailEduTime").html(detail.eduTime);
+                    $("#detailOneTime").html(detail.oneTime);
+                    $("#detailCost").html(detail.cost);
+
+                    let strTarget="";
+                    detailTarget.forEach(function(arg){
+                        strTarget += arg + ", ";
+                    });
+                    strTarget = strTarget.substring(0, strTarget.length-2);
+                    let strTheme="";
+                    detailTheme.forEach(function(arg){
+                        strTheme += arg + ", ";
+                    });
+                    strTheme = strTheme.substring(0, strTheme.length-2);
+                    let strType="";
+                    detailType.forEach(function(arg){
+                        strType += arg + ", ";
+                    });
+                    strType = strType.substring(0, strType.length-2);
+
+
+                    $("#detailTarget").html(strTarget);
+                    $("#detailTheme").html(strTheme);
+                    $("#detailType").html(strType);
+
+                }
+            });
+        }
+    </script>
+    <script src="/js/slide.js"></script>
+    <!--script END-->
+</div>
+</html>

@@ -1,0 +1,396 @@
+.uline {text-decoration: underline;}
+.noborder { border:none !important;}
+
+html{
+    scroll-behavior: smooth;
+}
+
+input::placeholder, textarea::placeholder {color:#dddddd;}
+input::-webkit-input-placeholder {color:#dddddd;}
+input:-ms-input-placeholder {color:#dddddd;}
+
+
+input[type="date"]::-webkit-clear-button,
+input[type="date"]::-webkit-inner-spin-button { 
+    display: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator { 
+    background: transparent;
+    z-index: 1;
+}
+input[type="date"]{
+    padding: 1rem;
+    background-image: url('/images/black_calendar.svg');
+    background-position: calc(100% - 20px) center;
+    background-repeat: no-repeat;
+    background-size: 24px;
+}
+
+
+/*스크롤 시 영역 고정*/
+.scroll-fixed{
+    position: fixed;
+    top: 90px;
+}
+
+
+/* IE */
+select::-ms-expand { 
+	display: none;
+}
+select {
+  -o-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+
+.actived{
+    content: '';
+}
+
+/*버튼 클릭 시*/
+.btn-h50r-light-gray{
+    padding: 0px 30px;
+    background-color: #F6F7F9;
+    height: 50px;
+    border-radius: 16px;
+    border: none;
+}
+.btn-h50r-green{
+    padding: 0px 30px;
+    background-color: #5C9021;
+    color: white;
+    height: 50px;
+    border-radius: 16px;
+    border: none;
+}
+
+
+/*마우스 드래그 시*/
+::selection{
+    background: #5C9021;
+    color: #fff;
+}
+
+
+/* 입력폼 내 요소(입력필드, select) */
+.input-gray{
+    background-color: #F6F7F9;
+    border: none;
+    border-radius: 16px;
+    height: 50px;
+    padding: 1rem;
+}
+.textarea-gray{
+    background-color: #F6F7F9;
+    border: none;
+    border-radius: 16px;
+    height: 50px;
+    padding: 1rem;
+}
+
+.select-gray{
+    background-color: #F6F7F9;
+    border: none;
+    border-radius: 16px;
+    height: 50px;
+    padding: 0 1rem;
+    background-image: url('/images/black_arrow_down.svg');
+    background-position: calc(100% - 20px) center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+.area-gray{
+    background-color: #F6F7F9;
+    border: none;
+    border-radius: 16px;
+    height: 50px;
+    padding: 1rem;
+}
+
+
+/* 폰트색상 */
+.font-black{
+    color: #1D1D1B;
+}
+.font-green{
+    color: #5C9021;
+}
+.font-red{
+    color: #D75B27;
+}
+.font-navy{
+    color: #282B6B;
+}
+.font-gray{
+    color: #a0a0a0;
+}
+.font-white{
+    color: #fff;
+}
+
+
+
+/*배경컬러*/
+.bg-black{
+    background-color: #1D1D1B;
+}
+.bg-green{
+    background-color: #5C9021;
+}
+.bg-light-green{
+    background-color: #EBF2E3;
+}
+.bg-red{
+    background-color: #D75B27;
+}
+.bg-navy{
+    background-color: #282B6B;
+}
+.bg-gray{
+    background-color: #a0a0a0;
+}
+
+
+
+/* 버튼에 마우스오버시 효과 */
+.bg-black:hover{
+    background-color: #292927;
+}
+.bg-green:hover{
+    background-color: #53831b;
+}
+.bg-red:hover{
+    background-color: #cc460c;
+}
+.bg-navy:hover{
+    background-color: #1d205a;
+}
+.bg-gray:hover{
+    background-color: #8d8d8d;
+}
+.btn-h60r-green:hover{
+    background-color: #53831b;
+}
+.btn-h60r-light-green:hover{
+    background-color: #e1ecd5;
+}
+
+
+
+/*버튼*/
+.btn-h60r-green{
+    height:60px;
+    line-height: 58px;
+    border: none;
+    border-radius: 20px;
+    text-align: center;
+    /* background-position: 50% 50%;
+    background-image: url(/images/admin/); */
+    cursor: pointer;
+    width: 100%;
+
+    background-color: #5C9021;
+    color: white;
+    font-size: 1.125rem;
+}
+.btn-h60r-light-green{
+    height:60px;
+    line-height: 58px;
+    border: none;
+    border-radius: 20px;
+    text-align: center;
+    /* background-position: 50% 50%;
+    background-image: url(/images/admin/); */
+    cursor: pointer;
+    width: 100%;
+
+    background-color: #EBF2E3;
+    color: #53831b;
+    font-size: 1.125rem;
+}
+.btn-h60r {
+    height:60px;
+    line-height: 58px;
+    border: none;
+    border-radius: 20px;
+    text-align: center;
+    /* background-position: 50% 50%;
+    background-image: url(/images/admin/); */
+    cursor: pointer;
+    width: 100%;
+}
+.btn-h50r {
+    height:50px;
+    line-height: 48px;
+    border: none;
+    border-radius: 16px;
+    text-align: center;
+    /* background-position: 50% 50%;
+    background-image: url(/images/admin/); */
+    cursor: pointer;
+}
+.btn-h44r {
+    height:44px;
+    line-height: 42px;
+    border: none;
+    border-radius: 44px;
+    text-align: center;
+    padding-left: 1.875rem;
+    padding-right: 1.875rem;
+    /* background-position: 50% 50%;
+    background-image: url(/images/admin/); */
+    cursor: pointer;
+}
+.btn-h40r {
+    height:40px;
+    line-height: 38px;
+    border: none;
+	border-radius: 40px;
+    text-align: center;
+    padding-left: 1.875rem;
+    padding-right: 1.875rem;
+    /* background-position: 50% 50%;
+    background-image: url(/images/admin/); */
+    cursor: pointer;
+}
+.btn-h35r {
+    height:35px;
+    line-height: 33px;
+    border: none;
+	border-radius: 35px;
+    text-align: center;
+    padding-left: 1.875rem;
+    padding-right: 1.875rem;
+    /* background-position: 50% 50%;
+    background-image: url(/images/admin/); */
+    cursor: pointer;
+}
+
+
+/*선택박스*/
+.select-h40r > option {
+    padding: .5em 1em;
+    color: #000;
+}
+
+
+input.datepicker.bigger2{
+    padding: .84em;
+    margin: 0;
+    border-radius: 6px;
+    padding-right: 40px;
+    width: 175px;
+    background-image: url(/images/admin/datepicker-bg.png);
+    background-position: calc( 100% - .84em ) 50%;
+	background-repeat: no-repeat;
+}
+
+
+/*글자 숨기기*/
+/*1줄까지 보이기*/
+.t-hidden{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /*display: block;*/
+}
+
+
+/*글자크기*/
+.small-text2{
+    font-size: .9em !important;
+}
+.small-text3{
+    font-size: 1em !important;
+}
+.big-text2{
+    font-size: 1.2em !important;
+}
+.big-text3{
+    font-size: 1.1em !important;
+}
+
+
+/* 글자 두께 */
+.bold{
+    font-weight: 700;
+}
+.medium{
+    font-weight: 500;
+}
+.regular{
+    font-weight: 300;
+}
+
+
+/*높이*/
+.height70{
+	height: 70px;
+}
+.height80{
+	height: 80px;
+}
+.height100{
+	height: 100px;
+}
+.height150{
+	height: 150px;
+}
+.height180{
+	height: 180px;
+}
+.height200{
+	height: 200px !important;
+}
+.height230{
+	height: 230px !important;
+}
+.height500{
+	height: 500px !important;
+}
+
+
+
+/*페이지네이션*/
+/* .pagination a{
+    width: 2.5em;
+    height: 2.5em;
+    padding: .75em;
+    line-height: 1;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+} */
+/* .pagination .before{
+	cursor: pointer;
+    position: absolute;
+    left: -5em;
+    content: '<';
+    width: 40px;
+    height: 40px;
+    padding: 0em;
+    line-height: 2.4em;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #eaeaea;
+    border: 1px solid #bbb;
+}
+.pagination .after{
+	cursor: pointer;
+    position: absolute;
+    right: -5em;
+    content: '>';
+    width: 40px;
+    height: 40px;
+    padding: 0em;
+    line-height: 2.4em;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #eaeaea;
+    border: 1px solid #bbb;
+} */

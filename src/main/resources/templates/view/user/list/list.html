@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/user_layout_list}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style layout:fragment="css">
+
+</style>
+
+<div layout:fragment="content">
+    <main role="main" class="content-edu-list-user">
+
+        <!-- 컨텐츠 영역 -->
+        <div class="content-wrap auto">
+            <p class="title">기초환경교육센터 및 운영 프로그램 현황</p>
+
+            <!--pc 검색영역 START-->
+            <div class="search-category-area">
+                <select id="sel-category" class="search-category1">
+                    <option value="지역" selected>지역(구/군)</option>
+                    <option value="교육대상">대상</option>
+                    <option value="교육테마">테마</option>
+                    <option value="교육유형">유형</option>
+                </select>
+                <div class="search-category2 po-r">
+                    <select id="sel-searchType" class="sel-category2 searchType">
+                        <option value="program">프로그램명</option>
+                        <option value="company">단체명</option>
+                    </select>
+                    <i class="right-bar-green18"></i>
+                    <input type="text" id="searchKeyword" class="searchKeyword" placeholder="검색어 입력"/>
+                    <search class="icon-green-search po-a" style="right: 20px;"></search>
+                </div>
+            </div>
+            <!--pc 검색영역 END-->
+        </div>
+
+
+        <!--mobile 검색영역 START-->
+        <div class="content-wrap auto">
+            <div class="search-category-area-mobile">
+                <select id="sel-searchType-m" class="sel-category2 searchType">
+                    <option value="program">프로그램명</option>
+                    <option value="company">단체명</option>
+                </select>
+                <div class="keyword-area po-r">
+                    <input type="text" id="searchKeyword-m" class="searchKeyword" placeholder="검색어 입력"/>
+                    <search class="icon-green-search po-a" style="right: 16px;"></search>
+                </div>
+            </div>
+        </div>
+
+        <!--mobile 검색 후 나타나는 키워드 START-->
+        <div class="result-chip-area">
+            <div id="result-chip-slide-area" class="result-chip-slide-area">
+<!--                <div class="result-chip">-->
+<!--                    <p class="result-keyword">지역키워드</p>-->
+<!--                    <i class="delete"></i>-->
+<!--                </div>-->
+<!--                <div class="result-chip">-->
+<!--                    <p class="result-keyword">대상키워드</p>-->
+<!--                    <i class="delete"></i>-->
+<!--                </div>-->
+<!--                <div class="result-chip">-->
+<!--                    <p class="result-keyword">테마키워드</p>-->
+<!--                    <i class="delete"></i>-->
+<!--                </div>-->
+<!--                <div class="result-chip">-->
+<!--                    <p class="result-keyword">유형키워드</p>-->
+<!--                    <i class="delete"></i>-->
+<!--                </div>-->
+<!--                <div class="result-chip">-->
+<!--                    <p class="result-keyword">부평구</p>-->
+<!--                    <i class="delete"></i>-->
+<!--                </div>-->
+<!--                <div class="result-chip">-->
+<!--                    <p class="result-keyword">서구</p>-->
+<!--                    <i class="delete"></i>-->
+<!--                </div>-->
+<!--                <div class="result-chip">-->
+<!--                    <p class="result-keyword">계양구</p>-->
+<!--                    <i class="delete"></i>-->
+<!--                </div>-->
+<!--                <div class="result-chip">-->
+<!--                    <p class="result-keyword">남동구</p>-->
+<!--                    <i class="delete"></i>-->
+<!--                </div>-->
+<!--                <div class="result-chip">-->
+<!--                    <p class="result-keyword">미추홀구</p>-->
+<!--                    <i class="delete"></i>-->
+<!--                </div>-->
+<!--                <div class="result-chip">-->
+<!--                    <p class="result-keyword">부평구</p>-->
+<!--                    <i class="delete"></i>-->
+<!--                </div>-->
+<!--                <div class="result-chip">-->
+<!--                    <p class="result-keyword">서구</p>-->
+<!--                    <i class="delete"></i>-->
+<!--                </div>-->
+            </div>
+        </div>
+        <!--mobile 검색 후 나타나는 키워드 END-->
+
+
+        <div id="choice-chip-box" class="content-wrap auto">
+            <!--pc 1차 카테고리 검색 START (choice chip ui)-->
+            <!--지역선택-->
+            <div id="areaChoiceChip" class="sel-category-area d-flex" style="/*display: none*/">
+                <input id="chip-areaAll" type="checkbox" value="전체" checked/><label for="chip-areaAll">전체</label>
+                <input id="chip-area1" class="areaChk1" value="강화·옹진군" type="checkbox"/><label for="chip-area1">강화·옹진군</label>
+                <input id="chip-area2" class="areaChk1" value="계양구" type="checkbox"/><label for="chip-area2">계양구</label>
+                <input id="chip-area3" class="areaChk1" value="남동구" type="checkbox"/><label for="chip-area3">남동구</label>
+                <input id="chip-area4" class="areaChk1" value="동구" type="checkbox"/><label for="chip-area4">동구</label>
+                <input id="chip-area5" class="areaChk1" value="미추홀구" type="checkbox"/><label for="chip-area5">미추홀구</label>
+                <input id="chip-area6" class="areaChk1" value="부평구" type="checkbox"/><label for="chip-area6">부평구</label>
+                <input id="chip-area7" class="areaChk1" value="서구" type="checkbox"/><label for="chip-area7">서구</label>
+                <input id="chip-area8" class="areaChk1" value="연수구" type="checkbox"/><label for="chip-area8">연수구</label>
+                <input id="chip-area9" class="areaChk1" value="중구" type="checkbox"/><label for="chip-area9">중구</label>
+            </div>
+
+            <!--대상선택-->
+            <div id="targetChoiceChip" class="sel-target-area d-flex" style="display: none">
+<!--                <input id="targetAll-l" type="checkbox" checked/><label for="targetAll-l">전체</label>-->
+<!--                <input id="target1-l" class="targetChk1" type="checkbox"/><label for="target1-l">전연령</label>-->
+<!--                <input id="target2-l" class="targetChk1" type="checkbox"/><label for="target2-l">성인</label>-->
+<!--                <input id="target3-l" class="targetChk1" type="checkbox"/><label for="target3-l">청소년</label>-->
+<!--                <input id="target4-l" class="targetChk1" type="checkbox"/><label for="target4-l">가족</label>-->
+<!--                <input id="target5-l" class="targetChk1" type="checkbox"/><label for="target5-l">초등생</label>-->
+<!--                <input id="target6-l" class="targetChk1" type="checkbox"/><label for="target6-l">초등 5학년~중학생</label>-->
+<!--                <input id="target7-l" class="targetChk1" type="checkbox"/><label for="target7-l">초등 3~6학년</label>-->
+<!--                <input id="target8-l" class="targetChk1" type="checkbox"/><label for="target8-l">초등 고학년</label>-->
+<!--                <input id="target9-l" class="targetChk1" type="checkbox"/><label for="target9-l">초등 저학년</label>-->
+<!--                <input id="target10-l" class="targetChk1" type="checkbox"/><label for="target10-l">초등생</label>-->
+<!--                <input id="target11-l" class="targetChk1" type="checkbox"/><label for="target11-l">유아</label>-->
+<!--                <input id="target12-l" class="targetChk1" type="checkbox"/><label for="target12-l">고령자</label>-->
+<!--                <input id="target13-l" class="targetChk1" type="checkbox"/><label for="target13-l">교직원</label>-->
+<!--                <input id="target14-l" class="targetChk1" type="checkbox"/><label for="target14-l">생태강사</label>-->
+<!--                <input id="target15-l" class="targetChk1" type="checkbox"/><label for="target15-l">장애아동</label>-->
+            </div>
+
+            <!--테마선택-->
+            <div id="themeChoiceChip" class="sel-theme-area d-flex" style="display: none">
+<!--                <input id="themeAll-l" type="checkbox" checked/><label for="themeAll-l">전체</label>-->
+<!--                <input id="theme1-l" class="themeChk1" type="checkbox"/><label for="theme1-l">숲</label>-->
+<!--                <input id="theme2-l" class="themeChk1" type="checkbox"/><label for="theme2-l">물</label>-->
+<!--                <input id="theme3-l" class="themeChk1" type="checkbox"/><label for="theme3-l">생물</label>-->
+<!--                <input id="theme4-l" class="themeChk1" type="checkbox"/><label for="theme4-l">생활</label>-->
+<!--                <input id="theme5-l" class="themeChk1" type="checkbox"/><label for="theme5-l">자원</label>-->
+<!--                <input id="theme6-l" class="themeChk1" type="checkbox"/><label for="theme6-l">기후 에너지</label>-->
+            </div>
+
+            <!--유형선택-->
+            <div class="sel-type-area" style="display: none">
+                <div id="typeChoiceChip" class="d-flex">
+<!--                    <input id="typeAll-l" type="checkbox" checked/><label for="typeAll-l">전체</label>-->
+<!--                    <input id="type1-l" class="typeChk1" type="checkbox"/><label for="type1-l">강의, 해설</label>-->
+<!--                    <input id="type2-l" class="typeChk1" type="checkbox"/><label for="type2-l">견학, 체험</label>-->
+<!--                    <input id="type3-l" class="typeChk1" type="checkbox"/><label for="type3-l">토의, 토론</label>-->
+<!--                    <input id="type4-l" class="typeChk1" type="checkbox"/><label for="type4-l">조사, 관찰</label>-->
+<!--                    <input id="type5-l" class="typeChk1" type="checkbox"/><label for="type5-l">실험, 실습</label>-->
+<!--                    <input id="type6-l" class="typeChk1" type="checkbox"/><label for="type6-l">프로젝트</label>-->
+<!--                    <input id="type7-l" class="typeChk1" type="checkbox"/><label for="type7-l">기타-->
+<!--                    <input type="text" placeholder="유형입력" style="display: none"/></label>-->
+                </div>
+                <!--<input class="d-block w40pro" type="text" placeholder="유형을 입력해주세요."/>-->
+            </div>
+            <!--pc 1차 카테고리 검색 END (choice chip ui)-->
+        </div>
+
+
+        <!--mobile 1차 카테고리 검색 START-->
+        <!--modal START-->
+        <div id="searchModal" class="modal d-none" style="">
+            <div class="modal-wrap w100pro" style="">
+                <div class="modal-header">
+                    <div class="m-title-wrap">
+                        <div class="title-area"><i class="pre"></i><p class="m-title">검색하기</p></div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-content">
+                        <div class="select-type-area w100pro">
+                            <select class="searchType">
+                                <option value="program">프로그램명</option>
+                                <option value="company">단체명</option>
+                            </select>
+                            <input class="input-direct" type="text" placeholder="검색어 입력"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!--지역 미선택 시 기본 버튼(지역 선택 시 해당버튼 사라지기)-->
+                    <button id="" class="none btn-h60r-light-green font-green">검색어를 입력해주세요.</button>
+                    <!--지역 선택시 활성화 되는 버튼(2개 이상 선택 시 +'외 1' 문구가 붙음)-->
+                    <button id="" class="close btn-h60r-green font-white po-r search-btn" hidden>
+                        <span class="font-white">검색하기</span><i class="favicon po-a"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-back"></div>
+        </div>
+        <!--modal END-->
+        <!--mobile 1차 카테고리 검색 END-->
+
+
+        <!--------------------------------검색결과에 따른 리스트 출력-------------------------------->
+
+
+        <div class="content-wrap auto">
+            <!--검색결과-->
+            <div class="search-result">
+                <span id="groupCntSpan" class="group" style="display: none;">단체&nbsp;<span id="groupNum"></span>곳</span>
+                <span id="programCntSpan" class="program" style="display: none;">프로그램&nbsp;<span id="programNum"></span>개</span>
+            </div>
+
+
+            <!--리스트-->
+            <div class="search-result-list">
+
+                <!--단체리스트(단체명 검색 시 나타나는 리스트)-->
+                <groupList class="group-list" style="display: none;">
+<!--                    <div class="center-box" onclick="location.href='/detail/group'">-->
+<!--                        <div class="img-area">-->
+<!--                            <img src="" onerror="this.src='/images/no_image.svg'"/>-->
+<!--                        </div>-->
+<!--                        <div class="list-info po-r">-->
+<!--                            <ul class="po-r">-->
+<!--                                <li class="title"><span>저어새네트워크저어새네트워크저어새네트워크저어새네트워크</span><arrow class="po-a"></arrow></li>-->
+<!--                                <li class="address">-->
+<!--                                    <span>남동구 예술로 226번길 14(7층 701호)남동구 예술로 226번길 14(7층 701호)남동구 예술로 226번길 14(7층 701호)</span>-->
+<!--                                </li>-->
+<!--                                <li class="tel cupoint"><span>010-6436-9648</span></li>-->
+<!--                                <li class="url"><span>cafe.daum.net/spoonbill-island</span></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </groupList>
+
+
+                <!--프로그램 리스트(프로그램명 검색 시 나타나는 리스트)-->
+                <programList class="program-list">
+<!--                    <div class="center-box" onclick="location.href='/detail/program'">-->
+<!--                        <div class="img-area">-->
+<!--                            <img src="" onerror="this.src='/images/no_image.svg'"/>-->
+<!--                        </div>-->
+<!--                        <div class="list-info po-r">-->
+<!--                            <ul class="po-r">-->
+<!--                                <li class="title"><span>찾아가는 저어새 자연학교찾아가는 저어새 자연학교찾아가는 저어새 자연학교</span><arrow class="po-a"></arrow></li>-->
+<!--                                <li class="member-num"><span class="po-a">15~30명</span></li>-->
+<!--                                <li class="target"><span>초, 중, 고등학생</span></li>-->
+<!--                                <li class="date"><span>3월~8월</span></li>-->
+<!--                                <li class="type"><span>강의, 놀이, 탐조, 그리기, 만들기 등 강의, 놀이, 탐조, 그리기, 만들기 등 강의, 놀이, 탐조, 그리기, 만들기 등</span></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </programList>
+
+
+                <!--단체 혹은 프로그램 리스트가 없는 경우-->
+                <noList class="no-list" style="display: none">
+                    <p>목록이 없습니다.</p>
+                </noList>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!--script START-->
+    <script th:inline="javascript">
+        let cateType;
+        let cateName = new Array();
+        let searchType="program";
+        let keyword="";
+        let page=1;
+        let size=10;
+        let totalPages;
+
+        getChoiceChip(); // 1번 호출
+
+        $(document).ready(function(){ // 2번 호출
+            if([[${param.category}]]!=null) {
+                cateType = [[${param.category}]][0];
+                // console.log(cateType);
+            }else {
+                cateType = $("#sel-category option:selected").val();
+            }
+
+            if([[${param.query}]]!=null) {
+                let tempCateName = [[${param.query}]][0];
+                tempCateName = tempCateName.split(",");
+                for(i=0; i<tempCateName.length; i++) {
+                    let dotCateName = tempCateName[i];
+                    dotCateName = dotCateName.replaceAll(" · ", ", ");
+                    cateName.push(dotCateName);
+                }
+            }else {
+                cateNameByCateType(cateType);
+            }
+            paramEffect(cateType,cateName);
+            createChoiceChip(cateName);
+            getSearchResult(cateType, cateName);
+            // history.replaceState({}, null, location.pathname);
+        });
+
+        // pc 모드 카테고리 select-option 변경 시
+        $("#sel-category").on("change", function(){
+            page=1;
+            $("#result-chip-slide-area").html("");
+            $("#headerTopMenu").text($("#sel-category option:selected").html());
+            cateType = $(this).val();
+            cateNameByCateType(cateType);
+            getSearchResult(cateType, cateName);
+        });
+
+        // pc 모드 choice-chip 선택 시
+        // $("#choice-chip-box").on("click", "input", function(){
+        //
+        // });
+
+        // pc 모드 searchType 변경 시
+        $(".searchType").on("change", function(){
+            page=1;
+            $(".searchType").val($(this).val());
+            searchType = $(this).val();
+            getSearchResult(cateType, cateName);
+        });
+
+        // pc 모드 검색 키워드 keyup 시
+        $(".searchKeyword").on("keyup", function(){
+            page=1;
+            keyword = $(this).val();
+
+            $(".searchKeyword").val(keyword);
+            getSearchResult(cateType, cateName);
+        });
+
+        // pc 모드 '유형'의 기타 키워드 keyup 시
+        $("#typeChoiceChip").on("keyup", ".etcText", function () {
+            page=1;
+            let arrQuery = new Array();
+            let txtQuery = $("#etcText").val();
+            $(".content-edu-list-user .sel-type-area .typeChk1:checked").each(function(){
+                let query = $(this).val();
+                if(query=='기타' && txtQuery!='') {
+                    arrQuery.push(txtQuery);
+                }else {
+                    arrQuery.push(query);
+                }
+            });
+            createChoiceChip(arrQuery, keyword);
+            cateNameByCateType(cateType);
+            getSearchResult(cateType, cateName);
+        });
+
+
+        function getSearchResult(cateType, cateName) {
+            // console.log("page: " + page);
+            let objJson = {
+                "cateType":cateType,
+                "cateName":cateName,
+                "searchType":searchType,
+                "keyword":keyword,
+                "page":page-1,
+                "size":size
+            };
+            // console.log(objJson);
+            $.ajax({
+                type:"get",
+                url:"/user/api/list",
+                async:false,
+                data:  objJson,
+                success:function(data) {
+                    // console.log(data);
+                    totalPages=data.totalPages;
+                    let content = data.content;
+                    let tag = "";
+                    if(content!=null && content.length!=0) {
+                        if(searchType=='program') {
+                            $("#groupCntSpan").css("display", "none");
+                            $("#programCntSpan").css("display", "");
+                            $("groupList").css("display", "none");
+                            $("programList").css("display", "");
+                            $("noList").css("display", "none");
+
+                            for(i=0; i<content.length; i++) {
+                                let programImg = "";
+                                if(content[i].programImg!=null && content[i].programImg!="") {
+                                    programImg = content[i].programImg;
+                                }else {
+                                    programImg = '/images/no_image.svg';
+                                }
+
+                                tag += '<div class="center-box" onclick="location.href=\'/detail/program?programSeq='+content[i].programSeq+'\'">';
+                                tag += '<div class="img-area">';
+                                tag += '<img src="'+programImg+'"/>';
+                                tag += '</div>';
+                                tag += '<div class="list-info po-r">';
+                                tag += '<ul class="po-r">';
+                                tag += '<li class="title"><span>'+content[i].title+'</span><arrow class="po-a"></arrow></li>';
+                                tag += '<li class="member-num"><span class="po-a">'+content[i].memberCount+'</span></li>';
+                                tag += '<li class="target"><span>'+content[i].target+'</span></li>';
+                                tag += '<li class="date"><span>'+content[i].schedule+'</span></li>';
+                                tag += '<li class="type"><span>'+content[i].method+'</span></li>';
+                                tag += '</ul>';
+                                tag += '</div>';
+                                tag += '</div>';
+                            }
+                            if(page==1) {
+                                $("programList").html(tag);
+                            }else if(page>1) {
+                                $("programList").append(tag);
+                            }
+                            $("#programNum").html(data.totalElements);
+                        }else if(searchType=='company') {
+                            $("#groupCntSpan").css("display", "");
+                            $("#programCntSpan").css("display", "none");
+                            $("groupList").css("display", "");
+                            $("programList").css("display", "none");
+                            $("noList").css("display", "none");
+
+
+
+                            for(i=0; i<content.length; i++) {
+                                let companyImg = "";
+                                if(content[i].companyImg!=null && content[i].companyImg!="") {
+                                    companyImg = content[i].companyImg;
+                                }else {
+                                    companyImg = '/images/no_image.svg';
+                                }
+
+                                let url = "";
+                                if(content[i].homeUrl!=null && content[i].homeUrl!=""){
+                                    url = content[i].homeUrl;
+                                }else if(content[i].cafeUrl!=null && content[i].cafeUrl!="") {
+                                    url = content[i].cafeUrl;
+                                }else if(content[i].email!=null && content[i].email!="") {
+                                    url = content[i].email;
+                                }
+
+                                tag += '<div class="center-box" onclick="location.href=\'/detail/group?companySeq='+content[i].companySeq+'\'">';
+                                tag += '<div class="img-area">';
+                                tag += '<img src="'+companyImg+'"/>';
+                                tag += '</div>';
+                                tag += '<div class="list-info po-r">';
+                                tag += '<ul class="po-r">';
+                                tag += '<li class="title"><span>'+content[i].companyName+'</span><arrow class="po-a"></arrow></li>';
+                                tag += '<li class="address"><span>'+content[i].companyAddress+'</span></li>';
+                                tag += '<li class="tel"><span>'+content[i].companyTel+'</span></li>';
+                                tag += '<li class="url"><span>'+url+'</span></li>';
+                                tag += '</ul>';
+                                tag += '</div>';
+                                tag += '</div>';
+                            }
+                            if(page==1) {
+                                $("groupList").html(tag);
+                            }else if(page>1) {
+                                $("groupList").append(tag);
+                            }
+                            $("#groupNum").html(data.totalElements);
+                        }
+                    }else {
+                        if(page==1) {
+                            $("#groupCntSpan").css("display", "none");
+                            $("#programCntSpan").css("display", "none");
+                            $("groupList").css("display", "none");
+                            $("programList").css("display", "none");
+                            $("noList").css("display", "");
+                        }
+                    }
+
+                },
+                error:function(errors){
+                    console.log("error = " + JSON.stringify(errors));
+                }
+            });
+        };
+
+        function getChoiceChip(){
+            $.ajax({
+                type:"get",
+                url: "/user/api/category/list",
+                data:{},
+                async:false,
+                success:function(data) {
+                    // console.log(data);
+
+                    // 대상 초이스칩
+                    let targetChoiceTag = '<input id="chip-targetAll" type="checkbox" value="전체" checked/><label for="chip-targetAll">전체</label>';
+                    for(i=0; i<data.target.length; i++) {
+                        let targetName = data.target[i].cateName;
+                        if(targetName!='전체') {
+                            targetChoiceTag += '<input id="chip-target'+i+'" class="targetChk1" type="checkbox" value="'+targetName+'"/><label for="chip-target'+i+'">'+targetName+'</label>';
+                        }
+                    }
+                    $("#targetChoiceChip").html(targetChoiceTag);
+
+                    // 테마 초이스 칩칩
+                    let themeChoiceTag = '<input id="chip-themeAll" type="checkbox" value="전체" checked/><label for="chip-themeAll">전체</label>';
+                    for(i=0; i<data.theme.length; i++) {
+                        let themeName = data.theme[i].cateName;
+                        themeChoiceTag += '<input id="chip-theme'+i+'" class="themeChk1" type="checkbox" value="'+themeName+'"/><label for="chip-theme'+i+'">'+themeName+'</label>'
+                    }
+                    $("#themeChoiceChip").html(themeChoiceTag);
+
+                    // 유형
+                    let typeChoiceTag = '<input id="chip-typeAll" type="checkbox" value="전체" checked/><label for="chip-typeAll">전체</label>';
+                    for(i=0; i<data.type.length; i++) {
+                        let typeName = data.type[i].cateName;
+                        if(!typeName.includes("기타")) {
+                            typeChoiceTag += '<input id="chip-type'+i+'" class="typeChk1" type="checkbox" value="'+typeName+'"/><label for="chip-type'+i+'">'+typeName+'</label>';
+                        }
+                    }
+                    typeChoiceTag += '<input id="chip-typeEtc" class="typeChk1" type="checkbox" value="기타"><label for="chip-typeEtc">기타<input type="text" id="etcText" class="etcText" placeholder="유형입력" style="display: none"/></label>';
+                    $("#typeChoiceChip").html(typeChoiceTag);
+                },
+                error:function(errors) {
+                    toastModal("값을 불러오는데 실패했습니다.", 1000);
+                    console.log(error);
+                }
+            });
+        };
+
+        function cateNameByCateType(cateType) {
+            let tempArr = new Array();
+            cateName=new Array();
+            switch (cateType) {
+                case "지역":
+                    $("#areaChoiceChip input:checked").each(function () {
+                        let checkedValue = $(this).val();
+                        if (checkedValue == "전체") {
+                            $("#areaChoiceChip .areaChk1").each(function () {
+                                tempArr.push($(this).val());
+                            });
+                        } else {
+                            tempArr.push($(this).val());
+                        }
+                    });
+                    break;
+                case "교육대상":
+                    $("#targetChoiceChip input:checked").each(function () {
+                        let checkedValue = $(this).val();
+                        if (checkedValue == "전체") {
+                            $("#targetChoiceChip .targetChk1").each(function () {
+                                tempArr.push($(this).val())
+                            });
+                        } else {
+                            tempArr.push($(this).val());
+                        }
+                    });
+                    break;
+                case "교육테마":
+                    $("#themeChoiceChip input:checked").each(function () {
+                        let checkedValue = $(this).val();
+                        if (checkedValue == "전체") {
+                            $("#themeChoiceChip .themeChk1").each(function () {
+                                tempArr.push($(this).val())
+                            });
+                        } else {
+                            tempArr.push($(this).val());
+                        }
+                    });
+                    break;
+                case "교육유형":
+                    let txtQuery = $("#etcText").val();
+                    $("#typeChoiceChip input:checked").each(function () {
+                        let checkedValue = $(this).val();
+                        if (checkedValue == "전체") {
+                            $("#typeChoiceChip .typeChk1").each(function () {
+                                tempArr.push($(this).val())
+                            });
+                        } else {
+                            if(checkedValue=="기타" && txtQuery!="") {
+                                tempArr.push(txtQuery);
+                            }else{
+                                tempArr.push(checkedValue);
+                            }
+                        }
+                    });
+                    break;
+            }
+            tempArr.forEach(function(arg){
+               cateName.push(arg);
+            });
+        }
+
+        // parameter 값 choice-chip 및 카테고리 select-option에 반영
+        function paramEffect(cateType, cateName){
+            $("#sel-category").val(cateType);
+            if(cateType == '지역'){
+                let areaChkLength = $("#areaChoiceChip .areaChk1").length;
+                if(cateName.length==areaChkLength || cateName.length==0) {
+                    $("#chip-areaAll").prop("checked", true);
+                }else {
+                    cateName.forEach(function(arg){
+                        $("#areaChoiceChip .areaChk1").each(function(){
+                            if(arg==$(this).val()) {
+                                $(this).prop("checked", true);
+                            }
+                        });
+                    });
+                    $("#chip-areaAll").prop("checked", false);
+                }
+                $('.content-edu-list-user div.content-wrap .sel-category-area').show();
+                $('.content-edu-list-user div.content-wrap .sel-category-area').css("display", "flex");
+                $('.content-edu-list-user div.content-wrap .sel-target-area').hide();
+                $('.content-edu-list-user div.content-wrap .sel-theme-area').hide();
+                $('.content-edu-list-user div.content-wrap .sel-type-area').hide();
+                $("#headerTopMenu").text("지역(구/군)");
+
+            }
+            if(cateType == '교육대상'){
+                let targetChkLength = $("#targetChoiceChip .targetChk1").length;
+                if(cateName.length==targetChkLength || cateName.length==0) {
+                    $("#chip-targetAll").prop("checked", true);
+                }else {
+                    cateName.forEach(function(arg){
+                        $("#targetChoiceChip .targetChk1").each(function(){
+                            if(arg==$(this).val()) {
+                                $(this).prop("checked", true);
+                            }
+                        });
+                    });
+                    $("#chip-targetAll").prop("checked", false);
+                }
+                $('.content-edu-list-user div.content-wrap .sel-category-area').hide();
+                $('.content-edu-list-user div.content-wrap .sel-target-area').show();
+                $('.content-edu-list-user div.content-wrap .sel-target-area').css("display", "flex");
+                $('.content-edu-list-user div.content-wrap .sel-theme-area').hide();
+                $('.content-edu-list-user div.content-wrap .sel-type-area').hide();
+                $("#headerTopMenu").text("대상");
+            }
+            if(cateType == '교육테마'){
+                let themeChkLength = $("#themeChoiceChip .themeChk1").length;
+                if(cateName.length==themeChkLength || cateName.length==0) {
+                    $("#chip-themeAll").prop("checked", true);
+                }else {
+                    cateName.forEach(function(arg){
+                        $("#themeChoiceChip .themeChk1").each(function(){
+                            if(arg==$(this).val()) {
+                                $(this).prop("checked", true);
+                            }
+                        });
+                    });
+                    $("#chip-themeAll").prop("checked", false);
+                }
+                $('.content-edu-list-user div.content-wrap .sel-category-area').hide();
+                $('.content-edu-list-user div.content-wrap .sel-target-area').hide();
+                $('.content-edu-list-user div.content-wrap .sel-theme-area').show();
+                $('.content-edu-list-user div.content-wrap .sel-theme-area').css("display", "flex");
+                $('.content-edu-list-user div.content-wrap .sel-type-area').hide();
+                $("#headerTopMenu").text("테마");
+            }
+            if(cateType == '교육유형'){
+                let typeChkLength = $("#typeChoiceChip .typeChk1").length;
+                if(cateName.length==typeChkLength || cateName.length==0) {
+                    $("#chip-typeAll").prop("checked", true);
+                }else {
+                    cateName.forEach(function(arg){
+                        $("#typeChoiceChip .typeChk1").each(function(){
+                            if(arg==$(this).val()) {
+                                $(this).prop("checked", true);
+                            }
+                        });
+                    });
+                    $("#chip-typeAll").prop("checked", false);
+                }
+                if($("#typeChoiceChip input:checked").length==0) {
+                    $("#chip-typeEtc").prop("checked", true);
+                    $("#etcText").val(cateName[0]);
+                    showTypeText();
+                }
+                $('.content-edu-list-user div.content-wrap .sel-category-area').hide();
+                $('.content-edu-list-user div.content-wrap .sel-target-area').hide();
+                $('.content-edu-list-user div.content-wrap .sel-theme-area').hide();
+                $('.content-edu-list-user div.content-wrap .sel-type-area').show();
+                $('.content-edu-list-user div.content-wrap .sel-type-area').css("display", "flex");
+                $("#headerTopMenu").text("유형");
+            }
+        }
+
+        // '유형' 직접 입력 테스트 input 보이기 function
+        function showTypeText() {
+            $('.content-edu-list-user .sel-type-area input[type=\'text\']').css({'display':'block'});
+            $('.content-edu-list-user .sel-type-area input[type=\'text\']').focus();
+            $('.content-edu-list-user .sel-type-area label:last-of-type').css({'width':'216px'});
+        }
+
+        window.onscroll = function(e) {
+            if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                setTimeout(function(){
+                    page++;
+                    if(page<=totalPages) {
+                        getSearchResult(cateType, cateName);
+                    }
+                }, 500)
+            }
+        }
+    </script>
+    <!--script END-->
+</div>
+</html>

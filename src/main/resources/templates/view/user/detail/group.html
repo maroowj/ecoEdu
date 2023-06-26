@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/user_layout_sub}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style layout:fragment="css"></style>
+
+<div layout:fragment="content">
+    <main role="main" class="content-group-detail-user">
+
+        <!--상단 배경-->
+        <div class="top-back">
+            <div class="bg-blur"></div>
+            <img src="" class="thumbnail-img" onerror="this.src='/images/incheon_city/incheon-city-back.svg'"/>
+        </div>
+
+        <!--mobile 상단 탭바 START-->
+        <div class="top-tab">
+            <ul>
+                <li class="focus po-r">상세내용<bar class="bottom-bar"></bar></li>
+                <li class="po-r">운영 프로그램</li>
+            </ul>
+        </div>
+        <!--mobile 상단 탭바 END-->
+
+
+        <!-- 컨텐츠 영역 -->
+
+        <div id="company-detail-div" class="group-info">
+            <div class="thumbnail">
+                <img id="companyImg" class="thumbnail-img" src="" onerror="this.src='/images/no_image.svg'"/>
+            </div>
+            <div class="group-info-content1">
+                <div class="part1">
+                    <p id="companyName" class="title">
+<!--                        저어새네트워크저어새네트워크저어새네트워크저어새네트워크-->
+                    </p>
+                    <share class="icon-share" title="카카오톡 공유하기" onclick="shareKakao()"></share>
+                </div>
+                <div class="part2">
+                    <ul>
+                        <!--단체주소-->
+                        <li class="companyAddress">
+                            <i class="favicon"></i><span id="addressDetail">
+<!--                            남동구 예술로 226번길 14(701호) 남동구 예술로 226번길 14(701호) 남동구 예술로 226번길 14(701호)-->
+                        </span>
+                        </li>
+                        <!--단체연락처-->
+                        <li class="tel">
+                            <i class="favicon"></i><span id="companyTel">
+<!--                            010-0000-0000-->
+                        </span>
+                        </li>
+                        <!--단체이메일-->
+                        <li class="email">
+                            <i class="favicon"></i>
+                            <span id="companyEmail">
+<!--                                010-0000-0000-->
+                            </span>
+                        </li>
+                        <!--단체 웹사이트-->
+                        <li class="web">
+                            <i class="favicon"></i>
+                            <span id="webUrl" class="goToLink cupoint">
+<!--                                cafe.daum.net/spoonbill-islandcafe.daum.net/spoonbill-islandcafe.daum.net/spoonbill-island-->
+                            </span>
+                        </li>
+                        <!--단체 카페-->
+                        <li class="cafe">
+                            <i class="favicon"></i>
+                            <span id="cafeUrl" class="goToLink cupoint">
+<!--                                cafe.daum.net/spoonbill-island-->
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="group-info-content2">
+            <div class="content-wrap auto">
+                <p class="title">단체소개</p>
+                <p id="script" class="content">
+<!--                    저어새네트워크(Black-Faced Spoonbill Korea Network)는 저어새를 포함한 물새, 그들의 서식지로서의 습지, 그리고 생태계 다양성의 보전, 그리고 이를 통한 지속가능사회를 이루는 것을 목적으로, 저어새 및 물새 그리고 습지의 모니터링을 실시하고, 시민 및 학생의 인식증진활동과 정책제안을 하고 있습니다.-->
+                </p>
+            </div>
+            <div class="content-wrap auto">
+                <ul>
+                    <li><span class="t-center">설&nbsp;&nbsp;립&nbsp;&nbsp;일</span> <span id="foundDate" class="found-date">
+<!--                        2009. 05. 19-->
+                    </span></li>
+                    <li><span class="t-center">운영형태</span> <span id="companyType" class="mode">
+<!--                        공공기관-->
+                    </span></li>
+                    <li><span class="t-center">등록번호</span> <span id="startNo" class="num">
+<!--                        121-11-01234-->
+                    </span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="group-info-content3">
+            <div class="content-wrap auto">
+                <p class="title">운영 프로그램&nbsp;<span id="programNum">3</span>개</p>
+
+                <programList id="program-list" class="program-list" style="/*display: none*/">
+<!--                    <div class="center-box" onclick="location.href='/detail/program'">-->
+<!--                        <div class="img-area">-->
+<!--                            <img src="" onerror="this.src='/images/no_image.svg'"/>-->
+<!--                        </div>-->
+<!--                        <div class="list-info po-r">-->
+<!--                            <ul class="po-r">-->
+<!--                                <li class="title"><span>찾아가는 저어새 자연학교찾아가는 저어새 자연학교찾아가는 저어새 자연학교</span><arrow class="po-a"></arrow></li>-->
+<!--                                <li class="member-num"><span class="po-a">15~30명</span></li>-->
+<!--                                <li class="target"><span>초, 중, 고등학생</span></li>-->
+<!--                                <li class="date"><span>3월~8월</span></li>-->
+<!--                                <li class="type"><span>강의, 놀이, 탐조, 그리기, 만들기 등 강의, 놀이, 탐조, 그리기, 만들기 등 강의, 놀이, 탐조, 그리기, 만들기 등</span></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </programList>
+
+
+                <!--운영 프로그램 리스트가 없는 경우-->
+                <noList id="no-list" class="no-list" style="display: none;">
+                    <p>운영하는 프로그램이 없습니다.</p>
+                </noList>
+            </div>
+        </div>
+
+    </main>
+
+    <script th:inline="javascript">
+        // if([[${param.companySeq}]]==null) {
+        //     alert("잘못된 접근입니다.");
+        //     location.href="/list";
+        // }
+        let companySeq= [[${param.companySeq}]][0];
+        let shareImg;
+        let shareTitle;
+        let shareScript;
+        let shareUrl = window.location.href;
+
+        getCompanyDetail(companySeq);
+
+        function getCompanyDetail(companySeq){
+            $.ajax({
+                type:"get",
+                url:"/user/api/company/detail",
+                data:{"companySeq":companySeq},
+                success:function(data){
+                    // console.log(data);
+                    shareTitle = data.name;
+                    shareScript = data.script.substring(0, 40) + "...";
+                    let programInfoList = data.programInfoList;
+
+                    if(data.imgUrl!=null && data.imgUrl!="") {
+                        $(".thumbnail-img").attr("src", data.imgUrl);
+                        shareImg = data.imgUrl;
+                    }else {
+                        $(".thumbnail-img").attr("src", "/images/no_image.svg");
+                    }
+
+                    $("#companyName").text(data.name);
+                    $("#addressDetail").text(data.addressDetail);
+                    $("#companyTel").text(data.tel);
+                    if(data.email!=null && data.email!="") {
+                        $("#company-detail-div .email").show();
+                        $("#companyEmail").text(data.email);
+                    }else {
+                        $("#company-detail-div .email").hide();
+                    }
+                    if(data.homeUrl!=null && data.homeUrl!="") {
+                        $("#company-detail-div .web").show();
+                        $("#webUrl").text(data.homeUrl);
+                    }else {
+                        $("#company-detail-div .web").hide();
+                    }
+                    if(data.cafeUrl!=null && data.cafeUrl!="") {
+                        $("#company-detail-div .cafe").show();
+                        $("#cafeUrl").text(data.cafeUrl);
+                    }else {
+                        $("#company-detail-div .cafe").hide();
+                    }
+                    $("#script").text(data.script);
+                    let strFoundDate = data.startDate;
+                    strFoundDate = strFoundDate.substring(0, 10).replaceAll("-", ". ");
+                    $("#foundDate").text(strFoundDate);
+                    if(data.type){
+                        $("#companyType").text("민간기관");
+                    }else{
+                        $("#companyType").text("공공기관");
+                    }
+                    if(data.startNo!=null && data.startNo!="") {
+                        $("#startNo").text(data.startNo);
+                    }else{
+                        $("#startNo").text("-");
+                    }
+
+                    if(programInfoList!=null && programInfoList.length!=0) {
+                        let programListTag = "";
+                        programInfoList.forEach(function(arg){
+                            let program = arg.programDetail;
+                            let target = arg.target;
+                            let targetTag = "";
+                            target.forEach(function(t){
+                                targetTag += t+", ";
+                            });
+                            targetTag = targetTag.substring(0, targetTag.length-2);
+                            let imgUrl1 = "";
+                            if(program.imgUrl1!="" && program.imgUrl1!=null){
+                                imgUrl1 = program.imgUrl1;
+                            }else{
+                                imgUrl1="/images/no_image.svg";
+                            }
+
+                            programListTag +=
+                                '<div class="center-box" onclick="location.href=\'/detail/program?programSeq='+program.programSeq+'\'">'
+                                    +'<div class="img-area">'
+                                        +'<img src="'+imgUrl1+'"/>'
+                                    +' </div>'
+                                    +'<div class="list-info po-r">'
+                                        +'<ul class="po-r">'
+                                            +'<li class="title"><span>'+program.title+'</span><arrow class="po-a"></arrow></li>'
+                                            +'<li class="member-num"><span class="po-a">'+program.memberCount+'</span></li>'
+                                            +'<li class="target"><span>'+targetTag+'</span></li>'
+                                            +'<li class="date"><span>'+program.schedule+'</span></li>'
+                                            +'<li class="type"><span>'+program.method+'</span></li>'
+                                        +'</ul>'
+                                    +'</div>'
+                                +'</div>'
+                        });
+                        $("#program-list").html(programListTag);
+                        $("#programNum").text(programInfoList.length);
+                    }else {
+                        $("#programNum").text("0");
+                        $("#program-list").css("display", "none");
+                        $("#no-list").css("display", "");
+                    }
+                }
+            });
+        }
+
+        $("#company-detail-div .goToLink").on("click", function(){
+            let href = $(this).text();
+            if(!href.includes("http://")) {
+                href = "http://"+href;
+            }
+            window.open(href);
+        });
+
+
+        function shareKakao(){
+            Kakao.init("25b1aa4fce414f9ff8e7bc08f9f202c7");
+            Kakao.Link.sendDefault({
+                objectType: "feed",
+                content: {
+                    title: shareTitle,
+                    description: shareScript,
+                    imageUrl: shareImg,
+                    link: {
+                        mobileWebUrl: shareUrl,
+                        webUrl: shareUrl,
+                    },
+                },
+                buttons: [
+                    {
+                        title: "인천환경교육 바로가기",
+                        link: {
+                            mobileWebUrl: shareUrl,
+                            webUrl: shareUrl,
+                        },
+                    },
+                ],
+            });
+        }
+
+    </script>
+</div>
+</html>

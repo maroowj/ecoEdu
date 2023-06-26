@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/user_layout_sub}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style layout:fragment="css"></style>
+
+<div layout:fragment="content">
+    <main role="main" class="content-program-detail-user">
+
+        <!--상단 배경-->
+        <div class="top-back">
+            <div class="bg-blur"></div>
+            <img src="" class="thumbnail-img" onerror="this.src='/images/incheon_city/incheon-city-back.svg'"/>
+        </div>
+
+
+        <!-- 컨텐츠 영역 -->
+        <div id="program-detail-div" class="content-wrap auto po-r">
+
+            <div class="part-left">
+                <div class="part1">
+                    <div class="img-area">
+                        <!--이미지 슬라이드 영역-->
+                        <ul class="img-slide">
+                            <li class="img1"><img id="programImg1" class="thumbnail-img" src="" onerror="this.src='/images/no_image.svg'"/></li>
+                            <li class="img2"><img id="programImg2" src="" onerror="this.src='/images/no_image.svg'"/></li>
+                        </ul>
+
+                        <!--화살표 눌러 이미지 슬라이딩-->
+                        <i class="prev"></i>
+                        <i class="next"></i>
+                    </div>
+
+                    <!--이미지 슬라이드 페이지네이션-->
+                    <ul class="pagination">
+                        <li class="first focus"></li>
+                        <li class="second"></li>
+                    </ul>
+
+                    <!--프로그램 이름 START-->
+                    <div class="title-wrap">
+                        <p id="programTitle" class="title"><!--찾아가는 저어새 자연학교 찾아가는 저어새 자연학교 찾아가는 저어새 자연학교--></p>
+                        <share class="icon-share" title="카카오톡 공유하기" onclick="shareKakao()"></share>
+                    </div>
+                </div>
+
+                <!--키워드(테마) START-->
+                <div id="theme-div" class="part2">
+                    <span class="tag"><!--기후에너지--></span>
+                </div>
+
+                <div class="part3">
+                    <ul>
+                        <!--프로그램 진행장소-->
+                        <li class="address">
+                            <i class="favicon"></i><span id="programArea"><!--신청 학교가 원하는 곳, 남동유수지 신청 학교가 원하는 곳, 남동유수지 신청 학교가 원하는 곳, 남동유수지 신청 학교가 원하는 곳, 남동유수지--></span>
+                        </li>
+                        <!--담당 연락처-->
+                        <li class="tel">
+                            <i class="favicon"></i><span id="programTel"><!--010-0000-0000--></span>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <!--mobile 프로그램 진행내용 START-->
+                <div class="part3-2">
+                    <div class="part1">
+                        <ul>
+                            <!--대상-->
+                            <li>
+                                <i class="favicon"></i>
+                                <span class="target">
+<!--                                초, 중, 고등학생 초, 중, 고등학생 초, 중, 고등학생 초, 중, 고등학생-->
+                                <span class="member-num">15~30명</span>
+                            </span>
+                            </li>
+                            <!--일시-->
+                            <li>
+                                <i class="favicon"></i>
+                                <span class="date"><!--3월~8월--></span>
+                            </li>
+                            <!--교육유형-->
+                            <li>
+                                <i class="favicon"></i>
+                                <span class="method"><!--강의, 놀이, 탐조, 그리기, 만들기 등--></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="part2">
+                        <ul>
+                            <!--교육시간-->
+                            <li>
+                                <span class="">교육시간</span>
+                                <span class="curriculum"><!--5회 11차시 5회 11차시5회 11차시5회 11차시5회 11차시5회 11차시5회--></span>
+                            </li>
+                            <!--1회 교육시간-->
+                            <li>
+                                <span class="">1회 교육시간</span>
+                                <span class="time">1차시 40분</span>
+                            </li>
+                            <!--참가비용-->
+                            <li>
+                                <i class="favicon"></i>
+                                <span class="">참가비용</span>
+                                <span class="cost"><!--60만원(1학급), 환경부 지원사업으로 진행될 경우 참가비 없음--></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--mobile 프로그램 진행내용 END-->
+
+
+                <!--프로그램 소개 START-->
+                <div class="part4">
+                    <p class="title">프로그램 소개</p>
+                    <div id="programScript" class="content">
+<!--                        저어새네트워크(Black-Faced Spoonbill Korea Network)는 저어새를 포함한 물새,-->
+<!--                        그들의 서식지로서의 습지, 그리고 생태계 다양성의 보전, 그리고 이를 통한 지속가능사회를 이루는 것을 목적으로,-->
+<!--                        저어새 및 물새 그리고 습지의 모니터링을 실시하고, 시민 및 학생의 인식증진활동과 정책제안을 하고 있습니다.-->
+                    </div>
+                </div>
+
+                <!--단체정보 START-->
+                <div class="part5">
+                    <div class="title-wrap">
+                        <p class="title">단체정보</p>
+                        <span class="detail goToCompany">단체상세<i class="icon-detail"></i></span>
+                    </div>
+
+                    <div class="group-info-wrap">
+                        <div class="img-area">
+                            <img id="companyImg" class="goToCompany cupoint"  src="" onerror="this.src='/images/no_image.svg'"/>
+                        </div>
+                        <div class="info-area">
+                            <p class="title"><span id="companyName">
+<!--                                저어새 네트워크 저어새 네트워크 저어새 네트워크-->
+                            </span><i class="favicon"></i></p>
+                            <div id="companyScript" class="content">
+<!--                                저어새네트워크(Black-Faced Spoonbill Korea Network)는 저어새를 포함한 물새,-->
+<!--                                그들의 서식지로서의 습지, 그리고 생태계 다양성의 보전, 그리고 이를 통한 지속가능사회를 이루는 것을 목적으로,-->
+<!--                                저어새 및 물새 그리고 습지의 모니터링을 실시하고, 시민 및 학생의 인식증진활동과 정책제안을 하고 있습니다.-->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="part-right po-a">
+                <p class="title">프로그램 진행 내용</p>
+
+                <div class="part1">
+                    <ul>
+                        <!--대상-->
+                        <li>
+                            <i class="favicon"></i>
+                            <span class="target">
+<!--                                초, 중, 고등학생 초, 중, 고등학생 초, 중, 고등학생 초, 중, 고등학생-->
+                                <span class="member-num">
+<!--                                    15~30명-->
+                                </span>
+                            </span>
+                        </li>
+                        <!--일시-->
+                        <li>
+                            <i class="favicon"></i>
+                            <span class="date">
+<!--                                3월~8월-->
+                            </span>
+                        </li>
+                        <!--교육유형-->
+                        <li>
+                            <i class="favicon"></i>
+                            <span class="method">
+<!--                                강의, 놀이, 탐조, 그리기, 만들기 등-->
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="part2">
+                    <ul>
+                        <!--교육시간-->
+                        <li>
+                            <span class="">교육시간</span>
+                            <span class="curriculum">
+<!--                                5회 11차시 5회 11차시5회 11차시5회 11차시5회 11차시5회 11차시5회-->
+                            </span>
+                        </li>
+                        <!--1회 교육시간-->
+                        <li>
+                            <span class="">1회 교육시간</span>
+                            <span class="time">
+<!--                                1차시 40분-->
+                            </span>
+                        </li>
+                        <!--참가비용-->
+                        <li>
+                            <i class="favicon"></i>
+                            <span class="">참가비용</span>
+                            <span class="cost">
+<!--                                60만원(1학급), 환경부 지원사업으로 진행될 경우 참가비 없음-->
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!--script START-->
+    <script src="/js/slide.js"></script>
+    <script th:inline="javascript">
+        // if([[${param.programSeq}]]==null) {
+        //     alert("잘못된 접근입니다.");
+        //     location.href="/list";
+        // }
+        let programSeq= [[${param.programSeq}]][0];
+        let companySeq;
+        let shareImg;
+        let shareTitle;
+        let shareScript;
+        let shareUrl = window.location.href;
+        getProgramDetail(programSeq);
+
+        function getProgramDetail(programSeq){
+            $.ajax({
+                type:"get",
+                url:"/user/api/program/detail",
+                data:{"programSeq":programSeq},
+                success:function(data){
+                    // console.log(data);
+                    let detail = data.programDetail;
+                    shareTitle = detail.title;
+                    shareScript = detail.script.substring(0, 40) + "...";
+                    let theme = data.theme;
+                    let target = data.target;
+                    let type = data.type;
+                    if(detail.imgUrl1!=null&&detail.imgUrl1!=""){
+                        $(".thumbnail-img").attr("src", detail.imgUrl1);
+                        shareImg = detail.imgUrl1;
+                    }else {
+                        $(".thumbnail-img").attr("src", "/images/no_image.svg");
+                    }
+                    if(detail.imgUrl2!=null&&detail.imgUrl2!=""){
+                        $("#programImg2").attr("src", detail.imgUrl2);
+                    }else {
+                        $("#programImg2").attr("src", "/images/no_image.svg");
+                    }
+                    $("#programTitle").text(detail.title);
+                    let themeTag = "";
+                    theme.forEach(function(arg){
+                         themeTag += "<span className='tag'>"+arg+"</span>";
+                    });
+                    $("#theme-div").html(themeTag);
+                    $("#programArea").html(detail.area);
+                    $("#programTel").html(detail.tel);
+                    let targetTag = "";
+                    target.forEach(function(arg){
+                         targetTag += arg+", ";
+                    });
+                    targetTag = targetTag.substring(0, targetTag.length-2);
+                    $("#program-detail-div .target").html(targetTag);
+                    let memberNumTag = "<span class='member-num'>"+detail.memberCount+"</span>"
+                    $("#program-detail-div .target").append(memberNumTag);
+                    $("#program-detail-div .date").html(detail.schedule);
+                    $("#program-detail-div .method").html(detail.method);
+                    $("#program-detail-div .curriculum").html(detail.eduTime);
+                    $("#program-detail-div .time").html(detail.oneTime);
+                    $("#program-detail-div .cost").html(detail.cost);
+                    $("#programScript").html(detail.script);
+
+                    // 단체 정보
+                    if(detail.companyImgUrl!=null&&detail.companyImgUrl!=""){
+                        $("#companyImg").attr("src", detail.companyImgUrl);
+                    }else {
+                        $("#companyImg").attr("src", "/images/no_image.svg");
+                    }
+                    $("#companyName").html(detail.companyName);
+                    $("#companyScript").html(detail.companyScript);
+                    companySeq = detail.companySeq;
+                }
+            });
+        }
+
+        $("#program-detail-div .goToCompany").on("click", function(){
+            location.href="/detail/group?companySeq="+companySeq;
+        });
+
+        function shareKakao(){
+            Kakao.init("25b1aa4fce414f9ff8e7bc08f9f202c7");
+            Kakao.Link.sendDefault({
+                objectType: "feed",
+                content: {
+                    title: shareTitle,
+                    description: shareScript,
+                    imageUrl: shareImg,
+                    link: {
+                        mobileWebUrl: shareUrl,
+                        webUrl: shareUrl,
+                    },
+                },
+                buttons: [
+                    {
+                        title: "인천환경교육 바로가기",
+                        link: {
+                            mobileWebUrl: shareUrl,
+                            webUrl: shareUrl,
+                        },
+                    },
+                ],
+            });
+        }
+
+        if (matchMedia("screen and (max-width: 960px)").matches) {
+            $("#program-detail-div .group-info-wrap").attr("type", "m");
+
+            $("#program-detail-div .group-info-wrap").on("click", function(){
+                if($(this).attr("type")=="m"){
+                    location.href="/detail/group?companySeq="+companySeq;
+                }
+            });
+        }else if(matchMedia("screen and (min-width: 961px)").matches) {
+            $("#program-detail-div .group-info-wrap").attr("type", "p");
+        }
+
+        window.onresize = function(event){
+            if (matchMedia("screen and (max-width: 960px)").matches) {
+                $("#program-detail-div .group-info-wrap").attr("type", "m");
+                $("#program-detail-div .group-info-wrap").on("click", function(){
+                    if($(this).attr("type")=="m"){
+                        location.href="/detail/group?companySeq="+companySeq;
+                    }
+                });
+            }else if(matchMedia("screen and (min-width: 961px)").matches) {
+                $("#program-detail-div .group-info-wrap").attr("type", "p");
+            }
+        };
+
+
+    </script>
+    <!--script END-->
+</div>
+</html>
