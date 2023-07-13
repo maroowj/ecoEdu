@@ -4,9 +4,6 @@
   * 인천광역시 환경교육센터에서 매년 출간하는 가이드북의 내용을 웹 게시판으로 볼 수 있게 관리하는 프로젝트 
   * 디자인과 퍼블리싱을 제외한 DB설계, 백엔드, 프론트엔드까지 모두 혼자 작업하였습니다.
   * 백엔드는 Restful-API를 개발하고, 프론트엔드는 Ajax로 API를 호출하는 방식으로 개발되었습니다.
-  * 관리자는 단체, 프로그램, 카테고리를 등록 관리하고, 이용자의 수정 요청 내용을 확인하여 응답할 수 있다.
-  * 사용자는 관리자가 등록한 가이드북의 내용을 지역, 단체, 프로그램, 체험유형 등으로 색인하여 열람하고 잘못된 내용에 대해 수정 요청을 할 수 있다.
-
 
 * 🏗️개발 기간 및 인원 
   * 2022.08 ~ 2022.10
@@ -20,32 +17,32 @@
 * 📅 DB
   * 테이블 정의서 : [https://docs.google.com/document/d/1st21qukFUlUPDubiymRQGz0GIPatiGZo/edit](https://docs.google.com/spreadsheets/d/1-_iHWzXOA6m7cEjLshhxAC5MkVqAh-e4/edit#gid=277208722)
   * ERD
-  ![adtool_erd](https://github.com/maroowj/adtool/assets/77284101/4409f80d-6cb2-4f51-a377-111de67acf30)
+  ![ecoEducation_erd](https://github.com/maroowj/ecoEdu/assets/77284101/86dccc83-4423-48fb-92cf-10e183bbf4df)
 
 
 * ✏️ 시나리오
   * 관리자
-    * 리뷰 체험단을 모집하려는 아이템의 캠페인을 발행합니다. (예약 또는 즉시 발행)
-    * 모집이 완료된 체험단을 관리합니다. (승인 또는 거절)
-    * 체험단이 상품 리뷰를 완료하고 첨부한 증빙자료를 확인한다.
-    * 증빙자료 확인 후 정산 내역을 기록한다.
-    * 정산이 모두 완료된 캠페인은 자동적으로 종료된다.
-    * 이외 전체회원 관리, 메시지 전송, 공지사항 및 게시물을 등록 또는 수정 할 수 있다.
+    * 관리자는 단체, 프로그램, 카테고리를 등록 관리하고, 이용자의 수정 요청 내용을 확인하여 응답할 수 있다.
+      
   * 사용자
-    * 회원가입을 한다. (기본정보 입력 - 관심사 입력 - SNS계정 입력 총3단계)
-    * 로그인 후 모집중인 캠페인에 참가 신청을 한다. (본인 국가와 일치해야 하며, 인원 수 제한, 중복 신청 방지)
-    * 체험단 신청이 승인되면 제품 구매 후 체험 리뷰를 작성한다.
-    * 마이페이지의 참여중인 캠페인 페이지에서 리뷰 증빙자료와, 영수증을 첨부하여 업로드 한다.
-    * 이외 관리자로부터 개별적으로 송신된 메시지를 확인하고 개인정보를 수정할 수 있다.
+    * 사용자는 관리자가 등록한 가이드북의 내용을 지역, 단체, 프로그램, 체험유형 등으로 색인하여 열람하고 잘못된 내용에 대해 수정 요청을 할 수 있다.
 
    
 * 💻구동 화면
   * 사용자
+![user_index](https://github.com/maroowj/ecoEdu/assets/77284101/719a0782-a732-4398-9570-b96801f8bf3f)
+![user_area_search](https://github.com/maroowj/ecoEdu/assets/77284101/4cad2201-8bf1-4fea-bbc7-33bd2b638aea)
+![user_program_list](https://github.com/maroowj/ecoEdu/assets/77284101/e766adc9-80d9-4876-8c25-c7f82fee1fc5)
+![user_program_details](https://github.com/maroowj/ecoEdu/assets/77284101/3ecabf07-eac2-4270-95d5-f36dfd07622b)
 
   * 관리자
+![admin_login](https://github.com/maroowj/ecoEdu/assets/77284101/7b63c6b2-ffac-409f-9fa0-b633ed52ffbe)
+![admin_index](https://github.com/maroowj/ecoEdu/assets/77284101/8ed7b7d0-6e2b-48e1-90a8-6f0d906fd6ad)
+![admin_program_list](https://github.com/maroowj/ecoEdu/assets/77284101/bc68aa40-a4ec-483b-a0e6-5023ef2864c3)
+![admin_program_details](https://github.com/maroowj/ecoEdu/assets/77284101/3137f86f-9fe4-4d0a-9c27-9ba664821b65)
 
 
 * 💡부가기능
-  * Spring-mail-start 라이브러리를 사용하여 메일 보내기 기능 자체 구현 (비밀번호 찾기 기능)
-  * Spring-shceduler 기능을 이용한 캠페인 예약 발행 기능 구현
-  * apach-poi, commons-io 라이브러리를 사용한 테이블 엑셀 다운로드 기능 구현
+  * JWT를 사용한 로그인 체계 구축 시도 (관리자 페이지)
+  * 모바일-웹 전환시 UI 반응형으로 제작
+  * AJAX를 이용한 비동기식 화면 전환
